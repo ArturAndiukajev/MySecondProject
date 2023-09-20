@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <iomanip>
+#include <algorithm>
 using namespace std;
 
 
@@ -10,7 +11,8 @@ struct Studentas{
     string pavarde;
     vector <int> ND;
     int Egz;
-    double galutinis;
+    double galutinis1;
+    double galutinis2;
 };
 //------------------------
 
@@ -21,7 +23,29 @@ double rezultatas(double suma,int kiekis,int egz)
     rez=0.4*(suma/kiekis)+0.6*egz;
     return rez;
 }
+//-------------------------
 
+//-------------------------
+double Med(vector<int> data)
+{
+    sort(data.begin(), data.end());
+    size_t size = data.size();
+    if (size % 2 == 0) {
+        size_t middle = size / 2;
+        return (data[middle - 1] + data[middle]) / 2.0;
+    } else {
+        return data[size / 2];
+    }
+}
+//----------------------------
+
+//----------------------------
+double rezMed(double mediana, int egz)
+{
+    double rez=0;
+    rez=0.4*mediana+0.6*egz;
+    return rez;
+}
 int main()
 {
     int stud_sk;
@@ -51,17 +75,18 @@ int main()
         }
         cout<<"Iveskite "<<i+1<<" studento egzamino rezultata"<<endl;
         cin>>naujas_st.Egz;
-        naujas_st.galutinis=rezultatas(nd_suma, nd_kiekis, naujas_st.Egz);
-
+        naujas_st.galutinis1=rezultatas(nd_suma, nd_kiekis, naujas_st.Egz);
+        double mediana=Med(naujas_st.ND);
+        naujas_st.galutinis2=rezMed(mediana,naujas_st.Egz);
         studentai.push_back(naujas_st);
     }
 
     //Duomenu isvedimas
-    cout<<"Vardas"<<setw(10)<<"Pavarde"<<setw(12)<<"Galutinis"<<endl;
-    cout<<"-------------------------------------------------------------------------------"<<endl;
+    cout<<"Vardas"<<setw(10)<<"Pavarde"<<setw(12)<<"Galutinis(Vid.)"<<setw(12)<<"Galutinis(Med.)"<<endl;
+    cout<<"------------------------------------------------------------------------------------------------------"<<endl;
     for(int i=0;i<stud_sk;i++)
     {
-        cout<<studentai[i].vardas<<setw(10)<<studentai[i].pavarde<<setw(12)<<fixed<<setprecision(2)<<studentai[i].galutinis<<endl;
+        cout<<studentai[i].vardas<<setw(10)<<studentai[i].pavarde<<setw(12)<<fixed<<setprecision(2)<<studentai[i].galutinis1<<setw(12)<<fixed<<setprecision(2)<<studentai[i].galutinis2<<endl;
     }
     return 0;
 }
