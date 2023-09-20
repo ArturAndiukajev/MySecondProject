@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
 using namespace std;
 
 
@@ -13,5 +14,6 @@ struct Mokinys{
 int main()
 {
 
+    cout<<"Iveskite duomenys: "<<endl;
     return 0;
 }
