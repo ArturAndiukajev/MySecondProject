@@ -1,11 +1,10 @@
 #include <iostream>
-#include <fstream>
 #include <string>
 #include <vector>
 using namespace std;
 
 
-struct Mokinys{
+struct Studentas{
     string vardas;
     string pavarde;
     vector <int> ND;
@@ -13,7 +12,22 @@ struct Mokinys{
 };
 int main()
 {
+    int stud_sk;
+    vector<Studentas> studentai;
 
-    cout<<"Iveskite duomenys: "<<endl;
+    cout<<"Iveskite studentu kieki: "<<endl;
+    cin>>stud_sk;
+
+    for(int i=0;i<stud_sk;i++)
+    {
+        cout<<"Iveskite "<<i+1<<" studento varda"<<endl;
+        cin>>studentai.vardas;
+        cout<<"Iveskite "<<i+1<<" studento pavarde"<<endl;
+        cin>>studentai.pavarde;
+        int nd_kiekis;
+        cout<<"Iveskite "<<i+1<<" studento namu darbu kieki"<<endl;
+        cin>>nd_kiekis;
+
+    }
     return 0;
 }
