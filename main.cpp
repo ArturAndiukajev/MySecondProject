@@ -3,6 +3,7 @@
 #include <vector>
 #include <iomanip>
 #include <algorithm>
+#include <numeric>
 using namespace std;
 
 
@@ -46,6 +47,7 @@ double rezMed(double mediana, int egz)
     rez=0.4*mediana+0.6*egz;
     return rez;
 }
+//------------------------------
 int main()
 {
     int stud_sk;
@@ -62,20 +64,21 @@ int main()
         cout<<"Iveskite "<<i+1<<" studento pavarde"<<endl;
         cin>>naujas_st.pavarde;
         int nd_kiekis;
-        cout<<"Iveskite "<<i+1<<" studento namu darbu kieki"<<endl;
-        cin>>nd_kiekis;
-        double nd_suma=0;
-        for(int j=0;j<nd_kiekis;j++)
+        cout<<"Iveskite "<<i+1<<" studento namu darbo rezultatus (iveskite '-1', kai baigsite)"<<endl;
+        int nd_rez;
+        while(true)
         {
-            int nd_rez;
-            cout<<"Iveskite "<<i+1<<" studento"<<j+1<<" namu darbo rezultata"<<endl;
-            cin>>nd_rez;
-            naujas_st.ND.push_back(nd_rez);
-            nd_suma=nd_suma+nd_rez;
+           cin>>nd_rez;
+           if(nd_rez == -1)
+              {
+                  break;
+              }
+           naujas_st.ND.push_back(nd_rez);
         }
         cout<<"Iveskite "<<i+1<<" studento egzamino rezultata"<<endl;
         cin>>naujas_st.Egz;
-        naujas_st.galutinis1=rezultatas(nd_suma, nd_kiekis, naujas_st.Egz);
+        double nd_suma = accumulate(naujas_st.ND.begin(), naujas_st.ND.end(), 0.0);
+        naujas_st.galutinis1=rezultatas(nd_suma, naujas_st.ND.size(), naujas_st.Egz);
         double mediana=Med(naujas_st.ND);
         naujas_st.galutinis2=rezMed(mediana,naujas_st.Egz);
         studentai.push_back(naujas_st);
