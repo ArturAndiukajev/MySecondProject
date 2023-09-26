@@ -50,6 +50,7 @@ double rezMed(double mediana, int egz)
     return rez;
 }
 //------------------------------
+
 int main()
 {
     int stud_sk;
@@ -120,7 +121,34 @@ int main()
     }}
     else if(pasirinkimas3=='F')
     {
-
+        ifstream input_file("kursiokai.txt");
+        input_file>>stud_sk;
+        cout<<stud_sk;
+        input_file>>nd_kiekis;
+        cout<<nd_kiekis;
+        input_file.ignore();
+        for (int i = 0; i < stud_sk; i++)
+            {
+            Studentas naujas_st;
+            input_file>>naujas_st.vardas>>naujas_st.pavarde;
+            naujas_st.ND.clear();
+            int nd_rez;
+            for(int i=0;i<nd_kiekis;i++)
+            {
+                naujas_st.ND.push_back(nd_rez);
+            }
+            input_file>>naujas_st.Egz;
+            double nd_suma = accumulate(naujas_st.ND.begin(), naujas_st.ND.end(), 0.0);
+            naujas_st.galutinis1 = rezultatas(nd_suma, naujas_st.ND.size(), naujas_st.Egz);
+            double mediana = Med(naujas_st.ND);
+            naujas_st.galutinis2 = rezMed(mediana, naujas_st.Egz);
+            studentai.push_back(naujas_st);
+            }
+        input_file.close();
+    }
+    else
+    {
+        cout<<"Neteisingas pasirinkimas"<<endl;
     }
     char pasirinkimas;
     cout<<"Jeigu norite gauti galutini bala su vidurkiu - parasykite 'V' raide, jeigu su mediana - 'M'"<<endl;
