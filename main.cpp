@@ -123,18 +123,35 @@ int main()
     {
         ifstream input_file("kursiokai.txt");
         input_file>>stud_sk;
-        cout<<stud_sk;
+        cout<<stud_sk<<endl;
+        int nd_kiekis;
         input_file>>nd_kiekis;
-        cout<<nd_kiekis;
+        cout<<nd_kiekis<<endl;
         input_file.ignore();
+        string v;
+        input_file>>v;
+        cout<<v<<" ";
+        string p;
+        input_file>>p;
+        cout<<p<<" ";
+        for(int i=0;i<nd_kiekis;i++)
+        {
+            string nd;
+            input_file>>nd;
+            cout<<nd<<" ";
+        }
+        string egz;
+        input_file>>egz;
+        cout<<egz<<endl;
         for (int i = 0; i < stud_sk; i++)
             {
             Studentas naujas_st;
             input_file>>naujas_st.vardas>>naujas_st.pavarde;
             naujas_st.ND.clear();
-            int nd_rez;
             for(int i=0;i<nd_kiekis;i++)
             {
+                int nd_rez;
+                input_file>>nd_rez;
                 naujas_st.ND.push_back(nd_rez);
             }
             input_file>>naujas_st.Egz;
