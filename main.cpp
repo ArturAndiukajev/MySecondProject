@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <numeric>
 #include <cstdlib>
+#include <fstream>
 using namespace std;
 
 
@@ -53,7 +54,10 @@ int main()
 {
     int stud_sk;
     vector<Studentas> studentai;
-
+    cout<<"Pasirinkite buda, kaip pildysite duomenys. Jeigu norit ivesti patys rasykite 'P', jeigu norite nuskaityti is failo - 'F'"<<endl;
+    char pasirinkimas3;
+    cin>>pasirinkimas3;
+    if(pasirinkimas3=='P'){
     cout<<"Iveskite studentu kieki: "<<endl;
     cin>>stud_sk;
     cout<<"Pasirinkite buda, kaip pildysite namu darbo pazimius. Jeigu norit ivesti patys rasykite 'A', jeigu atsitiktinai - rasykite 'R'"<<endl;
@@ -113,6 +117,10 @@ int main()
         double mediana=Med(naujas_st.ND);
         naujas_st.galutinis2=rezMed(mediana,naujas_st.Egz);
         studentai.push_back(naujas_st);
+    }}
+    else if(pasirinkimas3=='F')
+    {
+
     }
     char pasirinkimas;
     cout<<"Jeigu norite gauti galutini bala su vidurkiu - parasykite 'V' raide, jeigu su mediana - 'M'"<<endl;
