@@ -51,6 +51,11 @@ double rezMed(double mediana, int egz)
 }
 //------------------------------
 
+bool palyginimasVardai(Studentas studentas1, Studentas studentas2)
+{
+    return studentas1.vardas<studentas2.vardas;
+}
+//--------------------------------
 int main()
 {
     int stud_sk;
@@ -178,6 +183,7 @@ int main()
             cout<<"Galutinis(Med.)"<<endl;}
     else {cout<<"Neteisingas pasirinkimas";
     return 1;}
+    sort(studentai.begin(),studentai.end(),palyginimasVardai);
     cout<<"------------------------------------------------------------------------------------------------------"<<endl;
     for(int i=0;i<stud_sk;i++)
     {
