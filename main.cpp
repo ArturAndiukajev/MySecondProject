@@ -172,24 +172,24 @@ int main()
     {
         cout<<"Neteisingas pasirinkimas"<<endl;
     }
+    sort(studentai.begin(),studentai.end(),palyginimasVardai);
     char pasirinkimas;
     cout<<"Jeigu norite gauti galutini bala su vidurkiu - parasykite 'V' raide, jeigu su mediana - 'M'"<<endl;
     cin>>pasirinkimas;
     //Duomenu isvedimas
-    cout<<"Vardas"<<setw(10)<<"Pavarde"<<setw(20);
+    cout<<setw(20)<<left<<"Vardas"<<setw(20)<<"Pavarde"<<setw(20)<<left;
     if (pasirinkimas=='V'){
             cout<<"Galutinis(Vid.)"<<endl;}
     else if(pasirinkimas=='M'){
             cout<<"Galutinis(Med.)"<<endl;}
     else {cout<<"Neteisingas pasirinkimas";
     return 1;}
-    sort(studentai.begin(),studentai.end(),palyginimasVardai);
     cout<<"------------------------------------------------------------------------------------------------------"<<endl;
     for(int i=0;i<stud_sk;i++)
     {
-        cout<<studentai[i].vardas<<setw(10)<<studentai[i].pavarde<<setw(12);
+        cout<<setw(20)<<left<<studentai[i].vardas<<setw(20)<<left<<studentai[i].pavarde<<setw(20)<<left;
         if (pasirinkimas=='V'){
-                cout<<"   "<<fixed<<setprecision(2)<<studentai[i].galutinis1<<endl;}
+                cout<<fixed<<setprecision(2)<<studentai[i].galutinis1<<endl;}
         else cout<<fixed<<setprecision(2)<<studentai[i].galutinis2<<endl;
     }
     return 0;
