@@ -1,9 +1,47 @@
 #include "firstlib.h"
 
+//------------------------
+double rezultatas(double suma,int kiekis,int egz)
+{
+    double rez=0;
+    rez=0.4*(suma/kiekis)+0.6*egz;
+    return rez;
+}
+//-------------------------
+
+//-------------------------
+double Med(vector<int> data)
+{
+    sort(data.begin(), data.end());
+    size_t size = data.size();
+    if (size % 2 == 0) {
+        size_t middle = size / 2;
+        return (data[middle - 1] + data[middle]) / 2.0;
+    } else {
+        return data[size / 2];
+    }
+}
+//----------------------------
+
+//----------------------------
+double rezMed(double mediana, int egz)
+{
+    double rez=0;
+    rez=0.4*mediana+0.6*egz;
+    return rez;
+}
+//------------------------------
+
+bool palyginimasVardai(Studentas studentas1, Studentas studentas2)
+{
+    return studentas1.vardas<studentas2.vardas;
+}
+//--------------------------------
 int main()
 {
-    int stud_sk;
-    Studentas studentai;
+    int stud_sk=0;
+    vector <Studentas> studentai;
+    Studentas naujas_st;
     cout<<"Pasirinkite buda, kaip pildysite duomenys. Jeigu norit ivesti patys rasykite 'P', jeigu norite nuskaityti is failo - 'F'"<<endl;
     char pasirinkimas3;
     cin>>pasirinkimas3;
@@ -16,7 +54,6 @@ int main()
     //Duomenu ivedimas
     for(int i=0;i<stud_sk;i++)
     {
-        Studentas naujas_st;
         cout<<"Iveskite "<<i+1<<" studento varda"<<endl;
         cin>>naujas_st.vardas;
         cout<<"Iveskite "<<i+1<<" studento pavarde"<<endl;
@@ -70,46 +107,40 @@ int main()
     }}
     else if(pasirinkimas3=='F')
     {
-        ifstream input_file("kursiokai.txt");
-        input_file>>stud_sk;
-        cout<<stud_sk<<endl;
-        int nd_kiekis;
-        input_file>>nd_kiekis;
-        cout<<nd_kiekis<<endl;
-        input_file.ignore();
+        string Fname;
+        cout<<"Iveskite failo pavadinima su '.txt'"<<endl;
+        cin>>Fname;
+        ifstream input_file(Fname);
+        string header;
+        int stulp_kiekis=0;
+        getline(input_file, header);
         string v;
-        input_file>>v;
-        cout<<v<<" ";
         string p;
-        input_file>>p;
-        cout<<p<<" ";
-        for(int i=0;i<nd_kiekis;i++)
+        std::istringstream headerStream(header);
+        string token;
+        while (headerStream >> token)
         {
-            string nd;
-            input_file>>nd;
-            cout<<nd<<" ";
+        stulp_kiekis++;
         }
-        string egz;
-        input_file>>egz;
-        cout<<egz<<endl;
-        for (int i = 0; i < stud_sk; i++)
-            {
-            Studentas naujas_st;
-            input_file>>naujas_st.vardas>>naujas_st.pavarde;
-            naujas_st.ND.clear();
-            for(int j=0;j<nd_kiekis;j++)
-            {
-                int nd_rez;
-                input_file>>nd_rez;
-                naujas_st.ND.push_back(nd_rez);
-            }
-            input_file>>naujas_st.Egz;
-            double nd_suma = accumulate(naujas_st.ND.begin(), naujas_st.ND.end(), 0.0);
-            naujas_st.galutinis1 = rezultatas(nd_suma, naujas_st.ND.size(), naujas_st.Egz);
-            double mediana = Med(naujas_st.ND);
-            naujas_st.galutinis2 = rezMed(mediana, naujas_st.Egz);
-            studentai.push_back(naujas_st);
-            }
+        while (input_file >> v >> p)
+        {
+        Studentas naujas_st;
+        naujas_st.vardas = v;
+        naujas_st.pavarde = p;
+        for(int i=0;i<stulp_kiekis-3;i++)
+        {
+            int nd;
+            input_file>>nd;
+            naujas_st.ND.push_back(nd);
+        }
+        input_file>>naujas_st.Egz;
+        double nd_suma = accumulate(naujas_st.ND.begin(), naujas_st.ND.end(), 0.0);
+        naujas_st.galutinis1 = rezultatas(nd_suma, naujas_st.ND.size(), naujas_st.Egz);
+        double mediana = Med(naujas_st.ND);
+        naujas_st.galutinis2 = rezMed(mediana, naujas_st.Egz);
+        studentai.push_back(naujas_st);
+        stud_sk++;
+        }
         input_file.close();
     }
     else
@@ -121,6 +152,10 @@ int main()
     cout<<"Jeigu norite gauti galutini bala su vidurkiu - parasykite 'V' raide, jeigu su mediana - 'M'"<<endl;
     cin>>pasirinkimas;
     //Duomenu isvedimas
+    char pasirinkimas4;
+    cout<<"Jeigu norite gauti rezultata ekrane rasykite 'E', jeigu faile 'F'"<<endl;
+    cin>>pasirinkimas4;
+    if(pasirinkimas4=='E'){
     cout<<setw(20)<<left<<"Vardas"<<setw(20)<<"Pavarde"<<setw(20)<<left;
     if (pasirinkimas=='V'){
             cout<<"Galutinis(Vid.)"<<endl;}
@@ -135,6 +170,26 @@ int main()
         if (pasirinkimas=='V'){
                 cout<<fixed<<setprecision(2)<<studentai[i].galutinis1<<endl;}
         else cout<<fixed<<setprecision(2)<<studentai[i].galutinis2<<endl;
+    }}
+    else if(pasirinkimas4=='F')
+    {
+        ofstream outputFile("rezultatai.txt");
+        outputFile <<setw(20)<<left<<"Vardas"<<setw(20)<<"Pavarde"<<setw(20)<<left;
+        if (pasirinkimas=='V'){
+            outputFile<<"Galutinis(Vid.)"<<endl;}
+        else if(pasirinkimas=='M'){
+            outputFile<<"Galutinis(Med.)"<<endl;}
+        else {cout<<"Neteisingas pasirinkimas";
+            return 1;}
+        outputFile<<"------------------------------------------------------------------------------------------------------"<<endl;
+        for(int i=0;i<stud_sk;i++)
+        {
+        outputFile<<setw(20)<<left<<studentai[i].vardas<<setw(20)<<left<<studentai[i].pavarde<<setw(20)<<left;
+        if (pasirinkimas=='V'){
+                outputFile<<fixed<<setprecision(2)<<studentai[i].galutinis1<<endl;}
+        else    outputFile<<fixed<<setprecision(2)<<studentai[i].galutinis2<<endl;
+        }
+        outputFile.close();
     }
     return 0;
 }

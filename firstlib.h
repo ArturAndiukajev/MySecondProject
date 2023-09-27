@@ -9,6 +9,7 @@
 #include <numeric>
 #include <cstdlib>
 #include <fstream>
+#include <sstream>
 
 using std::cout;
 using std::cin;
@@ -22,6 +23,8 @@ using std::setprecision;
 using std::sort;
 using std::accumulate;
 using std::ifstream;
+using std::ofstream;
+
 
 
 struct Studentas{
@@ -32,9 +35,6 @@ struct Studentas{
     double galutinis1;
     double galutinis2;
 };
-double rezultatas(double suma,int kiekis,int egz);
-double Med(vector<int> data);
-double rezMed(double mediana, int egz);
-bool palyginimasVardai(Studentas studentas1, Studentas studentas2);
+
 
 #endif // FIRSTLIB_H_INCLUDED
