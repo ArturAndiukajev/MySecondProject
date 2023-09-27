@@ -1,56 +1,9 @@
-#include "firstlib.h";
+#include "firstlib.h"
 
-struct Studentas{
-    string vardas;
-    string pavarde;
-    vector <int> ND;
-    int Egz;
-    double galutinis1;
-    double galutinis2;
-};
-//------------------------
-
-//------------------------
-double rezultatas(double suma,int kiekis,int egz)
-{
-    double rez=0;
-    rez=0.4*(suma/kiekis)+0.6*egz;
-    return rez;
-}
-//-------------------------
-
-//-------------------------
-double Med(vector<int> data)
-{
-    sort(data.begin(), data.end());
-    size_t size = data.size();
-    if (size % 2 == 0) {
-        size_t middle = size / 2;
-        return (data[middle - 1] + data[middle]) / 2.0;
-    } else {
-        return data[size / 2];
-    }
-}
-//----------------------------
-
-//----------------------------
-double rezMed(double mediana, int egz)
-{
-    double rez=0;
-    rez=0.4*mediana+0.6*egz;
-    return rez;
-}
-//------------------------------
-
-bool palyginimasVardai(Studentas studentas1, Studentas studentas2)
-{
-    return studentas1.vardas<studentas2.vardas;
-}
-//--------------------------------
 int main()
 {
     int stud_sk;
-    vector<Studentas> studentai;
+    Studentas studentai;
     cout<<"Pasirinkite buda, kaip pildysite duomenys. Jeigu norit ivesti patys rasykite 'P', jeigu norite nuskaityti is failo - 'F'"<<endl;
     char pasirinkimas3;
     cin>>pasirinkimas3;
@@ -144,7 +97,7 @@ int main()
             Studentas naujas_st;
             input_file>>naujas_st.vardas>>naujas_st.pavarde;
             naujas_st.ND.clear();
-            for(int i=0;i<nd_kiekis;i++)
+            for(int j=0;j<nd_kiekis;j++)
             {
                 int nd_rez;
                 input_file>>nd_rez;

@@ -21,9 +21,20 @@ using std::left;
 using std::setprecision;
 using std::sort;
 using std::accumulate;
-using std::begin;
-using std::end;
 using std::ifstream;
 
+
+struct Studentas{
+    string vardas;
+    string pavarde;
+    vector <int> ND;
+    int Egz;
+    double galutinis1;
+    double galutinis2;
+};
+double rezultatas(double suma,int kiekis,int egz);
+double Med(vector<int> data);
+double rezMed(double mediana, int egz);
+bool palyginimasVardai(Studentas studentas1, Studentas studentas2);
 
 #endif // FIRSTLIB_H_INCLUDED
