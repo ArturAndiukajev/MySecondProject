@@ -1,13 +1,4 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include <iomanip>
-#include <algorithm>
-#include <numeric>
-#include <cstdlib>
-#include <fstream>
-using namespace std;
-
+#include "firstlib.h";
 
 struct Studentas{
     string vardas;
