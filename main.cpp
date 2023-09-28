@@ -1,5 +1,4 @@
 #include "firstlib.h"
-#include <cctype>
 //------------------------
 double rezultatas(double suma,int kiekis,int egz)
 {
