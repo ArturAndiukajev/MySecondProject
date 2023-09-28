@@ -1,9 +1,19 @@
 #include "firstlib.h"
-
+#include <cctype>
 //------------------------
 double rezultatas(double suma,int kiekis,int egz)
 {
     double rez=0;
+    try
+    {
+        if (kiekis == 0)
+        {
+            throw std::invalid_argument("Kiekis negali buti lygus nuliui");
+        }}
+    catch (const std::exception& e)
+    {
+        cout << "Dalyba is nulio. " << e.what() << endl;
+    }
     rez=0.4*(suma/kiekis)+0.6*egz;
     return rez;
 }
@@ -66,14 +76,25 @@ int main()
             {
                 cout<<"Iveskite "<<i+1<<" studento namu darbo rezultatus (iveskite '-1', kai baigsite)"<<endl;
                 int nd_rez;
-                while(true)
+                while (true)
                 {
-                    cin>>nd_rez;
-                    if(nd_rez == -1)
+                    if (cin >> nd_rez)
                     {
-                        break;
+                        if (nd_rez == -1)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            naujas_st.ND.push_back(nd_rez);
+                        }
                     }
-                    naujas_st.ND.push_back(nd_rez);
+                    else
+                    {
+                        std::cin.clear();
+                        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                        cout << "Tai ne skaicius." << endl;
+                    }
                 }}
             else if(pasirinkimas2=='R')
             {
@@ -144,10 +165,18 @@ int main()
             for(int i=0;i<stulp_kiekis-3;i++)
             {
                 int nd;
-                input_file>>nd;
+                if (!(input_file >> nd))
+                {
+                    cout << "Nepavyko perskaityti namu darbo rezultato is failo." << endl;
+                    return 1;
+                }
                 naujas_st.ND.push_back(nd);
             }
-            input_file>>naujas_st.Egz;
+            if (!(input_file >> naujas_st.Egz))
+            {
+                cout << "Nepavyko perskaityti egzamino rezultato is failo." << endl;
+                return 1;
+            }
             double nd_suma = accumulate(naujas_st.ND.begin(), naujas_st.ND.end(), 0.0);
             naujas_st.galutinis1 = rezultatas(nd_suma, naujas_st.ND.size(), naujas_st.Egz);
             double mediana = Med(naujas_st.ND);
@@ -160,6 +189,7 @@ int main()
     else
     {
         cout<<"Neteisingas pasirinkimas"<<endl;
+        return 0;
     }
     sort(studentai.begin(),studentai.end(),palyginimasVardai);
     char pasirinkimas;
