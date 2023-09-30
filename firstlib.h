@@ -36,5 +36,8 @@ struct Studentas{
     double galutinis2;
 };
 
-
+double rezultatas(double suma,int kiekis,int egz);
+double Med(vector<int> data);
+double rezMed(double mediana, int egz);
+bool palyginimasVardai(Studentas studentas1, Studentas studentas2);
 #endif // FIRSTLIB_H_INCLUDED

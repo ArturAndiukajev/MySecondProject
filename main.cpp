@@ -1,54 +1,5 @@
 #include "firstlib.h"
-//------------------------
-double rezultatas(double suma,int kiekis,int egz)
-{
-    double rez=0;
-    try
-    {
-        if (kiekis == 0)
-        {
-            throw std::invalid_argument("Kiekis negali buti lygus nuliui");
-        }}
-    catch (const std::exception& e)
-    {
-        cout << "Dalyba is nulio. " << e.what() << endl;
-    }
-    rez=0.4*(suma/kiekis)+0.6*egz;
-    return rez;
-}
-//-------------------------
 
-//-------------------------
-double Med(vector<int> data)
-{
-    sort(data.begin(), data.end());
-    size_t size = data.size();
-    if (size % 2 == 0)
-    {
-        size_t middle = size / 2;
-        return (data[middle - 1] + data[middle]) / 2.0;
-    }
-    else
-    {
-        return data[size / 2];
-    }
-}
-//----------------------------
-
-//----------------------------
-double rezMed(double mediana, int egz)
-{
-    double rez=0;
-    rez=0.4*mediana+0.6*egz;
-    return rez;
-}
-//------------------------------
-
-bool palyginimasVardai(Studentas studentas1, Studentas studentas2)
-{
-    return studentas1.vardas<studentas2.vardas;
-}
-//--------------------------------
 int main()
 {
     int stud_sk=0;
@@ -61,6 +12,11 @@ int main()
     {
         cout<<"Iveskite studentu kieki: "<<endl;
         cin>>stud_sk;
+        if(stud_sk<=0)
+        {
+            cout<<"Studentu skaicius turi buti didesnis uz 0."<<endl;
+            return 1;
+        }
         cout<<"Pasirinkite buda, kaip pildysite namu darbo pazimius. Jeigu norit ivesti patys rasykite 'A', jeigu atsitiktinai - rasykite 'R'"<<endl;
         char pasirinkimas2;
         cin>>pasirinkimas2;
@@ -83,6 +39,12 @@ int main()
                         {
                             break;
                         }
+                        else if(nd_rez>10 || nd_rez<0)
+                        {
+                            cin.clear();
+                            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                            cout<<"Pazymys negali buti didesnis uz 10 arba mazesnis uz 0"<<endl;
+                        }
                         else
                         {
                             naujas_st.ND.push_back(nd_rez);
@@ -90,8 +52,8 @@ int main()
                     }
                     else
                     {
-                        std::cin.clear();
-                        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                        cin.clear();
+                        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                         cout << "Tai ne skaicius." << endl;
                     }
                 }}
@@ -100,6 +62,11 @@ int main()
                 int nd_kiekis;
                 cout<<"iveskite kiek namu darbu rezultatu noresite sugeneruoti"<<endl;
                 cin>>nd_kiekis;
+                if(nd_kiekis<=0)
+                {
+                    cout<<"Iveskite skaiciu didesni uz 0."<<endl;
+                    return 1;
+                }
                 cout<<"Sugeneruoti namu darbu rezultatai:"<<endl;
                 for(int i=0;i<nd_kiekis;i++)
                 {
@@ -117,7 +84,18 @@ int main()
             if (pasirinkimas2=='A')
             {
                 cout<<"Iveskite "<<i+1<<" studento egzamino rezultata"<<endl;
-                cin>>naujas_st.Egz;}
+                cin>>naujas_st.Egz;
+                if(!cin>>naujas_st.Egz)
+                {
+                    cout<<"Iveskite skaiciu."<<endl;
+                    return 1;
+                }
+                else if(naujas_st.Egz<=0 || naujas_st.Egz>10)
+                {
+                    cout<<"Iveskite skaiciu didesni uz 0 ir mazesni uz 10."<<endl;
+                    return 1;
+                }
+            }
             else if(pasirinkimas2=='R')
             {
                 naujas_st.Egz=rand()%10+1;
@@ -164,16 +142,18 @@ int main()
             for(int i=0;i<stulp_kiekis-3;i++)
             {
                 int nd;
-                if (!(input_file >> nd))
+                if (!(input_file >> nd)||(nd>10)||(nd<0))
                 {
                     cout << "Nepavyko perskaityti namu darbo rezultato is failo." << endl;
+                    cout << "Tarp duomenu yra netikslumu, pvz. namu darbo pazymys didesnis uz 10 arba vietoj pazymio irasyta raide." << endl;
                     return 1;
                 }
                 naujas_st.ND.push_back(nd);
             }
-            if (!(input_file >> naujas_st.Egz))
+            if (!(input_file >> naujas_st.Egz)||(naujas_st.Egz>10)||(naujas_st.Egz<0))
             {
                 cout << "Nepavyko perskaityti egzamino rezultato is failo." << endl;
+                cout << "Tarp duomenu yra netikslumu, pvz. egzamino pazymys didesnis uz 10 arba vietoj pazymio irasyta raide." << endl;
                 return 1;
             }
             double nd_suma = accumulate(naujas_st.ND.begin(), naujas_st.ND.end(), 0.0);
@@ -188,7 +168,7 @@ int main()
     else
     {
         cout<<"Neteisingas pasirinkimas"<<endl;
-        return 0;
+        return 1;
     }
     sort(studentai.begin(),studentai.end(),palyginimasVardai);
     char pasirinkimas;
