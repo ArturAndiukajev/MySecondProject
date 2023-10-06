@@ -39,8 +39,8 @@ int main()
             }
         }
         auto pabaiga=std::chrono::high_resolution_clock::now();
-        auto uztruko=std::chrono::duration_cast<std::chrono::seconds>(pabaiga - pradzia);
-        cout<<"Rusiavimo i grupes laikas:"<<uztruko.count()<<" sekundziu"<<endl;
+        auto uztruko=std::chrono::duration_cast<std::chrono::milliseconds>(pabaiga - pradzia);
+        cout<<"Rusiavimo i grupes laikas:"<<uztruko.count()<<" milisekundziu"<<endl;
         isvedimas(vargsiukai, "vargsiukai.txt");
         isvedimas(kietiakiai, "kietiakiai.txt");
         cout<<"Ar norite pabaigti darba? Jeigu taip rasykite 'T', jeigu ne - 'N'"<<endl;
