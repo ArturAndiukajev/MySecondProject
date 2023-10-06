@@ -5,6 +5,22 @@ int main()
     int stud_sk=0;
     vector <Studentas> studentai;
     Studentas naujas_st;
+    cout<<"Ar norite sugeneruoti faila? Jeigu taip - rasykite 'T', jeigu ne - 'N'."<<endl;
+    char pasirinkimas5;
+    cin>>pasirinkimas5;
+    if(pasirinkimas5=='T')
+    {
+        cout<<"Iveskite studentu skaiciu"<<endl;
+        int studentu_sk;
+        cin>>studentu_sk;
+        cout<<"Iveskite failo pavadinima"<<endl;
+        string failoPav;
+        cin>>failoPav;
+        cout<<"Iveskite namu darbu kieki"<<endl;
+        int namuDarbu_kiekis;
+        cin>>namuDarbu_kiekis;
+        generavimas(studentu_sk,failoPav,namuDarbu_kiekis);
+    }
     cout<<"Pasirinkite buda, kaip pildysite duomenys. Jeigu norit ivesti patys rasykite 'P', jeigu norite nuskaityti is failo - 'F'"<<endl;
     char pasirinkimas3;
     cin>>pasirinkimas3;
@@ -14,7 +30,7 @@ int main()
         cin>>stud_sk;
         if(stud_sk<=0)
         {
-            cout<<"Studentu skaicius turi buti didesnis uz 0."<<endl;
+            cerr<<"Studentu skaicius turi buti didesnis uz 0."<<endl;
             return 1;
         }
         cout<<"Pasirinkite buda, kaip pildysite namu darbo pazimius. Jeigu norit ivesti patys rasykite 'A', jeigu atsitiktinai - rasykite 'R'"<<endl;

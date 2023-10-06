@@ -50,3 +50,22 @@ bool palyginimasVardai(Studentas studentas1, Studentas studentas2)
     return studentas1.vardas<studentas2.vardas;
 }
 //-----------------------------------------------------------------
+
+//-----------------------------------------------------------------
+void generavimas(int studentu_skaicius, string fileName, int nd_kiekis)
+{
+    ofstream outputFile(fileName);
+    for(int i=0;i<studentu_skaicius;i++)
+    {
+        outputFile<<"Vardas"<<i<<" "<<"Pavarde"<<i<<" ";
+        for(int j=0;j<nd_kiekis;j++)
+        {
+            int nd_rez;
+            nd_rez=rand()%10+1;
+            outputFile<<nd_rez<<" ";
+        }
+        outputFile<<rand()%10+1<<endl;
+    }
+    outputFile.close();
+}
+//------------------------------------------------------------------

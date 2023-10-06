@@ -24,6 +24,7 @@ using std::sort;
 using std::accumulate;
 using std::ifstream;
 using std::ofstream;
+using std::cerr;
 
 
 
@@ -40,4 +41,5 @@ double rezultatas(double suma,int kiekis,int egz);
 double Med(vector<int> data);
 double rezMed(double mediana, int egz);
 bool palyginimasVardai(Studentas studentas1, Studentas studentas2);
+void generavimas(int studentu_skaicius, string fileName, int nd_kiekis);
 #endif // FIRSTLIB_H_INCLUDED
