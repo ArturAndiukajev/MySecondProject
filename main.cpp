@@ -24,6 +24,25 @@ int main()
         int namuDarbu_kiekis;
         cin>>namuDarbu_kiekis;
         generavimas(studentu_sk,failoPav,namuDarbu_kiekis);
+        skaitymas(studentai,failoPav);
+        double riba=5.0;
+        auto pradzia=std::chrono::high_resolution_clock::now();
+        for(int i=0;i<studentai.size();i++)
+        {
+            if(studentai[i].galutinis1<riba)
+            {
+                vargsiukai.push_back(studentai[i]);
+            }
+            else
+            {
+                kietiakiai.push_back(studentai[i]);
+            }
+        }
+        auto pabaiga=std::chrono::high_resolution_clock::now();
+        auto uztruko=std::chrono::duration_cast<std::chrono::seconds>(pabaiga - pradzia);
+        cout<<"Rusiavimo i grupes laikas:"<<uztruko.count()<<" sekundziu"<<endl;
+        isvedimas(vargsiukai, "vargsiukai.txt");
+        isvedimas(kietiakiai, "kietiakiai.txt");
         cout<<"Ar norite pabaigti darba? Jeigu taip rasykite 'T', jeigu ne - 'N'"<<endl;
         char pasirinkimas6;
         cin>>pasirinkimas6;
@@ -31,6 +50,7 @@ int main()
         {
             return 1;
         }
+
     }
     cout<<"Pasirinkite buda, kaip pildysite duomenys. Jeigu norit ivesti patys rasykite 'P', jeigu norite nuskaityti is failo - 'F'"<<endl;
     char pasirinkimas3;

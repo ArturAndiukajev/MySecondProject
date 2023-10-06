@@ -56,20 +56,20 @@ void generavimas(int studentu_skaicius, string fileName, int nd_kiekis)
 {
     auto pradzia=std::chrono::high_resolution_clock::now();
     ofstream outputFile(fileName);
-    outputFile<<"Vardas"<<setw(20)<<" "<<"Pavarde"<<setw(20)<<" ";
+    outputFile<<left<<"Vardas"<<setw(25)<<" "<<setw(15)<<right<<"Pavarde"<<setw(15)<<" ";
     for(int i=1;i<nd_kiekis+1;i++)
     {
-        outputFile<<"ND"<<right<<i<<setw(7)<<" ";
+        outputFile<<setw(3)<<right<<"ND"<<setw(3)<<left<<i<<setw(5)<<" ";
     }
     outputFile<<setw(7)<<left<<"Egz."<<endl;
     for(int i=1;i<studentu_skaicius+1;i++)
     {
-        outputFile<<"Vardas"<<right<<i<<setw(20)<<" "<<"Pavarde"<<right<<i<<setw(20)<<" ";
+        outputFile<<left<<"Vardas"<<setw(10)<<left<<i<<setw(15)<<" "<<setw(13)<<right<<"Pavarde"<<setw(10)<<left<<i;
         for(int j=0;j<nd_kiekis;j++)
         {
-            outputFile<<setw(7)<<right<<rand()%10+1;
+            outputFile<<setw(11)<<right<<rand()%10+1;
         }
-        outputFile<<setw(7)<<right<<rand()%10+1<<endl;
+        outputFile<<setw(11)<<right<<rand()%10+1<<endl;
     }
     outputFile.close();
     auto pabaiga=std::chrono::high_resolution_clock::now();
@@ -79,6 +79,7 @@ void generavimas(int studentu_skaicius, string fileName, int nd_kiekis)
 //------------------------------------------------------------------
 void isvedimas(vector<Studentas> studentai, string fileName)
 {
+    auto pradzia=std::chrono::high_resolution_clock::now();
     ofstream outputFile(fileName);
     if (!outputFile.is_open())
     {
@@ -92,7 +93,53 @@ void isvedimas(vector<Studentas> studentai, string fileName)
         outputFile<<setw(20)<<left<<studentai[i].vardas<<setw(20)<<studentai[i].pavarde<<setw(20)<<fixed<<setprecision(2)<<studentai[i].galutinis1<<endl;
     }
     outputFile.close();
+    auto pabaiga=std::chrono::high_resolution_clock::now();
+    auto uztruko=std::chrono::duration_cast<std::chrono::seconds>(pabaiga - pradzia);
+    cout<<"Failo "<<fileName<<" isvedimo laikas:"<<uztruko.count()<<" sekundziu"<<endl;
 }
 //---------------------------------------------------------------------
 
 //-----------------------------------------------------------------------
+void skaitymas(vector<Studentas> studentai, string Fname)
+{
+    ifstream input_file(Fname);
+    if (!input_file.is_open())
+    {
+        cout << "Failo atidarymas negalimas: " << Fname << endl;
+        exit(1);
+    }
+    string header;
+    int stulp_kiekis=0;
+    getline(input_file, header);
+    string v;
+    string p;
+    std::istringstream headerStream(header);
+    string token;
+    while (headerStream >> token)
+    {
+        stulp_kiekis++;
+    }
+    while (input_file >> v >> p)
+    {
+        Studentas naujas_st;
+        naujas_st.vardas = v;
+        naujas_st.pavarde = p;
+        for(int i=0;i<stulp_kiekis-3;i++)
+        {
+            int nd;
+            if (!(input_file >> nd)||(nd>10)||(nd<0))
+            {
+                cout << "Nepavyko perskaityti namu darbo rezultato is failo." << endl;
+                cout << "Tarp duomenu yra netikslumu, pvz. namu darbo pazymys didesnis uz 10 arba vietoj pazymio irasyta raide." << endl;
+                exit(1);
+            }
+            naujas_st.ND.push_back(nd);
+        }
+        if (!(input_file >> naujas_st.Egz)||(naujas_st.Egz>10)||(naujas_st.Egz<0))
+        {
+            cout << "Nepavyko perskaityti egzamino rezultato is failo." << endl;
+            cout << "Tarp duomenu yra netikslumu, pvz. egzamino pazymys didesnis uz 10 arba vietoj pazymio irasyta raide." << endl;
+            exit(1);
+        }
+    }
+}
