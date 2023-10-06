@@ -73,20 +73,20 @@ void generavimas(int studentu_skaicius, string fileName, int nd_kiekis)
     outputFile.close();
 }
 //------------------------------------------------------------------
-
-//----------------------------------------------------------------------
-void padalintiStudentus(vector<Studentas>& studentai,vector<Studentas>& vargsiukai, vector<Studentas>& kietiakiai, double riba)
+void isvedimas(vector<Studentas> studentai, string fileName)
 {
+    ofstream outputFile(fileName);
+    if (!outputFile.is_open())
+    {
+        cerr << "Failo atidarymo klaida: "<<fileName<<endl;
+        return;
+    }
+    outputFile<<setw(20)<<left<<"Vardas"<<setw(20)<<"Pavarde"<<setw(20)<<"Galutinis(Vid.)"<<endl;
+    outputFile<<"-------------------------------------------------------------------------------"<<endl;
     for(int i=0;i<studentai.size();i++)
     {
-        if(studentai[i].galutinis1<riba)
-        {
-            vargsiukai.push_back(studentai[i]);
-        }
-        else
-        {
-            kietiakiai.push_back(studentai[i]);
-        }
+        outputFile<<setw(20)<<left<<studentai[i].vardas<<setw(20)<<studentai[i].pavarde<<setw(20)<<fixed<<setprecision(2)<<studentai[i].galutinis1<<endl;
     }
+    outputFile.close();
 }
-//--------------------------------------------------------------------------
+//---------------------------------------------------------------------

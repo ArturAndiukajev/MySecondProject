@@ -214,25 +214,8 @@ int main()
             kietiakiai.push_back(studentai[i]);
         }
     }
-    ofstream outputFileVargsiukai("vargsiukai.txt");
-    outputFileVargsiukai <<setw(20)<<left<<"Vardas"<<setw(20)<<"Pavarde"<<setw(20)<<left;
-    outputFileVargsiukai<<"Galutinis(Vid.)"<<endl;
-    for(int i=0;i<vargsiukai.size();i++)
-    {
-        outputFileVargsiukai<<setw(20)<<left<<vargsiukai[i].vardas<<setw(20)<<left<<vargsiukai[i].pavarde<<setw(20)<<left;
-        outputFileVargsiukai<<fixed<<setprecision(2)<<vargsiukai[i].galutinis1<<endl;
-    }
-    outputFileVargsiukai.close();
-
-    ofstream outputFileKietiakiai("kietiakiai.txt");
-    outputFileKietiakiai <<setw(20)<<left<<"Vardas"<<setw(20)<<"Pavarde"<<setw(20)<<left;
-    outputFileKietiakiai<<"Galutinis(Vid.)"<<endl;
-    for(int i=0;i<kietiakiai.size();i++)
-    {
-        outputFileKietiakiai<<setw(20)<<left<<kietiakiai[i].vardas<<setw(20)<<left<<kietiakiai[i].pavarde<<setw(20)<<left;
-        outputFileKietiakiai<<fixed<<setprecision(2)<<kietiakiai[i].galutinis1<<endl;
-    }
-    outputFileKietiakiai.close();
+    isvedimas(vargsiukai, "vargsiukai.txt");
+    isvedimas(kietiakiai, "kietiakiai.txt");
     //---------------------------------------------------------Duomenu isvedimas----------------------------------------------------------
     char pasirinkimas4;
     cout<<"Jeigu norite gauti rezultata ekrane rasykite 'E', jeigu faile 'F'"<<endl;

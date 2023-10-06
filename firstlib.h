@@ -43,5 +43,5 @@ double Med(vector<int> data);
 double rezMed(double mediana, int egz);
 bool palyginimasVardai(Studentas studentas1, Studentas studentas2);
 void generavimas(int studentu_skaicius, string fileName, int nd_kiekis);
-void padalintiStudentus(vector<Studentas> studentai,vector<Studentas> vargsiukai,vector<Studentas> kietiakiai, double riba);
+void isvedimas(vector<Studentas> studentai, string fileName);
 #endif // FIRSTLIB_H_INCLUDED
