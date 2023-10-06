@@ -55,17 +55,38 @@ bool palyginimasVardai(Studentas studentas1, Studentas studentas2)
 void generavimas(int studentu_skaicius, string fileName, int nd_kiekis)
 {
     ofstream outputFile(fileName);
-    for(int i=0;i<studentu_skaicius;i++)
+    outputFile<<"Vardas"<<setw(20)<<" "<<"Pavarde"<<setw(20)<<" ";
+    for(int i=1;i<nd_kiekis+1;i++)
     {
-        outputFile<<"Vardas"<<i<<" "<<"Pavarde"<<i<<" ";
+        outputFile<<"ND"<<right<<i<<setw(7)<<" ";
+    }
+    outputFile<<setw(7)<<left<<"Egz."<<endl;
+    for(int i=1;i<studentu_skaicius+1;i++)
+    {
+        outputFile<<"Vardas"<<right<<i<<setw(20)<<" "<<"Pavarde"<<right<<i<<setw(20)<<" ";
         for(int j=0;j<nd_kiekis;j++)
         {
-            int nd_rez;
-            nd_rez=rand()%10+1;
-            outputFile<<nd_rez<<" ";
+            outputFile<<setw(7)<<right<<rand()%10+1;
         }
-        outputFile<<rand()%10+1<<endl;
+        outputFile<<setw(7)<<right<<rand()%10+1<<endl;
     }
     outputFile.close();
 }
 //------------------------------------------------------------------
+
+//----------------------------------------------------------------------
+void padalintiStudentus(vector<Studentas>& studentai,vector<Studentas>& vargsiukai, vector<Studentas>& kietiakiai, double riba)
+{
+    for(int i=0;i<studentai.size();i++)
+    {
+        if(studentai[i].galutinis1<riba)
+        {
+            vargsiukai.push_back(studentai[i]);
+        }
+        else
+        {
+            kietiakiai.push_back(studentai[i]);
+        }
+    }
+}
+//--------------------------------------------------------------------------

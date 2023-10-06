@@ -19,6 +19,7 @@ using std::vector;
 using std::setw;
 using std::fixed;
 using std::left;
+using std::right;
 using std::setprecision;
 using std::sort;
 using std::accumulate;
@@ -42,4 +43,5 @@ double Med(vector<int> data);
 double rezMed(double mediana, int egz);
 bool palyginimasVardai(Studentas studentas1, Studentas studentas2);
 void generavimas(int studentu_skaicius, string fileName, int nd_kiekis);
+void padalintiStudentus(vector<Studentas> studentai,vector<Studentas> vargsiukai,vector<Studentas> kietiakiai, double riba);
 #endif // FIRSTLIB_H_INCLUDED

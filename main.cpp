@@ -5,6 +5,10 @@ int main()
     int stud_sk=0;
     vector <Studentas> studentai;
     Studentas naujas_st;
+    vector <Studentas> vargsiukai;
+    Studentas vargsiukas;
+    vector <Studentas> kietiakiai;
+    Studentas kietiakis;
     cout<<"Ar norite sugeneruoti faila? Jeigu taip - rasykite 'T', jeigu ne - 'N'."<<endl;
     char pasirinkimas5;
     cin>>pasirinkimas5;
@@ -20,6 +24,13 @@ int main()
         int namuDarbu_kiekis;
         cin>>namuDarbu_kiekis;
         generavimas(studentu_sk,failoPav,namuDarbu_kiekis);
+        cout<<"Ar norite pabaigti darba? Jeigu taip rasykite 'T', jeigu ne - 'N'"<<endl;
+        char pasirinkimas6;
+        cin>>pasirinkimas6;
+        if(pasirinkimas6=='T')
+        {
+            return 1;
+        }
     }
     cout<<"Pasirinkite buda, kaip pildysite duomenys. Jeigu norit ivesti patys rasykite 'P', jeigu norite nuskaityti is failo - 'F'"<<endl;
     char pasirinkimas3;
@@ -190,6 +201,38 @@ int main()
     char pasirinkimas;
     cout<<"Jeigu norite gauti galutini bala su vidurkiu - parasykite 'V' raide, jeigu su mediana - 'M'"<<endl;
     cin>>pasirinkimas;
+    //----------------------------------------------------------Studentu grupavimas-------------------------------------------------------
+    double riba=5.0;
+    for(int i=0;i<studentai.size();i++)
+    {
+        if(studentai[i].galutinis1<riba)
+        {
+            vargsiukai.push_back(studentai[i]);
+        }
+        else
+        {
+            kietiakiai.push_back(studentai[i]);
+        }
+    }
+    ofstream outputFileVargsiukai("vargsiukai.txt");
+    outputFileVargsiukai <<setw(20)<<left<<"Vardas"<<setw(20)<<"Pavarde"<<setw(20)<<left;
+    outputFileVargsiukai<<"Galutinis(Vid.)"<<endl;
+    for(int i=0;i<vargsiukai.size();i++)
+    {
+        outputFileVargsiukai<<setw(20)<<left<<vargsiukai[i].vardas<<setw(20)<<left<<vargsiukai[i].pavarde<<setw(20)<<left;
+        outputFileVargsiukai<<fixed<<setprecision(2)<<vargsiukai[i].galutinis1<<endl;
+    }
+    outputFileVargsiukai.close();
+
+    ofstream outputFileKietiakiai("kietiakiai.txt");
+    outputFileKietiakiai <<setw(20)<<left<<"Vardas"<<setw(20)<<"Pavarde"<<setw(20)<<left;
+    outputFileKietiakiai<<"Galutinis(Vid.)"<<endl;
+    for(int i=0;i<kietiakiai.size();i++)
+    {
+        outputFileKietiakiai<<setw(20)<<left<<kietiakiai[i].vardas<<setw(20)<<left<<kietiakiai[i].pavarde<<setw(20)<<left;
+        outputFileKietiakiai<<fixed<<setprecision(2)<<kietiakiai[i].galutinis1<<endl;
+    }
+    outputFileKietiakiai.close();
     //---------------------------------------------------------Duomenu isvedimas----------------------------------------------------------
     char pasirinkimas4;
     cout<<"Jeigu norite gauti rezultata ekrane rasykite 'E', jeigu faile 'F'"<<endl;
