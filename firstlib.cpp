@@ -54,6 +54,7 @@ bool palyginimasVardai(Studentas studentas1, Studentas studentas2)
 //-----------------------------------------------------------------
 void generavimas(int studentu_skaicius, string fileName, int nd_kiekis)
 {
+    auto pradzia=std::chrono::high_resolution_clock::now();
     ofstream outputFile(fileName);
     outputFile<<"Vardas"<<setw(20)<<" "<<"Pavarde"<<setw(20)<<" ";
     for(int i=1;i<nd_kiekis+1;i++)
@@ -71,6 +72,9 @@ void generavimas(int studentu_skaicius, string fileName, int nd_kiekis)
         outputFile<<setw(7)<<right<<rand()%10+1<<endl;
     }
     outputFile.close();
+    auto pabaiga=std::chrono::high_resolution_clock::now();
+    auto uztruko=std::chrono::duration_cast<std::chrono::seconds>(pabaiga - pradzia);
+    cout<<"Failo "<<fileName<<" generavimo laikas:"<<uztruko.count()<<" sekundziu"<<endl;
 }
 //------------------------------------------------------------------
 void isvedimas(vector<Studentas> studentai, string fileName)
@@ -90,3 +94,5 @@ void isvedimas(vector<Studentas> studentai, string fileName)
     outputFile.close();
 }
 //---------------------------------------------------------------------
+
+//-----------------------------------------------------------------------
