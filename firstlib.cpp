@@ -14,7 +14,7 @@ double rezultatas(double suma,int kiekis,int egz)
     {
         cout << "Dalyba is nulio. " << e.what() << endl;
     }
-    rez=0.4*(suma/kiekis)+0.6*egz;
+    rez=0.4*(suma/kiekis*1.0)+0.6*egz;
     return rez;
 }
 //--------------------------------------------------------------
@@ -45,6 +45,7 @@ double rezMed(double mediana, int egz)
 }
 //----------------------------------------------------------------
 
+//----------------------------------------------------------------
 bool palyginimasVardai(Studentas studentas1, Studentas studentas2)
 {
     return studentas1.vardas<studentas2.vardas;
@@ -52,31 +53,48 @@ bool palyginimasVardai(Studentas studentas1, Studentas studentas2)
 //-----------------------------------------------------------------
 
 //-----------------------------------------------------------------
+bool palyginimasPavardes(Studentas studentas1, Studentas studentas2)
+{
+    return studentas1.pavarde<studentas2.pavarde;
+}
+//------------------------------------------------------------------
+
+//------------------------------------------------------------------
+bool palyginimasVidurkis(Studentas studentas1, Studentas studentas2)
+{
+    return studentas1.galutinis1<studentas2.galutinis1;
+}
+//-------------------------------------------------------------------
+
+//--------------------------------------------------------------------
 void generavimas(int studentu_skaicius, string fileName, int nd_kiekis)
 {
+    srand(time(NULL));
     auto pradzia=std::chrono::high_resolution_clock::now();
     ofstream outputFile(fileName);
-    outputFile<<left<<"Vardas"<<setw(25)<<" "<<setw(15)<<right<<"Pavarde"<<setw(15)<<" ";
-    for(int i=1;i<nd_kiekis+1;i++)
+    outputFile<<left<<"Vardas"<<setw(25)<<" "<<setw(13)<<right<<"Pavarde"<<setw(15)<<" ";
+    for(int i=0;i<nd_kiekis;i++)
     {
-        outputFile<<setw(3)<<right<<"ND"<<setw(3)<<left<<i<<setw(5)<<" ";
+        outputFile<<setw(3)<<right<<"ND"<<setw(3)<<left<<i+1<<setw(5)<<" ";
     }
     outputFile<<setw(7)<<left<<"Egz."<<endl;
-    for(int i=1;i<studentu_skaicius+1;i++)
+    for(int i=0;i<studentu_skaicius;i++)
     {
-        outputFile<<left<<"Vardas"<<setw(10)<<left<<i<<setw(15)<<" "<<setw(13)<<right<<"Pavarde"<<setw(10)<<left<<i;
+        outputFile<<left<<"Vardas"<<setw(10)<<left<<i+1<<setw(15)<<" "<<setw(13)<<right<<"Pavarde"<<setw(10)<<left<<i+1;
         for(int j=0;j<nd_kiekis;j++)
         {
-            outputFile<<setw(11)<<right<<rand()%10+1;
+            outputFile<<setw(9)<<right<<rand()%10+1<<setw(2)<<right<<" ";
         }
-        outputFile<<setw(11)<<right<<rand()%10+1<<endl;
+        outputFile<<setw(9)<<right<<rand()%10+1<<endl;
     }
     outputFile.close();
     auto pabaiga=std::chrono::high_resolution_clock::now();
     auto uztruko=std::chrono::duration_cast<std::chrono::milliseconds>(pabaiga - pradzia);
     cout<<"Failo "<<fileName<<" generavimo laikas:"<<uztruko.count()<<" milisekundziu"<<endl;
 }
-//------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------------------------
 void isvedimas(vector<Studentas> studentai, string fileName)
 {
     auto pradzia=std::chrono::high_resolution_clock::now();
@@ -97,11 +115,12 @@ void isvedimas(vector<Studentas> studentai, string fileName)
     auto uztruko=std::chrono::duration_cast<std::chrono::milliseconds>(pabaiga - pradzia);
     cout<<"Failo "<<fileName<<" isvedimo laikas:"<<uztruko.count()<<" milisekundziu"<<endl;
 }
-//---------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------
 
-//-----------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------
 void skaitymas(vector<Studentas>& studentai, string Fname)
 {
+    studentai.clear();
     auto pradzia=std::chrono::high_resolution_clock::now();
     ifstream input_file(Fname);
     if (!input_file.is_open())
@@ -137,17 +156,21 @@ void skaitymas(vector<Studentas>& studentai, string Fname)
             }
             naujas_st.ND.push_back(nd);
         }
-        if (!(input_file >> naujas_st.Egz)||(naujas_st.Egz>10)||(naujas_st.Egz<0))
+        int Egz;
+        if (!(input_file >> Egz)||(Egz>10)||(Egz<0))
         {
             cout << "Nepavyko perskaityti egzamino rezultato is failo." << endl;
             cout << "Tarp duomenu yra netikslumu, pvz. egzamino pazymys didesnis uz 10 arba vietoj pazymio irasyta raide." << endl;
             exit(1);
         }
-        studentai.push_back(naujas_st);
+        naujas_st.Egz=Egz;
         nd_suma = accumulate(naujas_st.ND.begin(), naujas_st.ND.end(), 0.0);
         naujas_st.galutinis1=rezultatas(nd_suma, naujas_st.ND.size(), naujas_st.Egz);
+        studentai.push_back(naujas_st);
+        naujas_st.ND.clear();
     }
     auto pabaiga=std::chrono::high_resolution_clock::now();
     auto uztruko=std::chrono::duration_cast<std::chrono::milliseconds>(pabaiga - pradzia);
     cout<<"Failo "<<Fname<<" skaitymo laikas:"<<uztruko.count()<<" milisekundziu"<<endl;
 }
+//------------------------------------------------------------------------------------------------------
