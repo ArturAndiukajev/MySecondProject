@@ -22,16 +22,19 @@ double rezultatas(double suma,int kiekis,int egz)
 //--------------------------------------------------------------
 double Med(list <int> data)
 {
-    sort(data.begin(), data.end());
+    data.sort();
     size_t size = data.size();
     if (size % 2 == 0)
     {
         size_t middle = size / 2;
-        return (data[middle - 1] + data[middle]) / 2.0;
+        auto it1 = std::next(data.begin(), middle - 1);
+        auto it2 = std::next(data.begin(), middle);
+        return (*it1 + *it2) / 2.0;
     }
     else
     {
-        return data[size / 2];
+        auto it = std::next(data.begin(), size / 2);
+        return *it;
     }
 }
 //---------------------------------------------------------------
@@ -106,9 +109,9 @@ void isvedimas(list <Studentas> studentai, string fileName)
     }
     outputFile<<setw(20)<<left<<"Vardas"<<setw(20)<<"Pavarde"<<setw(20)<<"Galutinis(Vid.)"<<endl;
     outputFile<<"-------------------------------------------------------------------------------"<<endl;
-    for(int i=0;i<studentai.size();i++)
+    for(const auto& studentas : studentai)
     {
-        outputFile<<setw(20)<<left<<studentai[i].vardas<<setw(20)<<studentai[i].pavarde<<setw(20)<<fixed<<setprecision(2)<<studentai[i].galutinis1<<endl;
+        outputFile<<setw(20)<<left<<studentas.vardas<<setw(20)<<studentas.pavarde<<setw(20)<<fixed<<setprecision(2)<<studentas.galutinis1<<endl;
     }
     outputFile.close();
     auto pabaiga=std::chrono::high_resolution_clock::now();

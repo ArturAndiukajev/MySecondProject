@@ -42,12 +42,12 @@ struct Studentas{
 };
 
 double rezultatas(double suma,int kiekis,int egz);
-double Med(vector<int> data);
+double Med(list <int> data);
 double rezMed(double mediana, int egz);
 bool palyginimasVardai(Studentas studentas1, Studentas studentas2);
 bool palyginimasPavardes(Studentas studentas1, Studentas studentas2);
 bool palyginimasVidurkis(Studentas studentas1, Studentas studentas2);
 void generavimas(int studentu_skaicius, string fileName, int nd_kiekis);
-void isvedimas(vector<Studentas> studentai, string fileName);
-void skaitymas(vector<Studentas>& studentai, string Fname);
+void isvedimas(list<Studentas> studentai, string fileName);
+void skaitymas(list<Studentas>& studentai, string Fname);
 #endif // FIRSTLIB_H_INCLUDED
