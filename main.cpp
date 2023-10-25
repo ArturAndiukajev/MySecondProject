@@ -3,11 +3,11 @@
 int main()
 {
     int stud_sk=0;
-    vector <Studentas> studentai;
+    list <Studentas> studentai;
     Studentas naujas_st;
-    vector <Studentas> vargsiukai;
+    list <Studentas> vargsiukai;
     Studentas vargsiukas;
-    vector <Studentas> kietiakiai;
+    list <Studentas> kietiakiai;
     Studentas kietiakis;
     cout<<"Ar norite sugeneruoti faila? Jeigu taip - rasykite 'T', jeigu ne - 'N'."<<endl;
     char pasirinkimas5;

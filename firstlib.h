@@ -11,6 +11,7 @@
 #include <fstream>
 #include <sstream>
 #include <chrono>
+#include <list>
 
 using std::cout;
 using std::cin;
@@ -27,6 +28,7 @@ using std::accumulate;
 using std::ifstream;
 using std::ofstream;
 using std::cerr;
+using std::list;
 
 
 
