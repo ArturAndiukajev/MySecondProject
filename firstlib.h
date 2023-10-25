@@ -35,7 +35,7 @@ using std::list;
 struct Studentas{
     string vardas;
     string pavarde;
-    vector <int> ND;
+    list <int> ND;
     int Egz;
     double galutinis1;
     double galutinis2;

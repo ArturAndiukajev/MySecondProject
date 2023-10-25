@@ -20,7 +20,7 @@ double rezultatas(double suma,int kiekis,int egz)
 //--------------------------------------------------------------
 
 //--------------------------------------------------------------
-double Med(vector<int> data)
+double Med(list <int> data)
 {
     sort(data.begin(), data.end());
     size_t size = data.size();
@@ -95,7 +95,7 @@ void generavimas(int studentu_skaicius, string fileName, int nd_kiekis)
 //------------------------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------------------------
-void isvedimas(vector<Studentas> studentai, string fileName)
+void isvedimas(list <Studentas> studentai, string fileName)
 {
     auto pradzia=std::chrono::high_resolution_clock::now();
     ofstream outputFile(fileName);
@@ -118,7 +118,7 @@ void isvedimas(vector<Studentas> studentai, string fileName)
 //---------------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------------
-void skaitymas(vector<Studentas>& studentai, string Fname)
+void skaitymas(list <Studentas>& studentai, string Fname)
 {
     studentai.clear();
     auto pradzia=std::chrono::high_resolution_clock::now();
