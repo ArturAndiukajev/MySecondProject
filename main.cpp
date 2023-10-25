@@ -53,15 +53,15 @@ int main()
             kietiakiai.clear();
             skaitymas(studentai,failoPav);
             auto pradzia=std::chrono::high_resolution_clock::now();
-            for(int i=0;i<studentai.size();i++)
+            for(auto it = studentai.begin(); it != studentai.end(); ++it)
             {
-                if(studentai[i].galutinis1<riba)
+                if(it->galutinis1 <riba)
                 {
-                    vargsiukai.push_back(studentai[i]);
+                    vargsiukai.push_back(*it);
                 }
                 else
                 {
-                    kietiakiai.push_back(studentai[i]);
+                    kietiakiai.push_back(*it);
                 }
             }
             auto pabaiga=std::chrono::high_resolution_clock::now();
@@ -313,14 +313,14 @@ int main()
             return 1;
         }
         cout<<"------------------------------------------------------------------------------------------------------"<<endl;
-        for(int i=0;i<stud_sk;i++)
+        for(auto it = studentai.begin(); it != studentai.end(); ++it)
         {
-            cout<<setw(20)<<left<<studentai[i].vardas<<setw(20)<<left<<studentai[i].pavarde<<setw(20)<<left;
+            cout<<setw(20)<<left<<it->vardas<<setw(20)<<left<<it->pavarde<<setw(20)<<left;
             if (pasirinkimas=='V'||pasirinkimas=='v')
             {
-                cout<<fixed<<setprecision(2)<<studentai[i].galutinis1<<endl;
+                cout<<fixed<<setprecision(2)<<it->galutinis1<<endl;
             }
-            else cout<<fixed<<setprecision(2)<<studentai[i].galutinis2<<endl;
+            else cout<<fixed<<setprecision(2)<<it->galutinis2<<endl;
         }}
     else if(pasirinkimas4=='F'||pasirinkimas4=='f')
     {
@@ -339,7 +339,7 @@ int main()
             return 1;
         }
         outputFile<<"------------------------------------------------------------------------------------------------------"<<endl;
-        for(int i=0;i<stud_sk;i++)
+        for(auto it = studentai.begin(); it != studentai.end(); ++it)
         {
             outputFile<<setw(20)<<left<<studentai[i].vardas<<setw(20)<<left<<studentai[i].pavarde<<setw(20)<<left;
             if (pasirinkimas=='V'||pasirinkimas=='v')
