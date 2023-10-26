@@ -53,7 +53,7 @@ int main()
             kietiakiai.clear();
             skaitymas(studentai,failoPav);
             auto pradzia=std::chrono::high_resolution_clock::now();
-            for(const auto& studentas : studentai)
+            for(auto studentas : studentai)
             {
                 if(studentas.galutinis1<riba)
                 {
@@ -70,39 +70,39 @@ int main()
             if(pasirinkimas9=='V'||pasirinkimas9=='v')
             {
                 auto pradzia2=std::chrono::high_resolution_clock::now();
-                sort(vargsiukai.begin(), vargsiukai.end(), palyginimasVardai);
+                vargsiukai.sort(palyginimasVardai);
                 auto pabaiga2=std::chrono::high_resolution_clock::now();
-                auto uztruko2=std::chrono::duration_cast<std::chrono::milliseconds>(pabaiga - pradzia);
+                auto uztruko2=std::chrono::duration_cast<std::chrono::milliseconds>(pabaiga2 - pradzia2);
                 auto pradzia3=std::chrono::high_resolution_clock::now();
-                sort(kietiakiai.begin(), kietiakiai.end(), palyginimasVardai);
+                kietiakiai.sort(palyginimasVardai);
                 auto pabaiga3=std::chrono::high_resolution_clock::now();
-                auto uztruko3=std::chrono::duration_cast<std::chrono::milliseconds>(pabaiga - pradzia);
+                auto uztruko3=std::chrono::duration_cast<std::chrono::milliseconds>(pabaiga3 - pradzia3);
                 cout<<"Vargsiuku rusiavimas pagal varda uztruko "<<uztruko2.count()<<" milisekundziu"<<endl;
                 cout<<"Kietiaku rusiavimas pagal varda uztruko "<<uztruko3.count()<<" milisekundziu"<<endl;
             }
             else if(pasirinkimas9=='P'||pasirinkimas9=='p')
             {
                 auto pradzia2=std::chrono::high_resolution_clock::now();
-                sort(vargsiukai.begin(), vargsiukai.end(), palyginimasPavardes);
+                vargsiukai.sort(palyginimasPavardes);
                 auto pabaiga2=std::chrono::high_resolution_clock::now();
-                auto uztruko2=std::chrono::duration_cast<std::chrono::milliseconds>(pabaiga - pradzia);
+                auto uztruko2=std::chrono::duration_cast<std::chrono::milliseconds>(pabaiga2 - pradzia2);
                 auto pradzia3=std::chrono::high_resolution_clock::now();
-                sort(kietiakiai.begin(), kietiakiai.end(), palyginimasPavardes);
+                kietiakiai.sort(palyginimasPavardes);
                 auto pabaiga3=std::chrono::high_resolution_clock::now();
-                auto uztruko3=std::chrono::duration_cast<std::chrono::milliseconds>(pabaiga - pradzia);
+                auto uztruko3=std::chrono::duration_cast<std::chrono::milliseconds>(pabaiga3 - pradzia3);
                 cout<<"Vargsiuku rusiavimas pagal pavarde uztruko "<<uztruko2.count()<<" milisekundziu"<<endl;
                 cout<<"Kietiaku rusiavimas pagal pavarde uztruko "<<uztruko3.count()<<" milisekundziu"<<endl;
             }
             else if(pasirinkimas9=='A'||pasirinkimas9=='a')
             {
                 auto pradzia2=std::chrono::high_resolution_clock::now();
-                sort(vargsiukai.begin(), vargsiukai.end(), palyginimasVidurkis);
+                vargsiukai.sort(palyginimasVidurkis);
                 auto pabaiga2=std::chrono::high_resolution_clock::now();
-                auto uztruko2=std::chrono::duration_cast<std::chrono::milliseconds>(pabaiga - pradzia);
+                auto uztruko2=std::chrono::duration_cast<std::chrono::milliseconds>(pabaiga2 - pradzia2);
                 auto pradzia3=std::chrono::high_resolution_clock::now();
-                sort(kietiakiai.begin(), kietiakiai.end(), palyginimasVidurkis);
+                kietiakiai.sort(palyginimasVidurkis);
                 auto pabaiga3=std::chrono::high_resolution_clock::now();
-                auto uztruko3=std::chrono::duration_cast<std::chrono::milliseconds>(pabaiga - pradzia);
+                auto uztruko3=std::chrono::duration_cast<std::chrono::milliseconds>(pabaiga3 - pradzia3);
                 cout<<"Vargsiuku rusiavimas pagal pavarde vidurki "<<uztruko2.count()<<" milisekundziu"<<endl;
                 cout<<"Kietiaku rusiavimas pagal pavarde vidurki "<<uztruko3.count()<<" milisekundziu"<<endl;
             }
@@ -224,10 +224,10 @@ int main()
                 cout<<"Neteisingas pasirinkimas";
                 return 1;
             }
-        double nd_suma = accumulate(naujas_st.ND.begin(), naujas_st.ND.end(), 0.0);
         naujas_st.galutinis1=rezultatasVidurkis(naujas_st.ND, naujas_st.Egz);
-        double mediana=Med(naujas_st.ND);
-        naujas_st.galutinis2=rezultatasMediana(mediana,naujas_st.Egz);
+        double mediana;
+        mediana=Med(naujas_st.ND);
+        naujas_st.galutinis2=rezultatasMediana(mediana, naujas_st.Egz);
         studentai.push_back(naujas_st);
         }}
     else if(pasirinkimas3=='F'||pasirinkimas3=='f')
@@ -274,9 +274,9 @@ int main()
                 cout << "Tarp duomenu yra netikslumu, pvz. egzamino pazymys didesnis uz 10 arba vietoj pazymio irasyta raide." << endl;
                 return 1;
             }
-            double nd_suma = accumulate(naujas_st.ND.begin(), naujas_st.ND.end(), 0.0);
             naujas_st.galutinis1 = rezultatasVidurkis(naujas_st.ND, naujas_st.Egz);
-            double mediana = Med(naujas_st.ND);
+            double mediana;
+            mediana=Med(naujas_st.ND);
             naujas_st.galutinis2 = rezultatasMediana(mediana, naujas_st.Egz);
             studentai.push_back(naujas_st);
             stud_sk++;
@@ -288,7 +288,7 @@ int main()
         cout<<"Neteisingas pasirinkimas"<<endl;
         return 1;
     }
-    sort(studentai.begin(),studentai.end(),palyginimasVardai);
+    studentai.sort(palyginimasVardai);
     char pasirinkimas;
     cout<<"Jeigu norite gauti galutini bala su vidurkiu - parasykite 'V' raide, jeigu su mediana - 'M'"<<endl;
     cin>>pasirinkimas;

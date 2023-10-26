@@ -1,4 +1,4 @@
-#include "firstlib.h";
+#include "firstlib.h"
 
 //---------------------------------------------------------
 double rezultatasVidurkis(list <int>& namudarbai,int egz)
@@ -15,7 +15,7 @@ double rezultatasVidurkis(list <int>& namudarbai,int egz)
     {
         cout << "Dalyba is nulio. " << e.what() << endl;
     }
-    double suma=0.0;
+    double suma=0;
     for (auto it = namudarbai.begin(); it != namudarbai.end(); ++it)
     {
         suma += *it;
@@ -55,23 +55,23 @@ double rezultatasMediana(double mediana, int egz)
 //----------------------------------------------------------------
 
 //----------------------------------------------------------------
-bool palyginimasVardai(Studentas &studentas1, Studentas &studentas2)
+bool palyginimasVardai(const Studentas& a, const Studentas& b)
 {
-    return studentas1.vardas<studentas2.vardas;
+    return a.vardas < b.vardas;
 }
 //-----------------------------------------------------------------
 
 //-----------------------------------------------------------------
-bool palyginimasPavardes(Studentas &studentas1, Studentas &studentas2)
+bool palyginimasPavardes(const Studentas& a, const Studentas& b)
 {
-    return studentas1.pavarde<studentas2.pavarde;
+    return a.pavarde < b.pavarde;
 }
 //------------------------------------------------------------------
 
 //------------------------------------------------------------------
-bool palyginimasVidurkis(Studentas &studentas1, Studentas &studentas2)
+bool palyginimasVidurkis(const Studentas& a, const Studentas& b)
 {
-    return studentas1.galutinis1<studentas2.galutinis1;
+    return a.galutinis1 < b.galutinis1;
 }
 //-------------------------------------------------------------------
 
@@ -150,7 +150,6 @@ void skaitymas(list <Studentas>& studentai, string Fname)
     }
     while (input_file >> v >> p)
     {
-        double nd_suma = 0.0;
         Studentas naujas_st;
         naujas_st.vardas = v;
         naujas_st.pavarde = p;
