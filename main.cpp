@@ -126,7 +126,7 @@ int main()
     cout<<"Pasirinkite buda, kaip pildysite duomenys. Jeigu norit ivesti patys rasykite 'P', jeigu norite nuskaityti is failo - 'F'"<<endl;
     char pasirinkimas3;
     cin>>pasirinkimas3;
-    if(pasirinkimas3=='P')
+    if(pasirinkimas3=='P'||pasirinkimas3=='p')
     {
         cout<<"Iveskite studentu kieki: "<<endl;
         cin>>stud_sk;
@@ -321,7 +321,15 @@ int main()
                 cout<<fixed<<setprecision(2)<<studentas.galutinis1<<endl;
             }
             else cout<<fixed<<setprecision(2)<<studentas.galutinis2<<endl;
-        }}
+        }
+        cout << "--------------------------------------------------\n";
+        cout << "Objekto saugojimo atmintyje adresai:\n";
+        cout << "--------------------------------------------------\n";
+        for (auto &studentas : studentai)
+        {
+            cout << "Objekto saugojimo atmintyje adresas studento " << studentas.vardas << " " << studentas.pavarde << ": "<< &studentas << endl;
+        }
+    }
     else if(pasirinkimas4=='F'||pasirinkimas4=='f')
     {
         ofstream outputFile("rezultatai.txt");
