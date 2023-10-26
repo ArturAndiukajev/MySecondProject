@@ -1,5 +1,5 @@
 # My-first-project
-5 testavimų laiko vidurkiai milisekundėmis.
+5 testavimų laiko vidurkiai milisekundėmis.(su vektoriais)
 | Veiksmo tipas/Studentų kiekis |   1000  |  10000  |  100000  |  1000000  |   10000000  |
 |:-----------------------------:|:-------:|:-------:|:--------:|:---------:|:-----------:|
 | Failo generavimas             | 338 ms  | 202 ms  | 1156 ms  | 6912 ms   | 80654 ms    |
