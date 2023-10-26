@@ -1,8 +1,9 @@
 #include "firstlib.h";
 
 //---------------------------------------------------------
-double rezultatas(double suma,int kiekis,int egz)
+double rezultatasVidurkis(list <int>& namudarbai,int egz)
 {
+    int kiekis = namudarbai.size();
     double rez=0;
     try
     {
@@ -14,33 +15,38 @@ double rezultatas(double suma,int kiekis,int egz)
     {
         cout << "Dalyba is nulio. " << e.what() << endl;
     }
+    double suma=0.0;
+    for (auto it = namudarbai.begin(); it != namudarbai.end(); ++it)
+    {
+        suma += *it;
+    }
     rez=0.4*(suma/kiekis*1.0)+0.6*egz;
     return rez;
 }
 //--------------------------------------------------------------
 
 //--------------------------------------------------------------
-double Med(list <int> data)
+double Med(list <int>& namudarbai)
 {
-    data.sort();
-    size_t size = data.size();
+    namudarbai.sort();
+    size_t size = namudarbai.size();
     if (size % 2 == 0)
     {
         size_t middle = size / 2;
-        auto it1 = std::next(data.begin(), middle - 1);
-        auto it2 = std::next(data.begin(), middle);
+        auto it1 = std::next(namudarbai.begin(), middle - 1);
+        auto it2 = std::next(namudarbai.begin(), middle);
         return (*it1 + *it2) / 2.0;
     }
     else
     {
-        auto it = std::next(data.begin(), size / 2);
+        auto it = std::next(namudarbai.begin(), size / 2);
         return *it;
     }
 }
 //---------------------------------------------------------------
 
 //---------------------------------------------------------------
-double rezMed(double mediana, int egz)
+double rezultatasMediana(double mediana, int egz)
 {
     double rez=0;
     rez=0.4*mediana+0.6*egz;
@@ -49,21 +55,21 @@ double rezMed(double mediana, int egz)
 //----------------------------------------------------------------
 
 //----------------------------------------------------------------
-bool palyginimasVardai(Studentas studentas1, Studentas studentas2)
+bool palyginimasVardai(Studentas &studentas1, Studentas &studentas2)
 {
     return studentas1.vardas<studentas2.vardas;
 }
 //-----------------------------------------------------------------
 
 //-----------------------------------------------------------------
-bool palyginimasPavardes(Studentas studentas1, Studentas studentas2)
+bool palyginimasPavardes(Studentas &studentas1, Studentas &studentas2)
 {
     return studentas1.pavarde<studentas2.pavarde;
 }
 //------------------------------------------------------------------
 
 //------------------------------------------------------------------
-bool palyginimasVidurkis(Studentas studentas1, Studentas studentas2)
+bool palyginimasVidurkis(Studentas &studentas1, Studentas &studentas2)
 {
     return studentas1.galutinis1<studentas2.galutinis1;
 }
@@ -109,9 +115,9 @@ void isvedimas(list <Studentas> studentai, string fileName)
     }
     outputFile<<setw(20)<<left<<"Vardas"<<setw(20)<<"Pavarde"<<setw(20)<<"Galutinis(Vid.)"<<endl;
     outputFile<<"-------------------------------------------------------------------------------"<<endl;
-    for(const auto& studentas : studentai)
+    for(const auto& Studentas : studentai)
     {
-        outputFile<<setw(20)<<left<<studentas.vardas<<setw(20)<<studentas.pavarde<<setw(20)<<fixed<<setprecision(2)<<studentas.galutinis1<<endl;
+        outputFile<<setw(20)<<left<<Studentas.vardas<<setw(20)<<Studentas.pavarde<<setw(20)<<fixed<<setprecision(2)<<Studentas.galutinis1<<endl;
     }
     outputFile.close();
     auto pabaiga=std::chrono::high_resolution_clock::now();
@@ -167,8 +173,10 @@ void skaitymas(list <Studentas>& studentai, string Fname)
             exit(1);
         }
         naujas_st.Egz=Egz;
-        nd_suma = accumulate(naujas_st.ND.begin(), naujas_st.ND.end(), 0.0);
-        naujas_st.galutinis1=rezultatas(nd_suma, naujas_st.ND.size(), naujas_st.Egz);
+        naujas_st.galutinis1=rezultatasVidurkis(naujas_st.ND, naujas_st.Egz);
+        double mediana;
+        mediana=Med(naujas_st.ND);
+        naujas_st.galutinis2=rezultatasMediana(mediana, naujas_st.Egz);
         studentai.push_back(naujas_st);
         naujas_st.ND.clear();
     }

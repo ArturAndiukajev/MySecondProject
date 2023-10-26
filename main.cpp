@@ -53,15 +53,15 @@ int main()
             kietiakiai.clear();
             skaitymas(studentai,failoPav);
             auto pradzia=std::chrono::high_resolution_clock::now();
-            for(auto it = studentai.begin(); it != studentai.end(); ++it)
+            for(const auto& studentas : studentai)
             {
-                if(it->galutinis1 <riba)
+                if(studentas.galutinis1<riba)
                 {
-                    vargsiukai.push_back(*it);
+                    vargsiukai.push_back(studentas);
                 }
                 else
                 {
-                    kietiakiai.push_back(*it);
+                    kietiakiai.push_back(studentas);
                 }
             }
             auto pabaiga=std::chrono::high_resolution_clock::now();
@@ -225,9 +225,9 @@ int main()
                 return 1;
             }
         double nd_suma = accumulate(naujas_st.ND.begin(), naujas_st.ND.end(), 0.0);
-        naujas_st.galutinis1=rezultatas(nd_suma, naujas_st.ND.size(), naujas_st.Egz);
+        naujas_st.galutinis1=rezultatasVidurkis(naujas_st.ND, naujas_st.Egz);
         double mediana=Med(naujas_st.ND);
-        naujas_st.galutinis2=rezMed(mediana,naujas_st.Egz);
+        naujas_st.galutinis2=rezultatasMediana(mediana,naujas_st.Egz);
         studentai.push_back(naujas_st);
         }}
     else if(pasirinkimas3=='F'||pasirinkimas3=='f')
@@ -275,9 +275,9 @@ int main()
                 return 1;
             }
             double nd_suma = accumulate(naujas_st.ND.begin(), naujas_st.ND.end(), 0.0);
-            naujas_st.galutinis1 = rezultatas(nd_suma, naujas_st.ND.size(), naujas_st.Egz);
+            naujas_st.galutinis1 = rezultatasVidurkis(naujas_st.ND, naujas_st.Egz);
             double mediana = Med(naujas_st.ND);
-            naujas_st.galutinis2 = rezMed(mediana, naujas_st.Egz);
+            naujas_st.galutinis2 = rezultatasMediana(mediana, naujas_st.Egz);
             studentai.push_back(naujas_st);
             stud_sk++;
         }
@@ -313,14 +313,14 @@ int main()
             return 1;
         }
         cout<<"------------------------------------------------------------------------------------------------------"<<endl;
-        for(auto it = studentai.begin(); it != studentai.end(); ++it)
+        for(const auto& studentas : studentai)
         {
-            cout<<setw(20)<<left<<it->vardas<<setw(20)<<left<<it->pavarde<<setw(20)<<left;
+            cout<<setw(20)<<left<<studentas.vardas<<setw(20)<<left<<studentas.pavarde<<setw(20)<<left;
             if (pasirinkimas=='V'||pasirinkimas=='v')
             {
-                cout<<fixed<<setprecision(2)<<it->galutinis1<<endl;
+                cout<<fixed<<setprecision(2)<<studentas.galutinis1<<endl;
             }
-            else cout<<fixed<<setprecision(2)<<it->galutinis2<<endl;
+            else cout<<fixed<<setprecision(2)<<studentas.galutinis2<<endl;
         }}
     else if(pasirinkimas4=='F'||pasirinkimas4=='f')
     {
@@ -339,14 +339,14 @@ int main()
             return 1;
         }
         outputFile<<"------------------------------------------------------------------------------------------------------"<<endl;
-        for(auto it = studentai.begin(); it != studentai.end(); ++it)
+        for(const auto& studentas : studentai)
         {
-            outputFile<<setw(20)<<left<<studentai[i].vardas<<setw(20)<<left<<studentai[i].pavarde<<setw(20)<<left;
+            outputFile<<setw(20)<<left<<studentas.vardas<<setw(20)<<left<<studentas.pavarde<<setw(20)<<left;
             if (pasirinkimas=='V'||pasirinkimas=='v')
                 {
-                    outputFile<<fixed<<setprecision(2)<<studentai[i].galutinis1<<endl;
+                    outputFile<<fixed<<setprecision(2)<<studentas.galutinis1<<endl;
                 }
-            else    outputFile<<fixed<<setprecision(2)<<studentai[i].galutinis2<<endl;
+            else    outputFile<<fixed<<setprecision(2)<<studentas.galutinis2<<endl;
         }
         outputFile.close();
     }
