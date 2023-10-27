@@ -1,4 +1,6 @@
 # My-first-project
+Sistemos parametrai:Intel(R) Core(TM) i5-7300HQ CPU @ 2.50GHz; RAM 8.00GB, SSD 117 GB
+
 5 testavimų laiko vidurkiai milisekundėmis.(su vektoriais)
 | Veiksmo tipas/Studentų kiekis |   1000  |  10000  |  100000  |  1000000  |   10000000  |
 |:-----------------------------:|:-------:|:-------:|:--------:|:---------:|:-----------:|
