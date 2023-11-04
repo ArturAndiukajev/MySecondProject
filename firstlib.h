@@ -11,8 +11,6 @@
 #include <fstream>
 #include <sstream>
 #include <chrono>
-#include <list>
-#include <iterator>
 
 using std::cout;
 using std::cin;
@@ -29,29 +27,25 @@ using std::accumulate;
 using std::ifstream;
 using std::ofstream;
 using std::cerr;
-using std::list;
-using std::sort;
-using std::iterator;
-
 
 
 
 struct Studentas{
     string vardas;
     string pavarde;
-    list <int> ND;
+    vector <int> ND;
     int Egz;
     double galutinis1;
     double galutinis2;
 };
 
-double rezultatasVidurkis(list <int>& namudarbai,int egz);
-double Med(list <int>& namudarbai);
-double rezultatasMediana(double mediana, int egz);
-bool palyginimasVardai(const Studentas &a, const Studentas &b);
-bool palyginimasPavardes(const Studentas &a, const Studentas &b);
-bool palyginimasVidurkis(const Studentas &a, const Studentas &b);
+double rezultatas(double suma,int kiekis,int egz);
+double Med(vector<int> data);
+double rezMed(double mediana, int egz);
+bool palyginimasVardai(Studentas studentas1, Studentas studentas2);
+bool palyginimasPavardes(Studentas studentas1, Studentas studentas2);
+bool palyginimasVidurkis(Studentas studentas1, Studentas studentas2);
 void generavimas(int studentu_skaicius, string fileName, int nd_kiekis);
-void isvedimas(list<Studentas> studentai, string fileName);
-void skaitymas(list<Studentas>& studentai, string Fname);
+void isvedimas(vector<Studentas> studentai, string fileName);
+void skaitymas(vector<Studentas>& studentai, string Fname);
 #endif // FIRSTLIB_H_INCLUDED

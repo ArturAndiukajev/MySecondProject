@@ -1,9 +1,8 @@
-#include "firstlib.h"
+#include "firstlib.h";
 
 //---------------------------------------------------------
-double rezultatasVidurkis(list <int>& namudarbai,int egz)
+double rezultatas(double suma,int kiekis,int egz)
 {
-    int kiekis = namudarbai.size();
     double rez=0;
     try
     {
@@ -15,38 +14,30 @@ double rezultatasVidurkis(list <int>& namudarbai,int egz)
     {
         cout << "Dalyba is nulio. " << e.what() << endl;
     }
-    double suma=0;
-    for (auto it = namudarbai.begin(); it != namudarbai.end(); ++it)
-    {
-        suma += *it;
-    }
     rez=0.4*(suma/kiekis*1.0)+0.6*egz;
     return rez;
 }
 //--------------------------------------------------------------
 
 //--------------------------------------------------------------
-double Med(list <int>& namudarbai)
+double Med(vector<int> data)
 {
-    namudarbai.sort();
-    size_t size = namudarbai.size();
+    sort(data.begin(), data.end());
+    size_t size = data.size();
     if (size % 2 == 0)
     {
         size_t middle = size / 2;
-        auto it1 = std::next(namudarbai.begin(), middle - 1);
-        auto it2 = std::next(namudarbai.begin(), middle);
-        return (*it1 + *it2) / 2.0;
+        return (data[middle - 1] + data[middle]) / 2.0;
     }
     else
     {
-        auto it = std::next(namudarbai.begin(), size / 2);
-        return *it;
+        return data[size / 2];
     }
 }
 //---------------------------------------------------------------
 
 //---------------------------------------------------------------
-double rezultatasMediana(double mediana, int egz)
+double rezMed(double mediana, int egz)
 {
     double rez=0;
     rez=0.4*mediana+0.6*egz;
@@ -55,23 +46,23 @@ double rezultatasMediana(double mediana, int egz)
 //----------------------------------------------------------------
 
 //----------------------------------------------------------------
-bool palyginimasVardai(const Studentas& a, const Studentas& b)
+bool palyginimasVardai(Studentas studentas1, Studentas studentas2)
 {
-    return a.vardas < b.vardas;
+    return studentas1.vardas<studentas2.vardas;
 }
 //-----------------------------------------------------------------
 
 //-----------------------------------------------------------------
-bool palyginimasPavardes(const Studentas& a, const Studentas& b)
+bool palyginimasPavardes(Studentas studentas1, Studentas studentas2)
 {
-    return a.pavarde < b.pavarde;
+    return studentas1.pavarde<studentas2.pavarde;
 }
 //------------------------------------------------------------------
 
 //------------------------------------------------------------------
-bool palyginimasVidurkis(const Studentas& a, const Studentas& b)
+bool palyginimasVidurkis(Studentas studentas1, Studentas studentas2)
 {
-    return a.galutinis1 < b.galutinis1;
+    return studentas1.galutinis1<studentas2.galutinis1;
 }
 //-------------------------------------------------------------------
 
@@ -104,7 +95,7 @@ void generavimas(int studentu_skaicius, string fileName, int nd_kiekis)
 //------------------------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------------------------
-void isvedimas(list <Studentas> studentai, string fileName)
+void isvedimas(vector<Studentas> studentai, string fileName)
 {
     auto pradzia=std::chrono::high_resolution_clock::now();
     ofstream outputFile(fileName);
@@ -115,9 +106,9 @@ void isvedimas(list <Studentas> studentai, string fileName)
     }
     outputFile<<setw(20)<<left<<"Vardas"<<setw(20)<<"Pavarde"<<setw(20)<<"Galutinis(Vid.)"<<endl;
     outputFile<<"-------------------------------------------------------------------------------"<<endl;
-    for(const auto& Studentas : studentai)
+    for(int i=0;i<studentai.size();i++)
     {
-        outputFile<<setw(20)<<left<<Studentas.vardas<<setw(20)<<Studentas.pavarde<<setw(20)<<fixed<<setprecision(2)<<Studentas.galutinis1<<endl;
+        outputFile<<setw(20)<<left<<studentai[i].vardas<<setw(20)<<studentai[i].pavarde<<setw(20)<<fixed<<setprecision(2)<<studentai[i].galutinis1<<endl;
     }
     outputFile.close();
     auto pabaiga=std::chrono::high_resolution_clock::now();
@@ -127,7 +118,7 @@ void isvedimas(list <Studentas> studentai, string fileName)
 //---------------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------------
-void skaitymas(list <Studentas>& studentai, string Fname)
+void skaitymas(vector<Studentas>& studentai, string Fname)
 {
     studentai.clear();
     auto pradzia=std::chrono::high_resolution_clock::now();
@@ -150,6 +141,7 @@ void skaitymas(list <Studentas>& studentai, string Fname)
     }
     while (input_file >> v >> p)
     {
+        double nd_suma = 0.0;
         Studentas naujas_st;
         naujas_st.vardas = v;
         naujas_st.pavarde = p;
@@ -172,10 +164,8 @@ void skaitymas(list <Studentas>& studentai, string Fname)
             exit(1);
         }
         naujas_st.Egz=Egz;
-        naujas_st.galutinis1=rezultatasVidurkis(naujas_st.ND, naujas_st.Egz);
-        double mediana;
-        mediana=Med(naujas_st.ND);
-        naujas_st.galutinis2=rezultatasMediana(mediana, naujas_st.Egz);
+        nd_suma = accumulate(naujas_st.ND.begin(), naujas_st.ND.end(), 0.0);
+        naujas_st.galutinis1=rezultatas(nd_suma, naujas_st.ND.size(), naujas_st.Egz);
         studentai.push_back(naujas_st);
         naujas_st.ND.clear();
     }
