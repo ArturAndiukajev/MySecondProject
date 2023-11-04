@@ -48,4 +48,5 @@ bool palyginimasVidurkis(Studentas studentas1, Studentas studentas2);
 void generavimas(int studentu_skaicius, string fileName, int nd_kiekis);
 void isvedimas(vector<Studentas> studentai, string fileName);
 void skaitymas(vector<Studentas>& studentai, string Fname);
+void laikoVidurkiai(double sumaSkaitymas,double sumaRusiavimas,double sumaSortVargsiukai,double sumaSortKietiakai,double sumaRasymasVargsiukai,double sumaRasymasKietiakai, int skaitk)
 #endif // FIRSTLIB_H_INCLUDED

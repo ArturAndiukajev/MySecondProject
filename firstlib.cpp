@@ -97,7 +97,6 @@ void generavimas(int studentu_skaicius, string fileName, int nd_kiekis)
 //------------------------------------------------------------------------------------------------
 void isvedimas(vector<Studentas> studentai, string fileName)
 {
-    auto pradzia=std::chrono::high_resolution_clock::now();
     ofstream outputFile(fileName);
     if (!outputFile.is_open())
     {
@@ -111,9 +110,6 @@ void isvedimas(vector<Studentas> studentai, string fileName)
         outputFile<<setw(20)<<left<<studentai[i].vardas<<setw(20)<<studentai[i].pavarde<<setw(20)<<fixed<<setprecision(2)<<studentai[i].galutinis1<<endl;
     }
     outputFile.close();
-    auto pabaiga=std::chrono::high_resolution_clock::now();
-    auto uztruko=std::chrono::duration_cast<std::chrono::milliseconds>(pabaiga - pradzia);
-    cout<<"Failo "<<fileName<<" isvedimo laikas:"<<uztruko.count()<<" milisekundziu"<<endl;
 }
 //---------------------------------------------------------------------------------------------------
 
@@ -121,7 +117,6 @@ void isvedimas(vector<Studentas> studentai, string fileName)
 void skaitymas(vector<Studentas>& studentai, string Fname)
 {
     studentai.clear();
-    auto pradzia=std::chrono::high_resolution_clock::now();
     ifstream input_file(Fname);
     if (!input_file.is_open())
     {
@@ -169,8 +164,27 @@ void skaitymas(vector<Studentas>& studentai, string Fname)
         studentai.push_back(naujas_st);
         naujas_st.ND.clear();
     }
-    auto pabaiga=std::chrono::high_resolution_clock::now();
-    auto uztruko=std::chrono::duration_cast<std::chrono::milliseconds>(pabaiga - pradzia);
-    cout<<"Failo "<<Fname<<" skaitymo laikas:"<<uztruko.count()<<" milisekundziu"<<endl;
 }
 //------------------------------------------------------------------------------------------------------
+void laikoVidurkiai(double sumaSkaitymas,double sumaRusiavimas,double sumaSortVargsiukai,double sumaSortKietiakai,double sumaRasymasVargsiukai,double sumaRasymasKietiakai, int skaitk)
+{
+    double vidurkisSkaitymas=0.0;
+    double vidurkisRusiavimas=0.0;
+    double vidurkisSortVargsiukai=0.0;
+    double vidurkisSortKietiakai=0.0;
+    double vidurkisRasymasVargsiukai=0.0;
+    double vidurkisRasymasKietiakai=0.0;
+    vidurkisSkaitymas=sumaSkaitymas/skaitk;
+    vidurkisRusiavimas=sumaRusiavimas/skaitk;
+    vidurkisSortVargsiukai=sumaSortVargsiukai/skaitk;
+    vidurkisSortKietiakai=sumaSortKietiakai/skaitk;
+    vidurkisRasymasVargsiukai=sumaRasymasVargsiukai/skaitk;
+    vidurkisRasymasKietiakai=sumaRasymasKietiakai/skaitk;
+    cout<<"Skaitymo laiko vidurkis: "<<vidurkisSkaitymas<<" milisekundziu"<<endl;
+    cout<<"Rusiavimo laiko vidurkis: "<<vidurkisRusiavimas<<" milisekundziu"endl;
+    cout<<"VargsiukaiSort laiko vidurkis: "<<vidurkisSortVargsiukai<<" milisekundziu"endl;
+    cout<<"KietiakaiSort laiko vidurkis: "<<vidurkisSortKietiakai<<" milisekundziu"endl;
+    cout<<"Rasymo i Vargsiukai faila laiko vidurkis: "<<" milisekundziu"vidurkisRasymasVargsiukai<<endl;
+    cout<<"Rasymo i Kietiakai faila laiko vidurkis: "<<" milisekundziu"vidurkisRasymasKietiakai<<endl;
+    cout<<"----------------------------------------------------------------------------------------------"<<endl;
+}
