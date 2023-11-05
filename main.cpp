@@ -197,13 +197,12 @@ int main()
                 cout<<"Failo "<<failoPav<<" skaitymo laikas:"<<uztruko.count()<<" milisekundziu"<<endl;
                 sumaSkaitymas=sumaSkaitymas+uztruko;
                 auto pradzia4=std::chrono::high_resolution_clock::now();
-                for(int i=studentai.size()-1; i>=0; i--)
-                {
-                    if(studentai[i].galutinis1<riba)
-                    {
-                        vargsiukai.push_back(studentai[i]);
-                        studentai.erase(studentai.begin() + i);
-                    }
+                sort(studentai.rbegin(), studentai.rend(), [](const Studentas& a, const Studentas& b) {
+                return a.galutinis1 < b.galutinis1;
+                });
+                while (!studentai.empty() && studentai.back().galutinis1 < riba) {
+                vargsiukai.push_back(studentai.back());
+                studentai.pop_back();
                 }
                 auto pabaiga4=std::chrono::high_resolution_clock::now();
                 auto uztruko4=std::chrono::duration_cast<std::chrono::milliseconds>(pabaiga4 - pradzia4);
