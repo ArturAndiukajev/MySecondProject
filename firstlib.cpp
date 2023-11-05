@@ -166,25 +166,8 @@ void skaitymas(vector<Studentas>& studentai, string Fname)
     }
 }
 //------------------------------------------------------------------------------------------------------
-void laikoVidurkiai(double sumaSkaitymas,double sumaRusiavimas,double sumaSortVargsiukai,double sumaSortKietiakai,double sumaRasymasVargsiukai,double sumaRasymasKietiakai, int skaitk)
+bool Vargsiukai(const Studentas studentas, double riba)
 {
-    double vidurkisSkaitymas=0.0;
-    double vidurkisRusiavimas=0.0;
-    double vidurkisSortVargsiukai=0.0;
-    double vidurkisSortKietiakai=0.0;
-    double vidurkisRasymasVargsiukai=0.0;
-    double vidurkisRasymasKietiakai=0.0;
-    vidurkisSkaitymas=sumaSkaitymas/skaitk;
-    vidurkisRusiavimas=sumaRusiavimas/skaitk;
-    vidurkisSortVargsiukai=sumaSortVargsiukai/skaitk;
-    vidurkisSortKietiakai=sumaSortKietiakai/skaitk;
-    vidurkisRasymasVargsiukai=sumaRasymasVargsiukai/skaitk;
-    vidurkisRasymasKietiakai=sumaRasymasKietiakai/skaitk;
-    cout<<"Skaitymo laiko vidurkis: "<<vidurkisSkaitymas<<" milisekundziu"<<endl;
-    cout<<"Rusiavimo laiko vidurkis: "<<vidurkisRusiavimas<<" milisekundziu"endl;
-    cout<<"VargsiukaiSort laiko vidurkis: "<<vidurkisSortVargsiukai<<" milisekundziu"endl;
-    cout<<"KietiakaiSort laiko vidurkis: "<<vidurkisSortKietiakai<<" milisekundziu"endl;
-    cout<<"Rasymo i Vargsiukai faila laiko vidurkis: "<<" milisekundziu"vidurkisRasymasVargsiukai<<endl;
-    cout<<"Rasymo i Kietiakai faila laiko vidurkis: "<<" milisekundziu"vidurkisRasymasKietiakai<<endl;
-    cout<<"----------------------------------------------------------------------------------------------"<<endl;
+    return studentas.galutinis1 < riba;
 }
+//-------------------------------------------------------------------------------------------------------
