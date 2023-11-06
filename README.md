@@ -29,3 +29,10 @@ Sistemos parametrai:Intel(R) Core(TM) i5-7300HQ CPU @ 2.50GHz; RAM 8.00GB, SSD 1
 | 1 strategija | 0 ms   | 3.4 ms  | 38 ms  | 405.2 ms  | 4011 ms  |
 | 2 strategija | 2.2 ms | 32.8 ms | 438 ms | 5651.6 ms | 70362 ms |
 | 3 strategija | 0 ms   | 7.8 ms  | 88 ms  | 879.2 ms  | 8984 ms  |
+
+
+|     List     |  1000  |  10000  |  100000  |  1000000  | 10000000 |
+|:------------:|:------:|:-------:|:--------:|:---------:|:--------:|
+| 1 strategija | 4.8 ms | 50.2 ms | 491.8 ms | 4993.6 ms | -        |
+| 2 strategija | 0.8 ms | 18.4 ms | 240.8 ms | 2898.2 ms | -        |
+| 3 strategija | 0.6 ms | 19.4 ms | 246 ms   | 2833.6 ms | -        |
