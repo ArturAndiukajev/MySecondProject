@@ -37,7 +37,6 @@ Išvados: Pirma strategija yra greičiausia, palyginus su kitom, bet ji užima d
 
 ![Screenshot_10](https://github.com/ArturAndiukajev/My-first-project/assets/144611797/8236b4b5-e2df-47b5-811d-b25bcdc083b8) (2 strategija)
 
-
 ![Screenshot_15](https://github.com/ArturAndiukajev/My-first-project/assets/144611797/2d940b1b-a7c6-4458-a456-369d949ab515) (3 strategija)
 
 
@@ -54,11 +53,13 @@ Išvados: Pirma strategija yra pati neefektiviausia, nes yra apie dukart lėtesn
 
 ![Screenshot_19](https://github.com/ArturAndiukajev/My-first-project/assets/144611797/0c016500-6e02-4b78-a04c-ca1b47cb91a0) (1 strategija)
 
-
 ![Screenshot_23](https://github.com/ArturAndiukajev/My-first-project/assets/144611797/f6c765c0-81d1-4444-897a-4c1a81fb3311) (2 strategija)
 
-
 ![Screenshot_27](https://github.com/ArturAndiukajev/My-first-project/assets/144611797/3fea1c20-cc96-4cd7-8a4c-12c922d58d92) (3 strategija)
+
+
+Naudojimosi instrukcija : 1) Iš pradžių bus galimybė sugeneruoti savo failą , kuriam reikės nurodyti studentų skaičių, failo pavadinimą ir namų darbų kiekį. Studento vardas ir pavardė yra šabloniniai, namų darbų ir egzamino rezultatai generuojami atsitiktinai. 2) Toliau yra galimybė testuoti skaitymo, rušiavimo ir išvedimo laiką bet kuriai iš 3 strategijų. Yra galivybė pasirinkti kaip reikia rušiuoti studentus(pagal vardą, pavardę arba galutinio balo vidurkį). 3) Po šitų dviejų žingsnių yra galimybė įvesti duomenis arba nuskaityti iš failo. Yra galimybė pasirinkti kaip bus skaičiuojamas galutinis balas( su vidurkiu arba su mediana). 4) Tada naudotojas gali pasirinkti, kur jam patogiau gauti rezultatus - jie gali būti išvedami į ekraną arba į atskirą failą.
+
 
 
 
