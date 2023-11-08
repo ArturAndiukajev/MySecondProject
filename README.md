@@ -30,9 +30,12 @@ Sistemos parametrai:Intel(R) Core(TM) i5-7300HQ CPU @ 2.50GHz; RAM 8.00GB, SSD 1
 | 2 strategija | 2.2 ms | 32.8 ms | 438 ms | 5651.6 ms | 70362 ms |
 | 3 strategija | 0 ms   | 7.8 ms  | 88 ms  | 879.2 ms  | 8984 ms  |
 
-Išvados: pirma strategija yra greičiausia, palyginus su kitom, bet ji užima daugiausiai atminties(6.4GB su 10mln eilučių).
-         antra strategija yra žymiai lėtesnė, negu pirma ir trečia strategija, bet užima mažiausiai atminties.(5.4GB su 10 mln eilučių).
-         trečia strategija yra subalansiuota, ji yra lėtesnė negu pirma, tačiau greitesnė nugu antra, ir užima mažiau atminties palyginus su pirma, tačiau daugiau negu antra.(6.0 GB su 10 mln eilučių).
+Išvados: Pirma strategija yra greičiausia, palyginus su kitom, bet ji užima daugiausiai atminties(6.4GB su 10mln eilučių).
+         Antra strategija yra žymiai lėtesnė, negu pirma ir trečia strategija, bet užima mažiausiai atminties.(5.4GB su 10 mln eilučių).
+         Trečia strategija yra subalansiuota, ji yra lėtesnė negu pirma, tačiau greitesnė nugu antra, ir užima mažiau atminties palyginus su pirma, tačiau daugiau negu antra.(6.0 GB su 10 mln eilučių).
+![Screenshot_5](https://github.com/ArturAndiukajev/My-first-project/assets/144611797/a96235e9-c962-4540-ab95-04822a535b30)
+
+         
 
 3 Strategijų tyrimas su List priklausomai nuo studentų dalijimo į dvi kategorijas.
 |     List     |  1000  |  10000  |  100000  |  1000000  | 10000000 |
@@ -41,6 +44,8 @@ Išvados: pirma strategija yra greičiausia, palyginus su kitom, bet ji užima d
 | 2 strategija | 0.8 ms | 18.4 ms | 240.8 ms | 2898.2 ms | -        |
 | 3 strategija | 0.6 ms | 19.4 ms | 246 ms   | 2833.6 ms | -        |
 
-Išvados: pirma strategija yra pati neefektiviausia, nes yra apie dukart lėtesnė negu antra ir trečia strategijos, ir užima daugiausiai atminties(4.7 GB su 1 mln eilučių).
-         antra strategija yra labai panaši į trečią strategiją, jų greitis beveik nesiskiria, tačiau ji užima daugiau atminties negu trečia(4.5 GB su 1mln eilučių).
-         trečia strategija yra pati efektyviausia, ji yra panašaus greičio su antra strategija, tačiau užima mažiausiai atminties (3.9 GB su 1 mln eilučių).
+Išvados: Pirma strategija yra pati neefektiviausia, nes yra apie dukart lėtesnė negu antra ir trečia strategijos, ir užima daugiausiai atminties(4.7 GB su 1 mln eilučių).
+         Antra strategija yra labai panaši į trečią strategiją, jų greitis beveik nesiskiria, tačiau ji užima daugiau atminties negu trečia(4.5 GB su 1mln eilučių).
+         Trečia strategija yra pati efektyviausia, ji yra panašaus greičio su antra strategija, tačiau užima mažiausiai atminties (3.9 GB su 1 mln eilučių).
+
+
