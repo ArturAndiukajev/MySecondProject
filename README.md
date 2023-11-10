@@ -69,7 +69,7 @@ V.02:
 3)Yra matuojamas failų kūrimo, duomenų nuskaitymo iš failų, studentų rūšiavimo į dvi grupes, surūšiuotų studentų išvedimo į du naujus failus laiko vidurkiai.
 
 V.03:
-1) Tokie pat metodai, kaip ir versijoje v.02 realizuoti su list.
+1)Tokie pat metodai, kaip ir versijoje v.02 realizuoti su list.
 
 V.1.0:
 1)Realizuotos 3 skirtingos strategijos su vector ir list.
