@@ -57,6 +57,25 @@ Išvados: Pirma strategija yra pati neefektiviausia, nes yra apie dukart lėtesn
 
 ![Screenshot_27](https://github.com/ArturAndiukajev/My-first-project/assets/144611797/3fea1c20-cc96-4cd7-8a4c-12c922d58d92) (3 strategija)
 
+V.01:
+1)Nauduotojas gali įvesti duomenis ir gauti rezultatus į ekraną. Programa gali skaičiuoti galutinį studento balą pagal vidurkį ar pagal medianą.
+2)Yra galimybė sugeneruoti atsitiktinius studento namų darbų ir egzamino rezultatus.
+3)Duomenis galima įvesti ne tik ranka,  bet ir nuskaityti iš failo. Taip pat galima gauti rezultatus ne tik ekrane, bet ir faile.
+4)Yra realizuotas išimčių valdymas.
+
+V.02:
+1)Atsirado galimybė generuoti failus, nauduotojas pats gali nuspresti studentų kiekį, jų namų darbų kiekį.
+2)Studentai rušiuojami į dvį grupes - "vargšiukai" - tie, kurių galutinis pažymis yra mažesnis negu 5.0,  ir "kietiakai" - tie, kurių galutinis pažymis yra didesnis negu 5.0.
+3)Yra matuojamas failų kūrimo, duomenų nuskaitymo iš failų, studentų rūšiavimo į dvi grupes, surūšiuotų studentų išvedimo į du naujus failus laiko vidurkiai.
+
+V.03:
+1) Tokie pat metodai, kaip ir versijoje v.02 realizuoti su list.
+
+V.1.0:
+1)Realizuotos 3 skirtingos strategijos su vector ir list.
+2)Parengta naudojimosi instrukcija
+3)Paruoštas cmake CMakeLists.txt 
+
 
 Naudojimosi instrukcija : 1) Iš pradžių bus galimybė sugeneruoti savo failą , kuriam reikės nurodyti studentų skaičių, failo pavadinimą ir namų darbų kiekį. Studento vardas ir pavardė yra šabloniniai, namų darbų ir egzamino rezultatai generuojami atsitiktinai. 2) Toliau yra galimybė testuoti skaitymo, rušiavimo ir išvedimo laiką bet kuriai iš 3 strategijų. Yra galivybė pasirinkti kaip reikia rušiuoti studentus(pagal vardą, pavardę arba galutinio balo vidurkį). 3) Po šitų dviejų žingsnių yra galimybė įvesti duomenis arba nuskaityti iš failo. Yra galimybė pasirinkti kaip bus skaičiuojamas galutinis balas( su vidurkiu arba su mediana). 4) Tada naudotojas gali pasirinkti, kur jam patogiau gauti rezultatus - jie gali būti išvedami į ekraną arba į atskirą failą.
 
