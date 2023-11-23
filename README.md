@@ -93,3 +93,17 @@ Tirkinimui buvo pasirinkta pirma strategija, nes ji buvo pati greičiausia. Čia
 
 
 
+|     Vector su Struct. O1     |  100000  |  1000000  | Vector su Struct. O2 | 100000   | 1000000    | Vector su Struct. O3 | 100000   | 1000000    |
+|:----------------------------:|:--------:|:---------:|:--------------------:|----------|------------|:--------------------:|----------|------------|
+| Failo generavimas            | 1156 ms  | 6912 ms   | -                    | 1156 ms  | 6912 ms    | -                    | 1156 ms  | 6912 ms    |
+| Failo skaitymas              | 671.8 ms | 6074.2 ms | -                    | 605.6 ms | 6043.8 ms  | -                    | 603.6 ms | 5998.8 ms  |
+| Rušiavimas į dvi kategorijas | 38.6 ms  | 407.4 ms  | -                    | 37.6 ms  | 401 ms     | -                    | 39.4 ms  | 393.6 ms   |
+| Sort vargšiukų rušiavimas    | 571.8 ms | 7198.6 ms | -                    | 575 ms   | 7191.6 ms  | -                    | 574.4 ms | 7161 ms    |
+| Sort kietiakų rušiavimas     | 849.6 ms | 10482 ms  | -                    | 843.2 ms | 10467.8 ms | -                    | 849.8 ms | 10479.4 ms |
+| Rašymas į vargšiukų failą    | 253 ms   | 2147.4 ms | -                    | 212.4 ms | 2135.2 ms  | -                    | 298 ms   | 2150.4 ms  |
+| Rašymas į kietiakų failą     | 310.8 ms | 2992.2 ms | -                    | 296.4 ms | 3001.6 ms  | -                    | 296.2 ms | 2979.4 ms  |
+
+
+
+
+
