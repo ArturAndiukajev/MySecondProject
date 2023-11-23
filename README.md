@@ -58,7 +58,7 @@ Išvados: Pirma strategija yra pati neefektiviausia, nes yra apie dukart lėtesn
 ![Screenshot_27](https://github.com/ArturAndiukajev/My-first-project/assets/144611797/3fea1c20-cc96-4cd7-8a4c-12c922d58d92) (3 strategija)
 
 V.01:
-1)Nauduotojas gali įvesti duomenis ir gauti rezultatus į ekraną. Programa gali skaičiuoti galutinį studento balą pagal vidurkį ar pagal medianą.
+1)Naudotojas gali įvesti duomenis ir gauti rezultatus į ekraną. Programa gali skaičiuoti galutinį studento balą pagal vidurkį ar pagal medianą.
 2)Yra galimybė sugeneruoti atsitiktinius studento namų darbų ir egzamino rezultatus.
 3)Duomenis galima įvesti ne tik ranka,  bet ir nuskaityti iš failo. Taip pat galima gauti rezultatus ne tik ekrane, bet ir faile.
 4)Yra realizuotas išimčių valdymas.
