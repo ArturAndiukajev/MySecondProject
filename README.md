@@ -79,7 +79,17 @@ V.1.0:
 Naudojimosi instrukcija: 1)Naudotojas turi įdiegti CMake programą. Versija turi būti neankstesnė negu 3.28. 2) Reikia atsiųsti aplankalą "vector" arba "list"(arba ir tą ir tą).3) Naudotojas turi paleisti failą "RUNMEE.bat". Jame jau yra paruoštos komandos.(4 eilutėje jeigu yra kopijuojamas failas, todėl, naudotojas gali pakeisti failo pavadinimą į sau reikalingą failo pavadinimą).4)Aplankale "Debug" naudotojas galės rasti failą su plėtinių .exe. Jį reikia paleisti, tam, kad galima būtų naudotis programą.
 Programos galimybės : 1) Iš pradžių bus galimybė sugeneruoti savo failą , kuriam reikės nurodyti studentų skaičių, failo pavadinimą ir namų darbų kiekį. Studento vardas ir pavardė yra šabloniniai, namų darbų ir egzamino rezultatai generuojami atsitiktinai. 2) Toliau yra galimybė testuoti skaitymo, rušiavimo ir išvedimo laiką bet kuriai iš 3 strategijų. Yra galivybė pasirinkti kaip reikia rušiuoti studentus(pagal vardą, pavardę arba galutinio balo vidurkį). 3) Po šitų dviejų žingsnių yra galimybė įvesti duomenis arba nuskaityti iš failo. Yra galimybė pasirinkti kaip bus skaičiuojamas galutinis balas( su vidurkiu arba su mediana). 4) Tada naudotojas gali pasirinkti, kur jam patogiau gauti rezultatus - jie gali būti išvedami į ekraną arba į atskirą failą.
 
+Tirkinimui buvo pasirinkta pirma strategija, nes ji buvo pati greičiausia. Čia yra spartos Struct ir Class palyginimas.
 
+|       Vector su Struct       |  100000  |   1000000  | Vector su Class | 100000   | 1000000    |
+|:----------------------------:|:--------:|:----------:|:---------------:|----------|------------|
+| Failo generavimas            | 1156 ms  | 6912 ms    | -               | 1156 ms  | 6912 ms    |
+| Failo skaitymas              | 683.8 ms | 6107.4 ms  | -               | 617.2 ms | 6344.2 ms  |
+| Rušiavimas į dvi kategorijas | 38 ms    | 405.2 ms   | -               | 39.4 ms  | 417.8 ms   |
+| Sort vargšiukų rušiavimas    | 576.8 ms | 7155 ms    | -               | 584.4 ms | 7306.8 ms  |
+| Sort kietiakų rušiavimas     | 843.6 ms | 10482.4 ms | -               | 867.8 ms | 10687.4 ms |
+| Rašymas į vargšiukų failą    | 275.2 ms | 2204.4 ms  | -               | 370.8 ms | 2348.2 ms  |
+| Rašymas į kietiakų failą     | 360.4 ms | 3189.4 ms  | -               | 339.2 ms | 3270.4ms   |
 
 
 
