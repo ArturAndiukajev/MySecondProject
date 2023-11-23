@@ -104,6 +104,17 @@ Tirkinimui buvo pasirinkta pirma strategija, nes ji buvo pati greičiausia. Čia
 | Rašymas į kietiakų failą     | 310.8 ms | 2992.2 ms | -                    | 296.4 ms | 3001.6 ms  | -                    | 296.2 ms | 2979.4 ms  |
 
 
+|      Vector su Class. O1     |  100000  |  1000000  | Vector su Class. O2 | 100000   | 1000000    | Vector su Class. O3 | 100000   | 1000000   |
+|:----------------------------:|:--------:|:---------:|:-------------------:|----------|------------|:-------------------:|----------|-----------|
+| Failo generavimas            | 1156 ms  | 6912 ms   | -                   | 1156 ms  | 6912 ms    | -                   | 1156 ms  | 6912 ms   |
+| Failo skaitymas              | 614.2 ms | 6083 ms   | -                   | 615.8 ms | 6094.2 ms  | -                   | 614.8 ms | 6088.8 ms |
+| Rušiavimas į dvi kategorijas | 39 ms    | 414.6 ms  | -                   | 40 ms    | 403.8 ms   | -                   | 40 ms    | 404.4 ms  |
+| Sort vargšiukų rušiavimas    | 585.2 ms | 7267.2 ms | -                   | 583.6 ms | 7334.2 ms  | -                   | 592.2 ms | 7268.2 ms |
+| Sort kietiakų rušiavimas     | 862.2 ms | 10673 ms  | -                   | 854.6 ms | 10597.2 ms | -                   | 858.2 ms | 10595 ms  |
+| Rašymas į vargšiukų failą    | 225.2 ms | 2261.4 ms | -                   | 221.2 ms | 2234 ms    | -                   | 222.4 ms | 2251 ms   |
+| Rašymas į kietiakų failą     | 338.2 ms | 3160.6 ms | -                   | 308.6 ms | 3158.6 ms  | -                   | 309.6 ms | 3138.2 ms |
+
+
 
 
 
