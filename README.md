@@ -91,15 +91,14 @@ Tirkinimui buvo pasirinkta pirma strategija, nes ji buvo pati greičiausia. Čia
 | Rašymas į vargšiukų failą    | 275.2 ms | 2204.4 ms  | -               | 370.8 ms | 2348.2 ms  |
 | Rašymas į kietiakų failą     | 360.4 ms | 3189.4 ms  | -               | 339.2 ms | 3270.4ms   |
 
-Išvada: Kaip galima matyti iš lentelės pateiktos aukščiau, Struct ir Class veikimo greitis buvo panašus, tačiau Struct yra nežymiai greitesnis. Taip pat, Struct naudoja mažiau atminties negu Class. 
 ![Screenshot_3](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/c7840a9d-f138-4e4e-bafe-9b465cf8f641) (100000 su Struct)
 ![Screenshot_4](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/ee5376f9-2993-481d-a0e3-bd82b528954d) (1000000 su Struct)
 ![Screenshot_28(class)](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/8e264aad-e178-44c6-9915-7813f42dc1b8) (100000 su Class)
 ![Screenshot_29(class)](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/aca884d9-3c38-4a84-bf07-2c8f28765e1f) (1000000 su Class)
 
+Išvada: Kaip galima matyti iš lentelės pateiktos aukščiau, Struct ir Class veikimo greitis buvo panašus, tačiau Struct yra nežymiai greitesnis. Taip pat, Struct naudoja mažiau atminties negu Class. 
 
-
-|     Vector su Struct. O1     |  100000  |  1000000  | Vector su Struct. O2 | 100000   | 1000000    | Vector su Struct. O3 | 100000   | 1000000    |
+|     Vector su Struct.O1     |  100000  |  1000000  | Vector su Struct.O2 | 100000   | 1000000    | Vector su Struct.O3 | 100000   | 1000000    |
 |:----------------------------:|:--------:|:---------:|:--------------------:|----------|------------|:--------------------:|----------|------------|
 | Failo generavimas            | 1156 ms  | 6912 ms   | -                    | 1156 ms  | 6912 ms    | -                    | 1156 ms  | 6912 ms    |
 | Failo skaitymas              | 671.8 ms | 6074.2 ms | -                    | 605.6 ms | 6043.8 ms  | -                    | 603.6 ms | 5998.8 ms  |
@@ -109,8 +108,7 @@ Išvada: Kaip galima matyti iš lentelės pateiktos aukščiau, Struct ir Class 
 | Rašymas į vargšiukų failą    | 253 ms   | 2147.4 ms | -                    | 212.4 ms | 2135.2 ms  | -                    | 298 ms   | 2150.4 ms  |
 | Rašymas į kietiakų failą     | 310.8 ms | 2992.2 ms | -                    | 296.4 ms | 3001.6 ms  | -                    | 296.2 ms | 2979.4 ms  |
 
-
-|      Vector su Class. O1     |  100000  |  1000000  | Vector su Class. O2 | 100000   | 1000000    | Vector su Class. O3 | 100000   | 1000000   |
+|      Vector su Class.O1     |  100000  |  1000000  | Vector su Class.O2 | 100000   | 1000000    | Vector su Class.O3 | 100000   | 1000000   |
 |:----------------------------:|:--------:|:---------:|:-------------------:|----------|------------|:-------------------:|----------|-----------|
 | Failo generavimas            | 1156 ms  | 6912 ms   | -                   | 1156 ms  | 6912 ms    | -                   | 1156 ms  | 6912 ms   |
 | Failo skaitymas              | 614.2 ms | 6083 ms   | -                   | 615.8 ms | 6094.2 ms  | -                   | 614.8 ms | 6088.8 ms |
@@ -119,6 +117,22 @@ Išvada: Kaip galima matyti iš lentelės pateiktos aukščiau, Struct ir Class 
 | Sort kietiakų rušiavimas     | 862.2 ms | 10673 ms  | -                   | 854.6 ms | 10597.2 ms | -                   | 858.2 ms | 10595 ms  |
 | Rašymas į vargšiukų failą    | 225.2 ms | 2261.4 ms | -                   | 221.2 ms | 2234 ms    | -                   | 222.4 ms | 2251 ms   |
 | Rašymas į kietiakų failą     | 338.2 ms | 3160.6 ms | -                   | 308.6 ms | 3158.6 ms  | -                   | 309.6 ms | 3138.2 ms |
+
+![Screenshot_1class](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/c3aea257-4ebe-430d-94b2-3e0415303bca) (Class su 100000 eilučių su O1 flag'u)
+![Screenshot_2](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/f4a1bed8-ea01-4436-921c-f0e8515eb051) (Class su 1000000 eilučių su O1 flag'u)
+![Screenshot_3](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/3967f561-b497-49e5-a37e-7e20642ebcc6) (Class su 100000 eilučių su O2 flag'u)
+![Screenshot_4](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/70e8d225-e981-453d-a723-91978ac74164) (Class su 1000000 eilučių su O2 flag'u)
+![Screenshot_5](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/2bcf32ad-7131-4428-b501-747c13d7eb1e) (Class su 100000 eilučių su O3 flag'u)
+![Screenshot_6](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/fc2c8813-2086-448a-819d-ec67f62739a9) (Class su 1000000 eilučių su O3 flag'u)
+![Screenshot_7struct](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/913b8608-99c6-4083-9bd8-e81ae7aa0c0e) (Struct su 100000 eilučių su O1 flag'u)
+![Screenshot_8](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/c53f20b6-0557-4ce2-981a-0fdca45ffff5) (Struct su 1000000 eilučių su O1 flag'u)
+![Screenshot_9](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/07b76210-0f06-4460-8524-2ef5bd24a685) (Struct su 100000 eilučių su O2 flag'u)
+![Screenshot_10](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/23026372-9bf0-45e1-95f2-bde1291d1528) (Struct su 1000000 eilučių su O2 flag'u)
+![Screenshot_11](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/3803194f-900c-4c65-8e8c-e612ce1b7fd3) (Struct su 100000 eilučių su O3 flag'u)
+![Screenshot_12](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/9fce359d-5f2c-4539-ace1-69674741f19f) (Struct su 1000000 eilučių su O3 flag'u)
+
+
+Išvada: Struct) flag'as O3 geriau optimizuoja failo skaitymą ir rušiavimą, negu kiti. Visi flag'ai nežymiai paspartina programos veikimą, palyginus su programos veikimu be flag'ų. Class) Su Class flag'ai O1, O2, O3 veikia beveik vienodai, nėra kažkokių didelių skirtumų tarp jų. Tačiau jie paspartina programos veikimą, palyginus su programos veikimu be flag'ų, yrač rašymą į failus. Taip pat atminties atžvilgiu ir Class ir Struct su kiekvienų iš trijų flag'ų naudojo beveik panašų kiekį atminties.(nuo 4.5 GB iki 4.7 GB)
 
 
 
