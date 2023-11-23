@@ -79,7 +79,7 @@ V.1.0:
 Naudojimosi instrukcija: 1)Naudotojas turi įdiegti CMake programą. Versija turi būti neankstesnė negu 3.28. 2) Reikia atsiųsti aplankalą "vector" arba "list"(arba ir tą ir tą).3) Naudotojas turi paleisti failą "RUNMEE.bat". Jame jau yra paruoštos komandos.(4 eilutėje jeigu yra kopijuojamas failas, todėl, naudotojas gali pakeisti failo pavadinimą į sau reikalingą failo pavadinimą).4)Aplankale "Debug" naudotojas galės rasti failą su plėtinių .exe. Jį reikia paleisti, tam, kad galima būtų naudotis programą.
 Programos galimybės : 1) Iš pradžių bus galimybė sugeneruoti savo failą , kuriam reikės nurodyti studentų skaičių, failo pavadinimą ir namų darbų kiekį. Studento vardas ir pavardė yra šabloniniai, namų darbų ir egzamino rezultatai generuojami atsitiktinai. 2) Toliau yra galimybė testuoti skaitymo, rušiavimo ir išvedimo laiką bet kuriai iš 3 strategijų. Yra galivybė pasirinkti kaip reikia rušiuoti studentus(pagal vardą, pavardę arba galutinio balo vidurkį). 3) Po šitų dviejų žingsnių yra galimybė įvesti duomenis arba nuskaityti iš failo. Yra galimybė pasirinkti kaip bus skaičiuojamas galutinis balas( su vidurkiu arba su mediana). 4) Tada naudotojas gali pasirinkti, kur jam patogiau gauti rezultatus - jie gali būti išvedami į ekraną arba į atskirą failą.
 
-Tirkinimui buvo pasirinkta pirma strategija, nes ji buvo pati greičiausia. Čia yra spartos Struct ir Class palyginimas.
+Tirkinimui buvo pasirinkta pirma strategija, nes ji buvo pati greičiausia. Čia yra spartos Struct ir Class palyginimas su Vector konteineriu.
 
 |       Vector su Struct       |  100000  |   1000000  | Vector su Class | 100000   | 1000000    |
 |:----------------------------:|:--------:|:----------:|:---------------:|----------|------------|
@@ -90,6 +90,12 @@ Tirkinimui buvo pasirinkta pirma strategija, nes ji buvo pati greičiausia. Čia
 | Sort kietiakų rušiavimas     | 843.6 ms | 10482.4 ms | -               | 867.8 ms | 10687.4 ms |
 | Rašymas į vargšiukų failą    | 275.2 ms | 2204.4 ms  | -               | 370.8 ms | 2348.2 ms  |
 | Rašymas į kietiakų failą     | 360.4 ms | 3189.4 ms  | -               | 339.2 ms | 3270.4ms   |
+
+Išvada: Kaip galima matyti iš lentelės pateiktos aukščiau, Struct ir Class veikimo greitis buvo panašus, tačiau Struct yra nežymiai greitesnis. Taip pat, Struct naudoja mažiau atminties negu Class. 
+![Screenshot_3](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/c7840a9d-f138-4e4e-bafe-9b465cf8f641) (100000 su Struct)
+![Screenshot_4](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/ee5376f9-2993-481d-a0e3-bd82b528954d) (1000000 su Struct)
+![Screenshot_28(class)](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/8e264aad-e178-44c6-9915-7813f42dc1b8) (100000 su Class)
+![Screenshot_29(class)](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/aca884d9-3c38-4a84-bf07-2c8f28765e1f) (1000000 su Class)
 
 
 
