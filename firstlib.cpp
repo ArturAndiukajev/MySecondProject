@@ -62,7 +62,7 @@ bool palyginimasPavardes(Studentas studentas1, Studentas studentas2)
 //------------------------------------------------------------------
 bool palyginimasVidurkis(Studentas studentas1, Studentas studentas2)
 {
-    return studentas1.getGalutinis<studentas2.getGalutinis();
+    return studentas1.getGalutinis()<studentas2.getGalutinis();
 }
 //-------------------------------------------------------------------
 
@@ -126,15 +126,15 @@ void skaitymas(vector<Studentas>& studentai, string Fname)
     string header;
     int stulp_kiekis=0;
     getline(input_file, header);
-    string v;
-    string p;
+    string vardas;
+    string pavarde;
     std::istringstream headerStream(header);
     string token;
     while (headerStream >> token)
     {
         stulp_kiekis++;
     }
-    while (input_file >> v >> p)
+    while (input_file >> vardas >> pavarde)
     {
         double nd_suma = 0.0;
         Studentas naujas_st;
@@ -159,15 +159,15 @@ void skaitymas(vector<Studentas>& studentai, string Fname)
             exit(1);
         }
         naujas_st.setEgzaminas(Egz);
-        nd_suma = accumulate(naujas_st.getND.begin(), naujas_st.getND.end(), 0.0);
-        naujas_st.galutinis1=rezultatas(nd_suma, naujas_st.getND.size(), naujas_st.Egz);
+        nd_suma = accumulate(naujas_st.getND().begin(), naujas_st.getND().end(), 0.0);
+        naujas_st.setGalutinis(rezultatas(nd_suma, naujas_st.getND().size(), naujas_st.getEgz()));
         studentai.push_back(naujas_st);
-        naujas_st.ND.clear();
+        naujas_st.getND().clear();
     }
 }
 //------------------------------------------------------------------------------------------------------
 bool Vargsiukai(const Studentas studentas, double riba)
 {
-    return studentas.getGalutinis < riba;
+    return studentas.getGalutinis() < riba;
 }
 //-------------------------------------------------------------------------------------------------------

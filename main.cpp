@@ -68,7 +68,7 @@ int main()
                 auto pradzia4=std::chrono::high_resolution_clock::now();
                 for(int i=0;i<studentai.size();i++)
                 {
-                    if(studentai[i].galutinis1<riba)
+                    if(studentai[i].getGalutinis()<riba)
                     {
                         vargsiukai.push_back(studentai[i]);
                     }
@@ -199,9 +199,9 @@ int main()
                 auto pradzia4=std::chrono::high_resolution_clock::now();
                 sort(studentai.rbegin(), studentai.rend(), [](const Studentas& a, const Studentas& b)
                 {
-                    return a.galutinis1 < b.galutinis1;
+                    return a.getGalutinis() < b.getGalutinis();
                 });
-                while (!studentai.empty() && studentai.back().galutinis1 < riba)
+                while (!studentai.empty() && studentai.back().getGalutinis() < riba)
                 {
                 vargsiukai.push_back(studentai.back());
                 studentai.pop_back();
@@ -453,9 +453,9 @@ int main()
         for(int i=0;i<stud_sk;i++)
         {
             cout<<"Iveskite "<<i+1<<" studento varda"<<endl;
-            cin>>naujas_st.vardas;
+            cin>>naujas_st.setVardas();
             cout<<"Iveskite "<<i+1<<" studento pavarde"<<endl;
-            cin>>naujas_st.pavarde;
+            cin>>naujas_st.setPavarde();
             if (pasirinkimas2=='A'||pasirinkimas2=='a')
             {
                 cout<<"Iveskite "<<i+1<<" studento namu darbo rezultatus (iveskite '-1', kai baigsite)"<<endl;

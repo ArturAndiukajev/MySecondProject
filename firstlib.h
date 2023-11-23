@@ -45,13 +45,15 @@ class Studentas{
         Studentas(istream& is);
         inline string getVardas() const { return vardas; }
         inline string getPavarde() const { return pavarde; }
-        inline string getGalutinis() const { return galutinis1; }
-        const vector<int>& getND() const { return ND; }
+        inline double getGalutinis() const { return galutinis1; }
+        inline int getEgz() const { return Egz; }
+        vector<int>& getND() { return ND; }
         istream& readStudent(istream&);
         void setVardas(const string& vardas) { this->vardas = vardas; }
         void setPavarde(const string& pavarde) { this->pavarde = pavarde; }
-        void setEgzaminas(const string& Egz) { this->Egz = Egz; }
+        void setEgzaminas(int Egz) { this->Egz = Egz; }
         void addND(int value) { ND.push_back(value); }
+        void setGalutinis(double value) { galutinis1 = value; }
 };
 
 double rezultatas(double suma,int kiekis,int egz);
