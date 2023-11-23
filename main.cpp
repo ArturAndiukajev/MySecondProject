@@ -453,9 +453,13 @@ int main()
         for(int i=0;i<stud_sk;i++)
         {
             cout<<"Iveskite "<<i+1<<" studento varda"<<endl;
-            cin>>naujas_st.setVardas();
+            string vardas;
+            cin>>vardas;
+            naujas_st.setVardas(vardas);
             cout<<"Iveskite "<<i+1<<" studento pavarde"<<endl;
-            cin>>naujas_st.setPavarde();
+            string pavarde;
+            cin>>pavarde;
+            naujas_st.setPavarde(pavarde);
             if (pasirinkimas2=='A'||pasirinkimas2=='a')
             {
                 cout<<"Iveskite "<<i+1<<" studento namu darbo rezultatus (iveskite '-1', kai baigsite)"<<endl;
@@ -476,7 +480,7 @@ int main()
                         }
                         else
                         {
-                            naujas_st.ND.push_back(nd_rez);
+                            naujas_st.addND(nd_rez);
                         }
                     }
                     else
@@ -502,7 +506,7 @@ int main()
                     int nd_rez;
                     nd_rez=rand()%10+1;
                     cout<<nd_rez<<endl;
-                    naujas_st.ND.push_back(nd_rez);
+                    naujas_st.addND(nd_rez);
                 }
             }
             else
@@ -513,13 +517,15 @@ int main()
             if (pasirinkimas2=='A'||pasirinkimas2=='a')
             {
                 cout<<"Iveskite "<<i+1<<" studento egzamino rezultata"<<endl;
-                cin>>naujas_st.Egz;
-                if(!cin>>naujas_st.Egz)
+                int Egz;
+                cin>>Egz;
+                naujas_st.setEgzaminas(Egz);
+                if(!cin>>naujas_st.getEgz())
                 {
                     cout<<"Iveskite skaiciu."<<endl;
                     return 1;
                 }
-                else if(naujas_st.Egz<=0 || naujas_st.Egz>10)
+                else if(naujas_st.getEgz()<=0 || naujas_st.getEgz()>10)
                 {
                     cout<<"Iveskite skaiciu didesni uz 0 ir mazesni uz 10."<<endl;
                     return 1;
@@ -527,19 +533,20 @@ int main()
             }
             else if(pasirinkimas2=='R'||pasirinkimas2=='r')
             {
-                naujas_st.Egz=rand()%10+1;
-                cout<<"Sugeneruotas Egzamino rezultatas"<<" "<<naujas_st.Egz<<endl;
+                naujas_st.setEgzaminas(rand()%10+1);
+                cout<<"Sugeneruotas Egzamino rezultatas"<<" "<<naujas_st.getEgz()<<endl;
             }
             else
             {
                 cout<<"Neteisingas pasirinkimas";
                 return 1;
             }
-        double nd_suma = accumulate(naujas_st.ND.begin(), naujas_st.ND.end(), 0.0);
-        naujas_st.galutinis1=rezultatas(nd_suma, naujas_st.ND.size(), naujas_st.Egz);
-        double mediana=Med(naujas_st.ND);
-        naujas_st.galutinis2=rezMed(mediana,naujas_st.Egz);
+        double nd_suma = accumulate(naujas_st.getND().begin(), naujas_st.getND().end(), 0.0);
+        naujas_st.setGalutinis(rezultatas(nd_suma, naujas_st.getND().size(), naujas_st.getEgz()));
+        double mediana=Med(naujas_st.getND());
+        naujas_st.setGalutinisMediana(rezMed(mediana,naujas_st.getEgz()));
         studentai.push_back(naujas_st);
+        naujas_st.getND().clear();
         }}
     else if(pasirinkimas3=='F'||pasirinkimas3=='f')
     {
@@ -566,8 +573,8 @@ int main()
         while (input_file >> v >> p)
         {
             Studentas naujas_st;
-            naujas_st.vardas = v;
-            naujas_st.pavarde = p;
+            naujas_st.setVardas(v);
+            naujas_st.setPavarde(p);
             for(int i=0;i<stulp_kiekis-3;i++)
             {
                 int nd;
@@ -577,20 +584,23 @@ int main()
                     cout << "Tarp duomenu yra netikslumu, pvz. namu darbo pazymys didesnis uz 10 arba vietoj pazymio irasyta raide." << endl;
                     return 1;
                 }
-                naujas_st.ND.push_back(nd);
+                naujas_st.addND(nd);
             }
-            if (!(input_file >> naujas_st.Egz)||(naujas_st.Egz>10)||(naujas_st.Egz<0))
+            int Egz;
+            if (!(input_file >> Egz )||(Egz>10)||(Egz<0))
             {
                 cout << "Nepavyko perskaityti egzamino rezultato is failo." << endl;
                 cout << "Tarp duomenu yra netikslumu, pvz. egzamino pazymys didesnis uz 10 arba vietoj pazymio irasyta raide." << endl;
                 return 1;
             }
-            double nd_suma = accumulate(naujas_st.ND.begin(), naujas_st.ND.end(), 0.0);
-            naujas_st.galutinis1 = rezultatas(nd_suma, naujas_st.ND.size(), naujas_st.Egz);
-            double mediana = Med(naujas_st.ND);
-            naujas_st.galutinis2 = rezMed(mediana, naujas_st.Egz);
+            naujas_st.setEgzaminas(Egz);
+            double nd_suma = accumulate(naujas_st.getND().begin(), naujas_st.getND().end(), 0.0);
+            naujas_st.setGalutinis(rezultatas(nd_suma, naujas_st.getND().size(), naujas_st.getEgz()));
+            double mediana = Med(naujas_st.getND());
+            naujas_st.setGalutinisMediana(rezMed(mediana, naujas_st.getEgz()));
             studentai.push_back(naujas_st);
             stud_sk++;
+            naujas_st.getND().clear();
         }
         input_file.close();
     }
@@ -626,17 +636,17 @@ int main()
         cout<<"------------------------------------------------------------------------------------------------------"<<endl;
         for(int i=0;i<stud_sk;i++)
         {
-            cout<<setw(20)<<left<<studentai[i].vardas<<setw(20)<<left<<studentai[i].pavarde<<setw(20)<<left;
+            cout<<setw(20)<<left<<studentai[i].getVardas()<<setw(20)<<left<<studentai[i].getPavarde()<<setw(20)<<left;
             if (pasirinkimas=='V'||pasirinkimas=='v')
             {
-                cout<<fixed<<setprecision(2)<<studentai[i].galutinis1<<endl;
+                cout<<fixed<<setprecision(2)<<studentai[i].getGalutinis()<<endl;
             }
-            else cout<<fixed<<setprecision(2)<<studentai[i].galutinis2<<endl;
+            else cout<<fixed<<setprecision(2)<<studentai[i].getGalutinisMediana()<<endl;
         }
         cout << "--------------------------------------------------"<<endl;
         for (auto &studentas : studentai)
         {
-            cout << "Objekto saugojimo atmintyje adresas studento " << studentas.vardas << " " << studentas.pavarde << ": "<< &studentas << endl;
+            cout << "Objekto saugojimo atmintyje adresas studento " << studentas.getVardas() << " " << studentas.getPavarde() << ": "<< &studentas << endl;
         }
     }
     else if(pasirinkimas4=='F'||pasirinkimas4=='f')
@@ -658,12 +668,12 @@ int main()
         outputFile<<"------------------------------------------------------------------------------------------------------"<<endl;
         for(int i=0;i<stud_sk;i++)
         {
-            outputFile<<setw(20)<<left<<studentai[i].vardas<<setw(20)<<left<<studentai[i].pavarde<<setw(20)<<left;
+            outputFile<<setw(20)<<left<<studentai[i].getVardas()<<setw(20)<<left<<studentai[i].getPavarde()<<setw(20)<<left;
             if (pasirinkimas=='V'||pasirinkimas=='v')
                 {
-                    outputFile<<fixed<<setprecision(2)<<studentai[i].galutinis1<<endl;
+                    outputFile<<fixed<<setprecision(2)<<studentai[i].getGalutinis()<<endl;
                 }
-            else    outputFile<<fixed<<setprecision(2)<<studentai[i].galutinis2<<endl;
+            else    outputFile<<fixed<<setprecision(2)<<studentai[i].getGalutinisMediana()<<endl;
         }
         outputFile.close();
     }
