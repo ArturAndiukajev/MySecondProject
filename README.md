@@ -118,18 +118,19 @@ Išvada: Kaip galima matyti iš lentelės pateiktos aukščiau, Struct ir Class 
 | Rašymas į vargšiukų failą    | 211.4 ms | 2008.2 ms | -                   | 198.8 ms | 2018.4 ms  | -                   | 199.4 ms | 1972.4 ms |
 | Rašymas į kietiakų failą     | 281 ms   | 3034 ms   | -                   | 277.2 ms | 2816.4 ms  | -                   | 275.2 ms | 2842 ms   |
 
-![Screenshot_1class](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/c3aea257-4ebe-430d-94b2-3e0415303bca) (Class su 100000 eilučių su O1 flag'u)
-![Screenshot_2](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/f4a1bed8-ea01-4436-921c-f0e8515eb051) (Class su 1000000 eilučių su O1 flag'u)
-![Screenshot_3](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/3967f561-b497-49e5-a37e-7e20642ebcc6) (Class su 100000 eilučių su O2 flag'u)
-![Screenshot_4](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/70e8d225-e981-453d-a723-91978ac74164) (Class su 1000000 eilučių su O2 flag'u)
-![Screenshot_5](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/2bcf32ad-7131-4428-b501-747c13d7eb1e) (Class su 100000 eilučių su O3 flag'u)
-![Screenshot_6](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/fc2c8813-2086-448a-819d-ec67f62739a9) (Class su 1000000 eilučių su O3 flag'u)
-![Screenshot_7struct](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/913b8608-99c6-4083-9bd8-e81ae7aa0c0e) (Struct su 100000 eilučių su O1 flag'u)
-![Screenshot_8](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/c53f20b6-0557-4ce2-981a-0fdca45ffff5) (Struct su 1000000 eilučių su O1 flag'u)
-![Screenshot_9](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/07b76210-0f06-4460-8524-2ef5bd24a685) (Struct su 100000 eilučių su O2 flag'u)
-![Screenshot_10](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/23026372-9bf0-45e1-95f2-bde1291d1528) (Struct su 1000000 eilučių su O2 flag'u)
-![Screenshot_11](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/3803194f-900c-4c65-8e8c-e612ce1b7fd3) (Struct su 100000 eilučių su O3 flag'u)
-![Screenshot_12](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/9fce359d-5f2c-4539-ace1-69674741f19f) (Struct su 1000000 eilučių su O3 flag'u)
+![Screenshot_1](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/7016a6e0-6669-4dfb-b67c-aaa010836404) (Struct su 100000 eilučių su O1 flag'u)
+![Screenshot_3](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/0ae55f36-5613-4c43-8677-c43aebcdb1ca) (Struct su 1000000 eilučių su O1 flag'u)
+![Screenshot_4](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/8f8d1b3c-638d-46e7-9f5f-17a67f925a17) (Struct su 100000 eilučių su O2 flag'u)
+![Screenshot_6](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/4a184f18-553c-4484-811a-d129dd8ad307) (Struct su 1000000 eilučių su O2 flag'u)
+![Screenshot_7](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/c908cfc4-87b9-4395-8255-5e3c84d4e1e8) (Struct su 100000 eilučių su O3 flag'u)
+![Screenshot_9](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/4cb30201-e933-40c3-8cdf-fd3ac4dc4609) (Struct su 1000000 eilučių su O3 flag'u)
+![Screenshot_10](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/acb9341e-19e8-42ee-82eb-fa860883da17) (Class su 100000 eilučių su O1 flag'u)
+![Screenshot_12](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/b0429623-82a6-4031-8a43-dccf1991fc62) (Class su 1000000 eilučių su O1 flag'u)
+![Screenshot_14](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/26f3c539-5d35-463f-bf63-c4b4cae1a072) (Class su 100000 eilučių su O2 flag'u)
+![Screenshot_15](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/bfb045ed-0165-47fb-9597-d7ab868ab538) (Class su 1000000 eilučių su O2 flag'u)
+![Screenshot_16](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/8e3f1c34-61d9-4275-a109-eeb8af880f01) (Class su 100000 eilučių su O3 flag'u)
+![Screenshot_18](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/25591a42-55c0-4847-a64f-9f96cca4e359) (Class su 1000000 eilučių su O3 flag'u)
+ 
 
 
 Išvada: Struct) flag'as O3 geriau optimizuoja failo skaitymą ir rušiavimą, negu kiti. Visi flag'ai nežymiai paspartina programos veikimą, palyginus su programos veikimu be flag'ų. Class) Su Class flag'ai O1, O2, O3 veikia beveik vienodai, nėra kažkokių didelių skirtumų tarp jų. Tačiau jie paspartina programos veikimą, palyginus su programos veikimu be flag'ų, yrač rašymą į failus. Taip pat atminties atžvilgiu ir Class ir Struct su kiekvienų iš trijų flag'ų naudojo beveik panašų kiekį atminties.(nuo 4.5 GB iki 4.7 GB)
