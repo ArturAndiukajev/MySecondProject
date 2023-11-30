@@ -98,25 +98,25 @@ Tirkinimui buvo pasirinkta pirma strategija, nes ji buvo pati greičiausia. Čia
 
 Išvada: Kaip galima matyti iš lentelės pateiktos aukščiau, Struct ir Class veikimo greitis buvo panašus, tačiau Struct yra nežymiai greitesnis. Taip pat, Struct naudoja mažiau atminties negu Class. 
 
-|     Vector su Struct.O1     |  100000  |  1000000  | Vector su Struct.O2 | 100000   | 1000000    | Vector su Struct.O3 | 100000   | 1000000    |
+|     Vector su Struct.O1      |  100000  |  1000000  | Vector su Struct.O2  | 100000   | 1000000    | Vector su Struct.O3  | 100000   | 1000000    |
 |:----------------------------:|:--------:|:---------:|:--------------------:|----------|------------|:--------------------:|----------|------------|
 | Failo generavimas            | 1156 ms  | 6912 ms   | -                    | 1156 ms  | 6912 ms    | -                    | 1156 ms  | 6912 ms    |
-| Failo skaitymas              | 671.8 ms | 6074.2 ms | -                    | 605.6 ms | 6043.8 ms  | -                    | 603.6 ms | 5998.8 ms  |
-| Rušiavimas į dvi kategorijas | 38.6 ms  | 407.4 ms  | -                    | 37.6 ms  | 401 ms     | -                    | 39.4 ms  | 393.6 ms   |
-| Sort vargšiukų rušiavimas    | 571.8 ms | 7198.6 ms | -                    | 575 ms   | 7191.6 ms  | -                    | 574.4 ms | 7161 ms    |
-| Sort kietiakų rušiavimas     | 849.6 ms | 10482 ms  | -                    | 843.2 ms | 10467.8 ms | -                    | 849.8 ms | 10479.4 ms |
-| Rašymas į vargšiukų failą    | 253 ms   | 2147.4 ms | -                    | 212.4 ms | 2135.2 ms  | -                    | 298 ms   | 2150.4 ms  |
-| Rašymas į kietiakų failą     | 310.8 ms | 2992.2 ms | -                    | 296.4 ms | 3001.6 ms  | -                    | 296.2 ms | 2979.4 ms  |
+| Failo skaitymas              | 422.8 ms | 4179 ms   | -                    | 421.4 ms | 4214 ms    | -                    | 418 ms   | 4191.8 ms  |
+| Rušiavimas į dvi kategorijas | 12.2 ms  | 137.6 ms  | -                    | 11.6 ms  | 133.2 ms   | -                    | 12.2 ms  | 132 ms     |
+| Sort vargšiukų rušiavimas    | 112.8 ms | 1475.4 ms | -                    | 113.4 ms | 1456.4 ms  | -                    | 108.8 ms | 1426.8 ms  |
+| Sort kietiakų rušiavimas     | 167.6 ms | 2156 ms   | -                    | 166.2 ms | 2135.6 ms  | -                    | 162 ms   | 2098.4 ms  |
+| Rašymas į vargšiukų failą    | 198.4 ms | 2105.4 ms | -                    | 197.4 ms | 1985.6 ms  | -                    | 200.8 ms | 1984.2 ms  |
+| Rašymas į kietiakų failą     | 275 ms   | 2771.2 ms | -                    | 277.6 ms | 2782.8 ms  | -                    | 272.2 ms | 2976.6 ms  |
 
-|      Vector su Class.O1     |  100000  |  1000000  | Vector su Class.O2 | 100000   | 1000000    | Vector su Class.O3 | 100000   | 1000000   |
+|      Vector su Class.O1      |  100000  |  1000000  | Vector su Class.O2  | 100000   | 1000000    | Vector su Class.O3  | 100000   | 1000000   |
 |:----------------------------:|:--------:|:---------:|:-------------------:|----------|------------|:-------------------:|----------|-----------|
 | Failo generavimas            | 1156 ms  | 6912 ms   | -                   | 1156 ms  | 6912 ms    | -                   | 1156 ms  | 6912 ms   |
-| Failo skaitymas              | 614.2 ms | 6083 ms   | -                   | 615.8 ms | 6094.2 ms  | -                   | 614.8 ms | 6088.8 ms |
-| Rušiavimas į dvi kategorijas | 39 ms    | 414.6 ms  | -                   | 40 ms    | 403.8 ms   | -                   | 40 ms    | 404.4 ms  |
-| Sort vargšiukų rušiavimas    | 585.2 ms | 7267.2 ms | -                   | 583.6 ms | 7334.2 ms  | -                   | 592.2 ms | 7268.2 ms |
-| Sort kietiakų rušiavimas     | 862.2 ms | 10673 ms  | -                   | 854.6 ms | 10597.2 ms | -                   | 858.2 ms | 10595 ms  |
-| Rašymas į vargšiukų failą    | 225.2 ms | 2261.4 ms | -                   | 221.2 ms | 2234 ms    | -                   | 222.4 ms | 2251 ms   |
-| Rašymas į kietiakų failą     | 338.2 ms | 3160.6 ms | -                   | 308.6 ms | 3158.6 ms  | -                   | 309.6 ms | 3138.2 ms |
+| Failo skaitymas              | 441.4 ms | 4254.2 ms | -                   | 420.4 ms | 4191.8 ms  | -                   | 419.2 ms | 4190.6 ms |
+| Rušiavimas į dvi kategorijas | 12.8 ms  | 140.8 ms  | -                   | 11.6 ms  | 137.6 ms   | -                   | 11.8 ms  | 132.6 ms  |
+| Sort vargšiukų rušiavimas    | 116.4 ms | 1474.8 ms | -                   | 113.2 ms | 1453.8 ms  | -                   | 109.4 ms | 1433.6 ms |
+| Sort kietiakų rušiavimas     | 168.8 ms | 2170.8 ms | -                   | 162.2 ms | 2140.2 ms  | -                   | 159.8 ms | 2098.6 ms |
+| Rašymas į vargšiukų failą    | 211.4 ms | 2008.2 ms | -                   | 198.8 ms | 2018.4 ms  | -                   | 199.4 ms | 1972.4 ms |
+| Rašymas į kietiakų failą     | 281 ms   | 3034 ms   | -                   | 277.2 ms | 2816.4 ms  | -                   | 275.2 ms | 2842 ms   |
 
 ![Screenshot_1class](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/c3aea257-4ebe-430d-94b2-3e0415303bca) (Class su 100000 eilučių su O1 flag'u)
 ![Screenshot_2](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/f4a1bed8-ea01-4436-921c-f0e8515eb051) (Class su 1000000 eilučių su O1 flag'u)
