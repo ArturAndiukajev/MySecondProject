@@ -131,11 +131,12 @@ Išvada: Kaip galima matyti iš lentelės pateiktos aukščiau, Struct ir Class 
 ![Screenshot_16](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/8e3f1c34-61d9-4275-a109-eeb8af880f01) (Class su 100000 eilučių su O3 flag'u)
 ![Screenshot_18](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/25591a42-55c0-4847-a64f-9f96cca4e359) (Class su 1000000 eilučių su O3 flag'u)
  
+![Screenshot_2](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/7db400d3-a6c8-44ae-ba34-f34b4e9e9ca3) (Struct su O1 flag'u)
+![Screenshot_5](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/bce73136-97f2-4234-b973-e00074e13a2b) (Struct su O2 flag'u)
+![Screenshot_8](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/e2045ae0-ed0a-4760-a8e8-61a52307d6c0) (Struct su O3 flag'u)
+![Screenshot_11](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/d93d6be1-ed75-4ad8-8eff-a3746859b9a2) (Class su O1 flag'u)
+![Screenshot_13](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/84f8d533-85f1-4857-988e-0181f50015e1) (Class su O2 flag'u)
+![Screenshot_17](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/002a708f-7052-4956-81b5-3b5fb0a34d3d) (Class su O3 flag'u)
 
 
-Išvada: Struct) flag'as O3 geriau optimizuoja failo skaitymą ir rušiavimą, negu kiti. Visi flag'ai nežymiai paspartina programos veikimą, palyginus su programos veikimu be flag'ų. Class) Su Class flag'ai O1, O2, O3 veikia beveik vienodai, nėra kažkokių didelių skirtumų tarp jų. Tačiau jie paspartina programos veikimą, palyginus su programos veikimu be flag'ų, yrač rašymą į failus. Taip pat atminties atžvilgiu ir Class ir Struct su kiekvienų iš trijų flag'ų naudojo beveik panašų kiekį atminties.(nuo 4.5 GB iki 4.7 GB)
-
-
-
-
-
+Išvados: Struct) flag'as O3 geriau optimizuoja failo skaitymą ir rušiavimą, negu kiti. Visi flag'ai žymiai paspartina programos veikimą, palyginus su programos veikimu be flag'ų. Visų trijų flag'ų optimizavimas beveik nesiskiria. Tačiau exe failo dydis beveik tris kartus padidėja naudojant flag'us - be flag'ų 915 KB , su O1 flag'u -2555 KB, su O2 -3046 KB, su O3 - 2938 KB. Class) Su Class flag'ai O1, O2, O3 veikia taip pat beveik vienodai, nėra kažkokių didelių skirtumų tarp jų. Tačiau jie paspartina programos veikimą, palyginus su programos veikimu be flag'ų. Exe failo dydis be flag'ų -927 KB, su O1- 2610 KB, su O2 -3147 KB, su O3 - 2953 KB.  Taip pat atminties atžvilgiu ir Class ir Struct su kiekvienų iš trijų flag'ų naudojo beveik panašų kiekį atminties.(nuo 4.4 GB iki 4.9 GB)
