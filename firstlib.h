@@ -67,6 +67,20 @@ class Studentas{
         galutinis1 = other.galutinis1;
         galutinis2 = other.galutinis2;
         }
+
+        Studentas& operator=(const Studentas& other)
+        {
+        if (this != &other)
+        {
+            vardas = other.vardas;
+            pavarde = other.pavarde;
+            ND = other.ND;
+            Egz = other.Egz;
+            galutinis1 = other.galutinis1;
+            galutinis2 = other.galutinis2;
+        }
+        return *this;
+        }
 };
 
 double rezultatas(double suma,int kiekis,int egz);
