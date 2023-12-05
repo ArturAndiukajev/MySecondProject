@@ -56,6 +56,17 @@ class Studentas{
         void addND(int value) { ND.push_back(value); }
         void setGalutinis(double value) { galutinis1 = value; }
         void setGalutinisMediana(double value) {galutinis2 = value; }
+        ~Studentas(){ND.clear();}
+
+        Studentas(const Studentas& other)
+        {
+        vardas = other.vardas;
+        pavarde = other.pavarde;
+        ND = other.ND;
+        Egz = other.Egz;
+        galutinis1 = other.galutinis1;
+        galutinis2 = other.galutinis2;
+        }
 };
 
 double rezultatas(double suma,int kiekis,int egz);
