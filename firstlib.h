@@ -81,6 +81,22 @@ class Studentas{
         }
         return *this;
         }
+
+        friend istream& operator>>(istream& is, Studentas& studentas) {return studentas.readStudent(is);}
+        friend ostream& operator<<(ostream& os, const Studentas& studentas)
+        {
+            os << "Vardas: " << studentas.vardas <<endl;
+            os << "Pavarde: " << studentas.pavarde <<endl;
+            os << "ND: ";
+            for (int nd : studentas.ND)
+            {
+                os << nd << " ";
+            }
+            os << "\nEgzaminas: " << studentas.Egz <<endl;
+            os << "Galutinis su vidurkiu: " << studentas.galutinis1 <<endl;
+            os << "Galutinis su mediana: " << studentas.galutinis2 <<endl;
+            return os;
+        }
 };
 
 double rezultatas(double suma,int kiekis,int egz);
