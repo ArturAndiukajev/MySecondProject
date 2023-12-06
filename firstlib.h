@@ -84,10 +84,18 @@ class Studentas{
 
         friend istream& operator>>(istream& is, Studentas& studentas)
         {
-
+            int stud_sk;
+            cout<<"Iveskite studentu kieki: "<<endl;
+            is>>stud_sk;
+            if(stud_sk<=0)
+            {
+                cerr<<"Studentu skaicius turi buti didesnis uz 0."<<endl;
+            }
             cout<<"Pasirinkite buda, kaip pildysite namu darbo pazimius. Jeigu norit ivesti patys rasykite 'A', jeigu atsitiktinai - rasykite 'R'"<<endl;
             char pasirinkimas2;
             is>>pasirinkimas2;
+            for(int i=0;i<stud_sk;i++)
+            {
             cout<<"Iveskite studento varda"<<endl;
             is>>studentas.vardas;
             cout<<"Iveskite studento pavarde"<<endl;
@@ -130,7 +138,7 @@ class Studentas{
                 if(nd_kiekis<=0)
                 {
                     cout<<"Iveskite skaiciu didesni uz 0."<<endl;
-                    return 1;
+
                 }
                 cout<<"Sugeneruoti namu darbu rezultatai:"<<endl;
                 for(int i=0;i<nd_kiekis;i++)
@@ -144,37 +152,38 @@ class Studentas{
             else
             {
                 cout<<"Neteisingas pasirinkimas";
-                return 1;
+
             }
             if (pasirinkimas2=='A'||pasirinkimas2=='a')
             {
-                cout<<"Iveskite "<<i+1<<" studento egzamino rezultata"<<endl;
+                cout<<"Iveskite studento egzamino rezultata"<<endl;
                 is>>studentas.Egz;
-                if(!is>>studentas.Egz())
+                if(!is>>studentas.Egz)
                 {
                     cout<<"Iveskite skaiciu."<<endl;
-                    return 1;
+
                 }
-                else if(studentas.Egz()<=0 || studentas.Egz()>10)
+                else if(studentas.Egz<=0 || studentas.Egz>10)
                 {
                     cout<<"Iveskite skaiciu didesni uz 0 ir mazesni uz 10."<<endl;
-                    return 1;
+
                 }
             }
             else if(pasirinkimas2=='R'||pasirinkimas2=='r')
             {
-                studentas.Egz(rand()%10+1);
-                cout<<"Sugeneruotas Egzamino rezultatas"<<" "<<studentas.Egz()<<endl;
+                studentas.Egz=rand()%10+1;
+                cout<<"Sugeneruotas Egzamino rezultatas"<<" "<<studentas.Egz<<endl;
             }
             else
             {
                 cout<<"Neteisingas pasirinkimas";
-                return 1;
+
             }
-            return is;
 
         }
-        /*
+        return is;
+        }
+
         friend ostream& operator<<(ostream& os, const Studentas& studentas)
         {
             os << "Vardas: " << studentas.vardas <<endl;
@@ -188,7 +197,7 @@ class Studentas{
             os << "Galutinis su vidurkiu: " << studentas.galutinis1 <<endl;
             os << "Galutinis su mediana: " << studentas.galutinis2 <<endl;
             return os;
-        } */
+        }
 };
 
 double rezultatas(double suma,int kiekis,int egz);
