@@ -82,7 +82,99 @@ class Studentas{
         return *this;
         }
 
-        friend istream& operator>>(istream& is, Studentas& studentas) {return studentas.readStudent(is);}
+        friend istream& operator>>(istream& is, Studentas& studentas)
+        {
+
+            cout<<"Pasirinkite buda, kaip pildysite namu darbo pazimius. Jeigu norit ivesti patys rasykite 'A', jeigu atsitiktinai - rasykite 'R'"<<endl;
+            char pasirinkimas2;
+            is>>pasirinkimas2;
+            cout<<"Iveskite studento varda"<<endl;
+            is>>studentas.vardas;
+            cout<<"Iveskite studento pavarde"<<endl;
+            is>>studentas.pavarde;
+            if (pasirinkimas2=='A'||pasirinkimas2=='a')
+            {
+                cout<<"Iveskite studento namu darbo rezultatus (iveskite '-1', kai baigsite)"<<endl;
+                int nd_rez;
+                while (true)
+                {
+                    if (is >> nd_rez)
+                    {
+                        if (nd_rez == -1)
+                        {
+                            break;
+                        }
+                        else if(nd_rez>10 || nd_rez<0)
+                        {
+                            is.clear();
+                            is.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                            cout<<"Pazymys negali buti didesnis uz 10 arba mazesnis uz 0"<<endl;
+                        }
+                        else
+                        {
+                            studentas.addND(nd_rez);
+                        }
+                    }
+                    else
+                    {
+                        is.clear();
+                        is.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                        cout << "Tai ne skaicius." << endl;
+                    }
+                }}
+            else if(pasirinkimas2=='R'||pasirinkimas2=='r')
+            {
+                int nd_kiekis;
+                cout<<"iveskite kiek namu darbu rezultatu noresite sugeneruoti"<<endl;
+                is>>nd_kiekis;
+                if(nd_kiekis<=0)
+                {
+                    cout<<"Iveskite skaiciu didesni uz 0."<<endl;
+                    return 1;
+                }
+                cout<<"Sugeneruoti namu darbu rezultatai:"<<endl;
+                for(int i=0;i<nd_kiekis;i++)
+                {
+                    int nd_rez;
+                    nd_rez=rand()%10+1;
+                    cout<<nd_rez<<endl;
+                    studentas.addND(nd_rez);
+                }
+            }
+            else
+            {
+                cout<<"Neteisingas pasirinkimas";
+                return 1;
+            }
+            if (pasirinkimas2=='A'||pasirinkimas2=='a')
+            {
+                cout<<"Iveskite "<<i+1<<" studento egzamino rezultata"<<endl;
+                is>>studentas.Egz;
+                if(!is>>studentas.Egz())
+                {
+                    cout<<"Iveskite skaiciu."<<endl;
+                    return 1;
+                }
+                else if(studentas.Egz()<=0 || studentas.Egz()>10)
+                {
+                    cout<<"Iveskite skaiciu didesni uz 0 ir mazesni uz 10."<<endl;
+                    return 1;
+                }
+            }
+            else if(pasirinkimas2=='R'||pasirinkimas2=='r')
+            {
+                studentas.Egz(rand()%10+1);
+                cout<<"Sugeneruotas Egzamino rezultatas"<<" "<<studentas.Egz()<<endl;
+            }
+            else
+            {
+                cout<<"Neteisingas pasirinkimas";
+                return 1;
+            }
+            return is;
+
+        }
+        /*
         friend ostream& operator<<(ostream& os, const Studentas& studentas)
         {
             os << "Vardas: " << studentas.vardas <<endl;
@@ -92,11 +184,11 @@ class Studentas{
             {
                 os << nd << " ";
             }
-            os << "\nEgzaminas: " << studentas.Egz <<endl;
+            os << "Egzaminas: " << studentas.Egz <<endl;
             os << "Galutinis su vidurkiu: " << studentas.galutinis1 <<endl;
             os << "Galutinis su mediana: " << studentas.galutinis2 <<endl;
             return os;
-        }
+        } */
 };
 
 double rezultatas(double suma,int kiekis,int egz);
