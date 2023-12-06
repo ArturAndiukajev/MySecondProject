@@ -28,6 +28,7 @@ using std::ifstream;
 using std::ofstream;
 using std::cerr;
 using std::istream;
+using std::ostream;
 
 
 
@@ -84,18 +85,10 @@ class Studentas{
 
         friend istream& operator>>(istream& is, Studentas& studentas)
         {
-            int stud_sk;
-            cout<<"Iveskite studentu kieki: "<<endl;
-            is>>stud_sk;
-            if(stud_sk<=0)
-            {
-                cerr<<"Studentu skaicius turi buti didesnis uz 0."<<endl;
-            }
+
             cout<<"Pasirinkite buda, kaip pildysite namu darbo pazimius. Jeigu norit ivesti patys rasykite 'A', jeigu atsitiktinai - rasykite 'R'"<<endl;
             char pasirinkimas2;
             is>>pasirinkimas2;
-            for(int i=0;i<stud_sk;i++)
-            {
             cout<<"Iveskite studento varda"<<endl;
             is>>studentas.vardas;
             cout<<"Iveskite studento pavarde"<<endl;
@@ -129,7 +122,8 @@ class Studentas{
                         is.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                         cout << "Tai ne skaicius." << endl;
                     }
-                }}
+                }
+            }
             else if(pasirinkimas2=='R'||pasirinkimas2=='r')
             {
                 int nd_kiekis;
@@ -179,23 +173,15 @@ class Studentas{
                 cout<<"Neteisingas pasirinkimas";
 
             }
-
-        }
         return is;
         }
 
         friend ostream& operator<<(ostream& os, const Studentas& studentas)
         {
-            os << "Vardas: " << studentas.vardas <<endl;
-            os << "Pavarde: " << studentas.pavarde <<endl;
-            os << "ND: ";
-            for (int nd : studentas.ND)
-            {
-                os << nd << " ";
-            }
-            os << "Egzaminas: " << studentas.Egz <<endl;
-            os << "Galutinis su vidurkiu: " << studentas.galutinis1 <<endl;
-            os << "Galutinis su mediana: " << studentas.galutinis2 <<endl;
+
+            os<<setw(20)<<left<<studentas.vardas<<setw(20)<<left<<studentas.pavarde<<setw(20)<<left;
+            os<<fixed<<setprecision(2)<<studentas.galutinis1<<endl;
+            os << "--------------------------------------------------"<<endl;
             return os;
         }
 };
