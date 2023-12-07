@@ -82,6 +82,39 @@ class Studentas{
         }
         return *this;
         }
+        double rezultatas()
+        {
+            try
+            {
+                if (ND.size() == 0)
+                {
+                    throw std::invalid_argument("Kiekis negali buti lygus nuliui");
+                }}
+            catch (const std::exception& e)
+            {
+                cout << "Dalyba is nulio. " << e.what() << endl;
+            }
+            return 0.4 * (accumulate(ND.begin(), ND.end(), 0.0) / ND.size()) + 0.6 * Egz;
+        }
+
+        double Med()
+        {
+            sort(ND.begin(), ND.end());
+            size_t size = ND.size();
+            if (size % 2 == 0)
+            {
+                size_t middle = size / 2;
+                return (ND[middle - 1] + ND[middle]) / 2.0;
+            }
+            else
+            {
+                return ND[size / 2];
+            }
+        }
+        double rezMed(double mediana)
+        {
+            return 0.4 * mediana + 0.6 * Egz;
+        }
 
         friend istream& operator>>(istream& is, Studentas& studentas)
         {
@@ -173,9 +206,63 @@ class Studentas{
                 cout<<"Neteisingas pasirinkimas";
 
             }
+        double nd_suma = accumulate(studentas.ND.begin(), studentas.ND.end(), 0.0);
+        studentas.galutinis1=studentas.rezultatas();
+        double mediana=studentas.Med();
+        studentas.galutinis2=studentas.rezMed(mediana);
+        studentas.ND.clear();
         return is;
         }
 
+
+        friend ifstream& operator>>(ifstream& ifs, Studentas& studentas)
+        {
+            string Fname;
+            cout<<"Iveskite failo pavadinima su '.txt'"<<endl;
+            ifs>>Fname;
+            ifstream input_file(Fname);
+            if (!input_file.is_open())
+            {
+                cout << "Failo atidarymas negalimas: " << Fname << endl;
+            }
+            string header;
+            int stulp_kiekis=0;
+            getline(input_file, header);
+            string v;
+            string p;
+            std::istringstream headerStream(header);
+            string token;
+            while (headerStream >> token)
+            {
+                stulp_kiekis++;
+            }
+            while (input_file >> v >> p)
+            {
+                Studentas naujas_st;
+                naujas_st.setVardas(v);
+                naujas_st.setPavarde(p);
+                for(int i=0;i<stulp_kiekis-3;i++)
+                {
+                    int nd;
+                    if (!(input_file >> nd)||(nd>10)||(nd<0))
+                    {
+                        cout << "Nepavyko perskaityti namu darbo rezultato is failo." << endl;
+                        cout << "Tarp duomenu yra netikslumu, pvz. namu darbo pazymys didesnis uz 10 arba vietoj pazymio irasyta raide." << endl;
+
+                    }
+                    naujas_st.addND(nd);
+                }
+                int Egz;
+                if (!(input_file >> Egz )||(Egz>10)||(Egz<0))
+                {
+                    cout << "Nepavyko perskaityti egzamino rezultato is failo." << endl;
+                    cout << "Tarp duomenu yra netikslumu, pvz. egzamino pazymys didesnis uz 10 arba vietoj pazymio irasyta raide." << endl;
+
+                }
+            }
+            input_file.close();
+            return ifs;
+        }
         friend ostream& operator<<(ostream& os, const Studentas& studentas)
         {
 

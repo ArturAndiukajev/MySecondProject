@@ -437,163 +437,25 @@ int main()
     cout<<"Pasirinkite buda, kaip pildysite duomenys. Jeigu norit ivesti patys rasykite 'P', jeigu norite nuskaityti is failo - 'F'"<<endl;
     char pasirinkimas3;
     cin>>pasirinkimas3;
+    //------------------------------------------------Duomenu ivedimas----------------------------------------------------------------------------------
+
     if(pasirinkimas3=='P'||pasirinkimas3=='p')
     {
-        cout<<"Iveskite studentu kieki: "<<endl;
-        cin>>stud_sk;
+         cout<<"Iveskite studentu skaiciu"<<endl;
+         cin>>stud_sk;
         if(stud_sk<=0)
         {
             cerr<<"Studentu skaicius turi buti didesnis uz 0."<<endl;
-            return 1;
         }
-        cout<<"Pasirinkite buda, kaip pildysite namu darbo pazimius. Jeigu norit ivesti patys rasykite 'A', jeigu atsitiktinai - rasykite 'R'"<<endl;
-        char pasirinkimas2;
-        cin>>pasirinkimas2;
-    //------------------------------------------------Duomenu ivedimas----------------------------------------------------------------------------------
         for(int i=0;i<stud_sk;i++)
         {
-            cout<<"Iveskite "<<i+1<<" studento varda"<<endl;
-            string vardas;
-            cin>>vardas;
-            naujas_st.setVardas(vardas);
-            cout<<"Iveskite "<<i+1<<" studento pavarde"<<endl;
-            string pavarde;
-            cin>>pavarde;
-            naujas_st.setPavarde(pavarde);
-            if (pasirinkimas2=='A'||pasirinkimas2=='a')
-            {
-                cout<<"Iveskite "<<i+1<<" studento namu darbo rezultatus (iveskite '-1', kai baigsite)"<<endl;
-                int nd_rez;
-                while (true)
-                {
-                    if (cin >> nd_rez)
-                    {
-                        if (nd_rez == -1)
-                        {
-                            break;
-                        }
-                        else if(nd_rez>10 || nd_rez<0)
-                        {
-                            cin.clear();
-                            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                            cout<<"Pazymys negali buti didesnis uz 10 arba mazesnis uz 0"<<endl;
-                        }
-                        else
-                        {
-                            naujas_st.addND(nd_rez);
-                        }
-                    }
-                    else
-                    {
-                        cin.clear();
-                        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                        cout << "Tai ne skaicius." << endl;
-                    }
-                }}
-            else if(pasirinkimas2=='R'||pasirinkimas2=='r')
-            {
-                int nd_kiekis;
-                cout<<"iveskite kiek namu darbu rezultatu noresite sugeneruoti"<<endl;
-                cin>>nd_kiekis;
-                if(nd_kiekis<=0)
-                {
-                    cout<<"Iveskite skaiciu didesni uz 0."<<endl;
-                    return 1;
-                }
-                cout<<"Sugeneruoti namu darbu rezultatai:"<<endl;
-                for(int i=0;i<nd_kiekis;i++)
-                {
-                    int nd_rez;
-                    nd_rez=rand()%10+1;
-                    cout<<nd_rez<<endl;
-                    naujas_st.addND(nd_rez);
-                }
-            }
-            else
-            {
-                cout<<"Neteisingas pasirinkimas";
-                return 1;
-            }
-            if (pasirinkimas2=='A'||pasirinkimas2=='a')
-            {
-                cout<<"Iveskite "<<i+1<<" studento egzamino rezultata"<<endl;
-                int Egz;
-                cin>>Egz;
-                naujas_st.setEgzaminas(Egz);
-                if(!cin>>naujas_st.getEgz())
-                {
-                    cout<<"Iveskite skaiciu."<<endl;
-                    return 1;
-                }
-                else if(naujas_st.getEgz()<=0 || naujas_st.getEgz()>10)
-                {
-                    cout<<"Iveskite skaiciu didesni uz 0 ir mazesni uz 10."<<endl;
-                    return 1;
-                }
-            }
-            else if(pasirinkimas2=='R'||pasirinkimas2=='r')
-            {
-                naujas_st.setEgzaminas(rand()%10+1);
-                cout<<"Sugeneruotas Egzamino rezultatas"<<" "<<naujas_st.getEgz()<<endl;
-            }
-            else
-            {
-                cout<<"Neteisingas pasirinkimas";
-                return 1;
-            }
-        double nd_suma = accumulate(naujas_st.getND().begin(), naujas_st.getND().end(), 0.0);
-        naujas_st.setGalutinis(rezultatas(nd_suma, naujas_st.getND().size(), naujas_st.getEgz()));
-        double mediana=Med(naujas_st.getND());
-        naujas_st.setGalutinisMediana(rezMed(mediana,naujas_st.getEgz()));
+        cin>>naujas_st;
         studentai.push_back(naujas_st);
-        naujas_st.getND().clear();
-        }}
-    else if(pasirinkimas3=='F'||pasirinkimas3=='f')
+        }
+    }
+    /*else if(pasirinkimas3=='F'||pasirinkimas3=='f')
     {
-        string Fname;
-        cout<<"Iveskite failo pavadinima su '.txt'"<<endl;
-        cin>>Fname;
-        ifstream input_file(Fname);
-        if (!input_file.is_open())
-        {
-            cout << "Failo atidarymas negalimas: " << Fname << endl;
-            return 1;
-        }
-        string header;
-        int stulp_kiekis=0;
-        getline(input_file, header);
-        string v;
-        string p;
-        std::istringstream headerStream(header);
-        string token;
-        while (headerStream >> token)
-        {
-            stulp_kiekis++;
-        }
-        while (input_file >> v >> p)
-        {
-            Studentas naujas_st;
-            naujas_st.setVardas(v);
-            naujas_st.setPavarde(p);
-            for(int i=0;i<stulp_kiekis-3;i++)
-            {
-                int nd;
-                if (!(input_file >> nd)||(nd>10)||(nd<0))
-                {
-                    cout << "Nepavyko perskaityti namu darbo rezultato is failo." << endl;
-                    cout << "Tarp duomenu yra netikslumu, pvz. namu darbo pazymys didesnis uz 10 arba vietoj pazymio irasyta raide." << endl;
-                    return 1;
-                }
-                naujas_st.addND(nd);
-            }
-            int Egz;
-            if (!(input_file >> Egz )||(Egz>10)||(Egz<0))
-            {
-                cout << "Nepavyko perskaityti egzamino rezultato is failo." << endl;
-                cout << "Tarp duomenu yra netikslumu, pvz. egzamino pazymys didesnis uz 10 arba vietoj pazymio irasyta raide." << endl;
-                return 1;
-            }
-            naujas_st.setEgzaminas(Egz);
+            inputFile>>naujas_st;
             double nd_suma = accumulate(naujas_st.getND().begin(), naujas_st.getND().end(), 0.0);
             naujas_st.setGalutinis(rezultatas(nd_suma, naujas_st.getND().size(), naujas_st.getEgz()));
             double mediana = Med(naujas_st.getND());
@@ -601,9 +463,8 @@ int main()
             studentai.push_back(naujas_st);
             stud_sk++;
             naujas_st.getND().clear();
-        }
-        input_file.close();
-    }
+            studentai.push_back(naujas_st);
+    } */
     else
     {
         cout<<"Neteisingas pasirinkimas"<<endl;
@@ -636,12 +497,7 @@ int main()
         cout<<"------------------------------------------------------------------------------------------------------"<<endl;
         for(int i=0;i<stud_sk;i++)
         {
-            cout<<setw(20)<<left<<studentai[i].getVardas()<<setw(20)<<left<<studentai[i].getPavarde()<<setw(20)<<left;
-            if (pasirinkimas=='V'||pasirinkimas=='v')
-            {
-                cout<<fixed<<setprecision(2)<<studentai[i].getGalutinis()<<endl;
-            }
-            else cout<<fixed<<setprecision(2)<<studentai[i].getGalutinisMediana()<<endl;
+            cout<<studentai[i];
         }
         cout << "--------------------------------------------------"<<endl;
         for (auto &studentas : studentai)
