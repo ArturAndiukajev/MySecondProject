@@ -453,18 +453,12 @@ int main()
         studentai.push_back(naujas_st);
         }
     }
-    /*else if(pasirinkimas3=='F'||pasirinkimas3=='f')
+    else if(pasirinkimas3=='F'||pasirinkimas3=='f')
     {
-            inputFile>>naujas_st;
-            double nd_suma = accumulate(naujas_st.getND().begin(), naujas_st.getND().end(), 0.0);
-            naujas_st.setGalutinis(rezultatas(nd_suma, naujas_st.getND().size(), naujas_st.getEgz()));
-            double mediana = Med(naujas_st.getND());
-            naujas_st.setGalutinisMediana(rezMed(mediana, naujas_st.getEgz()));
-            studentai.push_back(naujas_st);
-            stud_sk++;
-            naujas_st.getND().clear();
-            studentai.push_back(naujas_st);
-    } */
+            ifstream input_File;
+            input_File>>naujas_st;
+            input_File.close();
+    }
     else
     {
         cout<<"Neteisingas pasirinkimas"<<endl;

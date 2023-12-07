@@ -215,15 +215,16 @@ class Studentas{
         }
 
 
-        friend ifstream& operator>>(ifstream& ifs, Studentas& studentas)
+        friend ifstream& operator>>(ifstream& input_file, Studentas& studentas)
         {
             string Fname;
             cout<<"Iveskite failo pavadinima su '.txt'"<<endl;
-            ifs>>Fname;
-            ifstream input_file(Fname);
+            cin>>Fname;
+            input_file.open(Fname);
             if (!input_file.is_open())
             {
                 cout << "Failo atidarymas negalimas: " << Fname << endl;
+                return input_file;
             }
             string header;
             int stulp_kiekis=0;
@@ -238,9 +239,8 @@ class Studentas{
             }
             while (input_file >> v >> p)
             {
-                Studentas naujas_st;
-                naujas_st.setVardas(v);
-                naujas_st.setPavarde(p);
+                studentas.setVardas(v);
+                studentas.setPavarde(p);
                 for(int i=0;i<stulp_kiekis-3;i++)
                 {
                     int nd;
@@ -248,20 +248,25 @@ class Studentas{
                     {
                         cout << "Nepavyko perskaityti namu darbo rezultato is failo." << endl;
                         cout << "Tarp duomenu yra netikslumu, pvz. namu darbo pazymys didesnis uz 10 arba vietoj pazymio irasyta raide." << endl;
-
+                        return input_file;
                     }
-                    naujas_st.addND(nd);
+                    studentas.addND(nd);
                 }
                 int Egz;
                 if (!(input_file >> Egz )||(Egz>10)||(Egz<0))
                 {
                     cout << "Nepavyko perskaityti egzamino rezultato is failo." << endl;
                     cout << "Tarp duomenu yra netikslumu, pvz. egzamino pazymys didesnis uz 10 arba vietoj pazymio irasyta raide." << endl;
-
+                    return input_file;
                 }
+                double nd_suma = accumulate(studentas.ND.begin(), studentas.ND.end(), 0.0);
+                studentas.galutinis1=studentas.rezultatas();
+                double mediana=studentas.Med();
+                studentas.galutinis2=studentas.rezMed(mediana);
+                studentas.ND.clear();
             }
             input_file.close();
-            return ifs;
+            return input_file;
         }
         friend ostream& operator<<(ostream& os, const Studentas& studentas)
         {
@@ -271,6 +276,21 @@ class Studentas{
             os << "--------------------------------------------------"<<endl;
             return os;
         }
+
+        /*friend ofstream& operator<<(ofstream& os, const Studentas& studentas)
+        {
+            os << setw(20) << left << studentas.getVardas() << setw(20) << left << studentas.getPavarde() << setw(20) << left;
+            if (pasirinkimas == 'V' || pasirinkimas == 'v')
+            {
+                os << fixed << setprecision(2) << studentas.getGalutinis() << endl;
+            }
+            else
+            {
+                os << fixed << setprecision(2) << studentas.getGalutinisMediana() << endl;
+            }
+            os << "--------------------------------------------------" << endl;
+            return os;
+        }*/
 };
 
 double rezultatas(double suma,int kiekis,int egz);
