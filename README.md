@@ -152,4 +152,7 @@ V1.2:
 ![Screenshot_6](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/815d5b34-4ef9-4b1f-a7ea-73d5e7597f95)
 ![Screenshot_7](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/b0d7a8b7-cd1b-46ae-a3f2-3aa335f13756)
 
-
+V1.5:
+Šioje versijoje buvo sukurta bazinę (abstrakti) klasę skirtą bendrai aprašyti žmogų (Zmogus) ir tuomet iš jos padaryta išvestinę (derived) klasę - Studentas.
+![Screenshot_1](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/1ce0ed4e-8c0b-4c7b-aeb8-a3d642e49648)
+![Screenshot_2](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/7434603c-e92a-4a83-9cdd-e2fd32134313)
