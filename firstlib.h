@@ -38,9 +38,13 @@ class Zmogus{
     public:
         Zmogus(const string& vardas, const string& pavarde) : vardas(vardas), pavarde(pavarde) {}
         Zmogus(const Zmogus& other) : vardas(other.vardas), pavarde(other.pavarde) {}
+        Zmogus() : vardas(""), pavarde("") {}
         virtual ~Zmogus() = default;
-        const std::string& getVardas() const {return vardas;}
-        const std::string& getPavarde() const {return pavarde;}
+        virtual string getVardas() const {return vardas;}
+        virtual string getPavarde() const {return pavarde;}
+        virtual void setVardas(const string& vardas) { this->vardas = vardas; }
+        virtual void setPavarde(const string& pavarde) { this->pavarde = pavarde; }
+        virtual void pureVirtualFunction() const = 0;
 };
 
 
@@ -273,11 +277,11 @@ class Studentas: public Zmogus{
 double rezultatas(double suma,int kiekis,int egz);
 double Med(vector<int> data);
 double rezMed(double mediana, int egz);
-bool palyginimasVardai(Studentas studentas1, Studentas studentas2);
-bool palyginimasPavardes(Studentas studentas1, Studentas studentas2);
-bool palyginimasVidurkis(Studentas studentas1, Studentas studentas2);
+bool palyginimasVardai(const Studentas& studentas1, const Studentas& studentas2);
+bool palyginimasPavardes(const Studentas& studentas1, const Studentas& studentas2);
+bool palyginimasVidurkis(const Studentas& studentas1, const Studentas& studentas2);
 void generavimas(int studentu_skaicius, string fileName, int nd_kiekis);
 void isvedimas(vector<Studentas> studentai, string fileName);
 void skaitymas(vector<Studentas>& studentai, string Fname);
-bool Vargsiukai(const Studentas studentas, double riba);
+bool Vargsiukai(const Studentas& studentas, double riba);
 #endif // FIRSTLIB_H_INCLUDED

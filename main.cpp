@@ -433,6 +433,9 @@ int main()
     }
     vector <Studentas> studentai;
     Studentas naujas_st;
+    vector <Zmogus> zmones;
+    Zmogus naujas_zmogus;
+    Zmogus zmogus("SDASD", "dasdasd");
     int stud_sk=0;
     cout<<"Pasirinkite buda, kaip pildysite duomenys. Jeigu norit ivesti patys rasykite 'P', jeigu norite nuskaityti is failo - 'F'"<<endl;
     char pasirinkimas3;

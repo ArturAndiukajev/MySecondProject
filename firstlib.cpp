@@ -46,21 +46,21 @@ double rezMed(double mediana, int egz)
 //----------------------------------------------------------------
 
 //----------------------------------------------------------------
-bool palyginimasVardai(Studentas studentas1, Studentas studentas2)
+bool palyginimasVardai(const Studentas& studentas1, const Studentas& studentas2)
 {
     return studentas1.getVardas()<studentas2.getVardas();
 }
 //-----------------------------------------------------------------
 
 //-----------------------------------------------------------------
-bool palyginimasPavardes(Studentas studentas1, Studentas studentas2)
+bool palyginimasPavardes(const Studentas& studentas1, const Studentas& studentas2)
 {
     return studentas1.getPavarde()<studentas2.getPavarde();
 }
 //------------------------------------------------------------------
 
 //------------------------------------------------------------------
-bool palyginimasVidurkis(Studentas studentas1, Studentas studentas2)
+bool palyginimasVidurkis(const Studentas& studentas1, const Studentas& studentas2)
 {
     return studentas1.getGalutinis()<studentas2.getGalutinis();
 }
@@ -166,7 +166,7 @@ void skaitymas(vector<Studentas>& studentai, string Fname)
     }
 }
 //------------------------------------------------------------------------------------------------------
-bool Vargsiukai(const Studentas studentas, double riba)
+bool Vargsiukai(const Studentas& studentas, double riba)
 {
     return studentas.getGalutinis() < riba;
 }
