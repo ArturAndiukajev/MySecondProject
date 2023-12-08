@@ -34,19 +34,16 @@ class Zmogus{
     protected:
         string vardas;
         string pavarde;
-
     public:
         Zmogus(const string& vardas, const string& pavarde) : vardas(vardas), pavarde(pavarde) {}
         Zmogus(const Zmogus& other) : vardas(other.vardas), pavarde(other.pavarde) {}
-        Zmogus() : vardas(""), pavarde("") {}
         virtual ~Zmogus() = default;
+        virtual void pureVirtualFunction() const = 0;
         virtual string getVardas() const {return vardas;}
         virtual string getPavarde() const {return pavarde;}
         virtual void setVardas(const string& vardas) { this->vardas = vardas; }
         virtual void setPavarde(const string& pavarde) { this->pavarde = pavarde; }
-        virtual void pureVirtualFunction() const = 0;
 };
-
 
 class Studentas: public Zmogus{
     private:
@@ -57,21 +54,10 @@ class Studentas: public Zmogus{
     public:
         Studentas(const string& vardas, const string& pavarde, const vector<int>& ND, int Egz) : Zmogus(vardas, pavarde), ND(ND), Egz(Egz), galutinis1(0), galutinis2(0) {}
         Studentas(istream& is);
-        Studentas() : Zmogus("", ""), Egz(0), galutinis1(0), galutinis2(0) {}
-        inline string getVardas() const { return vardas; }
-        inline string getPavarde() const { return pavarde; }
-        inline double getGalutinis() const { return galutinis1; }
-        inline double getGalutinisMediana() const { return galutinis2; }
-        inline int getEgz() const { return Egz; }
-        vector<int>& getND() { return ND; }
+        Studentas() : Zmogus("",""), Egz(0), galutinis1(0), galutinis2(0) {}
         istream& readStudent(istream&);
-        void setVardas(const string& vardas) { this->vardas = vardas; }
-        void setPavarde(const string& pavarde) { this->pavarde = pavarde; }
-        void setEgzaminas(int Egz) { this->Egz = Egz; }
-        void addND(int value) { ND.push_back(value); }
-        void setGalutinis(double value) { galutinis1 = value; }
-        void setGalutinisMediana(double value) {galutinis2 = value; }
         ~Studentas(){ND.clear();}
+        void pureVirtualFunction() const override {cout<<"Visiskai virtualios funkcijos implementacija"<<endl;}
 
         Studentas(const Studentas& other) : Zmogus(other)
         {
@@ -272,6 +258,18 @@ class Studentas: public Zmogus{
             os << "--------------------------------------------------"<<endl;
             return os;
         }
+        inline string getVardas() const { return vardas; }
+        inline string getPavarde() const { return pavarde; }
+        inline double getGalutinis() const { return galutinis1; }
+        inline double getGalutinisMediana() const { return galutinis2; }
+        inline int getEgz() const { return Egz; }
+        vector<int>& getND() { return ND; }
+        void setVardas(const string& vardas) { this->vardas = vardas; }
+        void setPavarde(const string& pavarde) { this->pavarde = pavarde; }
+        void setEgzaminas(int Egz) { this->Egz = Egz; }
+        void addND(int value) { ND.push_back(value); }
+        void setGalutinis(double value) { galutinis1 = value; }
+        void setGalutinisMediana(double value) {galutinis2 = value; }
 };
 
 double rezultatas(double suma,int kiekis,int egz);
