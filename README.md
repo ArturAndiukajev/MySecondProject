@@ -140,3 +140,16 @@ Išvada: Kaip galima matyti iš lentelės pateiktos aukščiau, Struct ir Class 
 
 
 Išvados: Struct) flag'as O3 geriau optimizuoja failo skaitymą ir rušiavimą, negu kiti. Visi flag'ai žymiai paspartina programos veikimą, palyginus su programos veikimu be flag'ų. Visų trijų flag'ų optimizavimas beveik nesiskiria. Tačiau exe failo dydis beveik tris kartus padidėja naudojant flag'us - be flag'ų 915 KB , su O1 flag'u -2555 KB, su O2 -3046 KB, su O3 - 2938 KB. Class) Su Class flag'ai O1, O2, O3 veikia taip pat beveik vienodai, nėra kažkokių didelių skirtumų tarp jų. Tačiau jie paspartina programos veikimą, palyginus su programos veikimu be flag'ų. Exe failo dydis be flag'ų -927 KB, su O1- 2610 KB, su O2 -3147 KB, su O3 - 2953 KB.  Taip pat atminties atžvilgiu ir Class ir Struct su kiekvienų iš trijų flag'ų naudojo beveik panašų kiekį atminties.(nuo 4.4 GB iki 4.9 GB)
+
+
+V1.2:
+Šioje versijoje klasėje Studentas buvo realizuoti įvesties, išvesties operatoriai ir "Rule of three". Įvesties ir išvesties operatoriai buvo panaudoti programoje.
+![Screenshot_1](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/c5905da1-74d2-4cd7-aaf0-1af96696360f)
+![Screenshot_2](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/1ecc539a-44d5-4413-8c4c-8083be0ff955)
+![Screenshot_3](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/a89e23ff-e9d3-4dd9-9444-c175d39b3c5f)
+![Screenshot_4](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/6422a6a6-54a6-4f92-80bb-83f1117d9d52)
+![Screenshot_5](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/dbc37cef-9186-4758-ade5-7ae65668ddc2)
+![Screenshot_6](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/815d5b34-4ef9-4b1f-a7ea-73d5e7597f95)
+![Screenshot_7](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/b0d7a8b7-cd1b-46ae-a3f2-3aa335f13756)
+
+
