@@ -30,19 +30,27 @@ using std::cerr;
 using std::istream;
 using std::ostream;
 
-
-
-
-class Studentas{
-    private:
+class Zmogus{
+    protected:
         string vardas;
         string pavarde;
+
+    public:
+        Zmogus(const string& vardas, const string& pavarde) : vardas(vardas), pavarde(pavarde) {}
+        virtual ~Zmogus() = default;
+        const std::string& getVardas() const {return vardas;}
+        const std::string& getPavarde() const {return pavarde;}
+};
+
+
+class Studentas: public Zmogus{
+    private:
         vector <int> ND;
         int Egz;
         double galutinis1;
         double galutinis2;
     public:
-        Studentas(): Egz(0), galutinis1(0), galutinis2(0) {};
+        Studentas(const string& vardas, const string& pavarde, const vector<int>& ND, int Egz) : Zmogus(vardas, pavarde), ND(ND), Egz(Egz), galutinis1(0), galutinis2(0) {}
         Studentas(istream& is);
         inline string getVardas() const { return vardas; }
         inline string getPavarde() const { return pavarde; }
