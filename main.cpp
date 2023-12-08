@@ -446,6 +446,7 @@ int main()
         if(stud_sk<=0)
         {
             cerr<<"Studentu skaicius turi buti didesnis uz 0."<<endl;
+            return 1;
         }
         for(int i=0;i<stud_sk;i++)
         {
@@ -455,10 +456,102 @@ int main()
     }
     else if(pasirinkimas3=='F'||pasirinkimas3=='f')
     {
-            ifstream input_File;
-            input_File>>naujas_st;
-            input_File.close();
+        string Fname;
+        cout<<"Iveskite failo pavadinima su '.txt'"<<endl;
+        cin>>Fname;
+        ifstream input_file(Fname);
+        if (!input_file.is_open())
+        {
+            cout << "Failo atidarymas negalimas: " << Fname << endl;
+            return 1;
+        }
+        string header;
+        int stulp_kiekis=0;
+        getline(input_file, header);
+        string v;
+        string p;
+        std::istringstream headerStream(header);
+        string token;
+        while (headerStream >> token)
+        {
+            stulp_kiekis++;
+        }
+        while (input_file >> v >> p)
+        {
+            Studentas naujas_st;
+            naujas_st.setVardas(v);
+            naujas_st.setPavarde(p);
+            for(int i=0;i<stulp_kiekis-3;i++)
+            {
+                int nd;
+                if (!(input_file >> nd)||(nd>10)||(nd<0))
+                {
+                    cout << "Nepavyko perskaityti namu darbo rezultato is failo." << endl;
+                    cout << "Tarp duomenu yra netikslumu, pvz. namu darbo pazymys didesnis uz 10 arba vietoj pazymio irasyta raide." << endl;
+                    return 1;
+                }
+                naujas_st.addND(nd);
+            }
+            int Egz;
+            if (!(input_file >> Egz )||(Egz>10)||(Egz<0))
+            {
+                cout << "Nepavyko perskaityti egzamino rezultato is failo." << endl;
+                cout << "Tarp duomenu yra netikslumu, pvz. egzamino pazymys didesnis uz 10 arba vietoj pazymio irasyta raide." << endl;
+                return 1;
+            }
+            naujas_st.setEgzaminas(Egz);
+            double nd_suma = accumulate(naujas_st.getND().begin(), naujas_st.getND().end(), 0.0);
+            naujas_st.setGalutinis(rezultatas(nd_suma, naujas_st.getND().size(), naujas_st.getEgz()));
+            double mediana = Med(naujas_st.getND());
+            naujas_st.setGalutinisMediana(rezMed(mediana, naujas_st.getEgz()));
+            studentai.push_back(naujas_st);
+            stud_sk++;
+            naujas_st.getND().clear();
+        }
+        input_file.close();
     }
+            /*ifstream input_File;
+            string Fname;
+            cin>>Fname;
+            input_File.open(Fname);
+            if (!input_File.is_open())
+            {
+                cout << "Failo atidarymas negalimas: " << Fname << endl;
+                return -1;
+            }
+            string Eil;
+            getline(input_File, Eil);
+            while(input_File)
+            {
+                if(!input_File.eof())
+                {
+                    getline(input_File, Eil);
+                    input_File>>naujas_st;
+                    string Teil;
+                    input_File>>Teil; naujas_st.setVardas(Teil);
+                    input_File>>Teil; naujas_st.setPavarde(Teil);
+                    vector <int> LaikPaz;
+                    int t;
+                    while(input_File>>t)
+                    {
+                        if(t>=0 && t<11) naujas_st.addND(t);
+                        else cerr <<"Neteisingas pazymys:"<<endl;
+                    }
+                    if(LaikPaz.empty()) cerr<<"Studentas be pazymiu"<<endl;
+                    else
+                    {
+                        naujas_st.setEgzaminas(LaikPaz.back());
+                        naujas_st.ND.pop_back();
+                        studentai.push_back(naujas_st);
+                    }
+                    LaikPaz.clear();
+                    naujas_st.addND(LaikPaz);
+
+                }
+                else break;
+            }
+            input_File.close();*/
+
     else
     {
         cout<<"Neteisingas pasirinkimas"<<endl;
@@ -489,7 +582,7 @@ int main()
             return 1;
         }
         cout<<"------------------------------------------------------------------------------------------------------"<<endl;
-        for(int i=0;i<stud_sk;i++)
+        for(int i=0;i<studentai.size();i++)
         {
             cout<<studentai[i];
         }
@@ -516,7 +609,7 @@ int main()
             return 1;
         }
         outputFile<<"------------------------------------------------------------------------------------------------------"<<endl;
-        for(int i=0;i<stud_sk;i++)
+        for(int i=0;i<studentai.size();i++)
         {
             outputFile<<setw(20)<<left<<studentai[i].getVardas()<<setw(20)<<left<<studentai[i].getPavarde()<<setw(20)<<left;
             if (pasirinkimas=='V'||pasirinkimas=='v')

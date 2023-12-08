@@ -171,3 +171,4 @@ bool Vargsiukai(const Studentas studentas, double riba)
     return studentas.getGalutinis() < riba;
 }
 //-------------------------------------------------------------------------------------------------------
+

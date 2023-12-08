@@ -75,7 +75,7 @@ class Studentas{
         {
             vardas = other.vardas;
             pavarde = other.pavarde;
-            ND = other.ND;
+            std::copy(other.ND.begin(),other.ND.end(), ND.begin());
             Egz = other.Egz;
             galutinis1 = other.galutinis1;
             galutinis2 = other.galutinis2;
@@ -89,7 +89,8 @@ class Studentas{
                 if (ND.size() == 0)
                 {
                     throw std::invalid_argument("Kiekis negali buti lygus nuliui");
-                }}
+                }
+            }
             catch (const std::exception& e)
             {
                 cout << "Dalyba is nulio. " << e.what() << endl;
@@ -115,7 +116,6 @@ class Studentas{
         {
             return 0.4 * mediana + 0.6 * Egz;
         }
-
         friend istream& operator>>(istream& is, Studentas& studentas)
         {
 
@@ -165,6 +165,7 @@ class Studentas{
                 if(nd_kiekis<=0)
                 {
                     cout<<"Iveskite skaiciu didesni uz 0."<<endl;
+                    return is;
 
                 }
                 cout<<"Sugeneruoti namu darbu rezultatai:"<<endl;
@@ -179,6 +180,7 @@ class Studentas{
             else
             {
                 cout<<"Neteisingas pasirinkimas";
+                return is;
 
             }
             if (pasirinkimas2=='A'||pasirinkimas2=='a')
@@ -204,6 +206,7 @@ class Studentas{
             else
             {
                 cout<<"Neteisingas pasirinkimas";
+                return is;
 
             }
         double nd_suma = accumulate(studentas.ND.begin(), studentas.ND.end(), 0.0);
@@ -213,34 +216,10 @@ class Studentas{
         studentas.ND.clear();
         return is;
         }
-
-
-        friend ifstream& operator>>(ifstream& input_file, Studentas& studentas)
+        /*friend ifstream& operator>>(ifstream& input_file, Studentas& studentas)
         {
-            string Fname;
-            cout<<"Iveskite failo pavadinima su '.txt'"<<endl;
-            cin>>Fname;
-            input_file.open(Fname);
-            if (!input_file.is_open())
+            while (input_file >> studentas.vardas >> studentas.pavarde)
             {
-                cout << "Failo atidarymas negalimas: " << Fname << endl;
-                return input_file;
-            }
-            string header;
-            int stulp_kiekis=0;
-            getline(input_file, header);
-            string v;
-            string p;
-            std::istringstream headerStream(header);
-            string token;
-            while (headerStream >> token)
-            {
-                stulp_kiekis++;
-            }
-            while (input_file >> v >> p)
-            {
-                studentas.setVardas(v);
-                studentas.setPavarde(p);
                 for(int i=0;i<stulp_kiekis-3;i++)
                 {
                     int nd;
@@ -264,10 +243,15 @@ class Studentas{
                 double mediana=studentas.Med();
                 studentas.galutinis2=studentas.rezMed(mediana);
                 studentas.ND.clear();
+                 /*vardas = other.vardas;
+            pavarde = other.pavarde;
+            std::copy(other.ND.begin(),other.ND.end(), ND.begin());
+            Egz = other.Egz;
+            galutinis1 = other.galutinis1;
+            galutinis2 = other.galutinis2;
             }
-            input_file.close();
             return input_file;
-        }
+        }*/
         friend ostream& operator<<(ostream& os, const Studentas& studentas)
         {
 
@@ -276,21 +260,6 @@ class Studentas{
             os << "--------------------------------------------------"<<endl;
             return os;
         }
-
-        /*friend ofstream& operator<<(ofstream& os, const Studentas& studentas)
-        {
-            os << setw(20) << left << studentas.getVardas() << setw(20) << left << studentas.getPavarde() << setw(20) << left;
-            if (pasirinkimas == 'V' || pasirinkimas == 'v')
-            {
-                os << fixed << setprecision(2) << studentas.getGalutinis() << endl;
-            }
-            else
-            {
-                os << fixed << setprecision(2) << studentas.getGalutinisMediana() << endl;
-            }
-            os << "--------------------------------------------------" << endl;
-            return os;
-        }*/
 };
 
 double rezultatas(double suma,int kiekis,int egz);
