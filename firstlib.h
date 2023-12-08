@@ -37,6 +37,7 @@ class Zmogus{
 
     public:
         Zmogus(const string& vardas, const string& pavarde) : vardas(vardas), pavarde(pavarde) {}
+        Zmogus(const Zmogus& other) : vardas(other.vardas), pavarde(other.pavarde) {}
         virtual ~Zmogus() = default;
         const std::string& getVardas() const {return vardas;}
         const std::string& getPavarde() const {return pavarde;}
@@ -52,6 +53,7 @@ class Studentas: public Zmogus{
     public:
         Studentas(const string& vardas, const string& pavarde, const vector<int>& ND, int Egz) : Zmogus(vardas, pavarde), ND(ND), Egz(Egz), galutinis1(0), galutinis2(0) {}
         Studentas(istream& is);
+        Studentas() : Zmogus("", ""), Egz(0), galutinis1(0), galutinis2(0) {}
         inline string getVardas() const { return vardas; }
         inline string getPavarde() const { return pavarde; }
         inline double getGalutinis() const { return galutinis1; }
@@ -67,28 +69,26 @@ class Studentas: public Zmogus{
         void setGalutinisMediana(double value) {galutinis2 = value; }
         ~Studentas(){ND.clear();}
 
-        Studentas(const Studentas& other)
+        Studentas(const Studentas& other) : Zmogus(other)
         {
-        vardas = other.vardas;
-        pavarde = other.pavarde;
-        ND = other.ND;
-        Egz = other.Egz;
-        galutinis1 = other.galutinis1;
-        galutinis2 = other.galutinis2;
-        }
-
-        Studentas& operator=(const Studentas& other)
-        {
-        if (this != &other)
-        {
-            vardas = other.vardas;
-            pavarde = other.pavarde;
-            std::copy(other.ND.begin(),other.ND.end(), ND.begin());
+            ND = other.ND;
             Egz = other.Egz;
             galutinis1 = other.galutinis1;
             galutinis2 = other.galutinis2;
         }
-        return *this;
+
+        Studentas& operator=(const Studentas& other)
+        {
+            if (this != &other)
+            {
+                vardas = other.vardas;
+                pavarde = other.pavarde;
+                std::copy(other.ND.begin(),other.ND.end(), ND.begin());
+                Egz = other.Egz;
+                galutinis1 = other.galutinis1;
+                galutinis2 = other.galutinis2;
+            }
+            return *this;
         }
         double rezultatas()
         {
