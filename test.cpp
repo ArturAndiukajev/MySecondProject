@@ -27,3 +27,14 @@ TEST(KlasesStudentTestas, StudentoPazymiuPatykra)
     EXPECT_THROW(studentas.addND(-5), std::invalid_argument);
     EXPECT_THROW(studentas.addND(33), std::invalid_argument);
 }
+
+TEST(KlasesStudentTestas, GalutinisSkaiciavimas)
+{
+    Studentas studentas;
+    studentas.addND(5);
+    studentas.addND(8);
+    studentas.addND(7);
+    studentas.setEgzaminas(9);
+    studentas.setGalutinis(rezultatas(studentas));
+    EXPECT_EQ(8.06, studentas.getGalutinis);
+}
