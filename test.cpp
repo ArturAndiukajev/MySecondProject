@@ -35,6 +35,8 @@ TEST(KlasesStudentTestas, GalutinisSkaiciavimas)
     studentas.addND(8);
     studentas.addND(7);
     studentas.setEgzaminas(9);
-    studentas.setGalutinis(rezultatas(studentas));
-    EXPECT_EQ(8.06, studentas.getGalutinis);
+    double nd_suma = accumulate(studentas.getND().begin(), studentas.getND().end(), 0.0);
+    int nd_kiekis = static_cast<int>(studentas.getND().size());
+    studentas.setGalutinis(rezultatas(nd_suma, nd_kiekis,studentas.getEgz()));
+    EXPECT_NEAR(8.06, studentas.getGalutinis(), 0.01);
 }
