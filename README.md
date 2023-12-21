@@ -155,6 +155,11 @@ V1.5:
 ![Screenshot_1](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/1ce0ed4e-8c0b-4c7b-aeb8-a3d642e49648)
 ![Screenshot_2](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/7434603c-e92a-4a83-9cdd-e2fd32134313)
 
+V2.0:
+![Screenshot_2](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/5ea47e38-e300-4843-bf2f-cf10bd6a01e5)
+![Screenshot_3](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/2671e811-f861-4827-8cdb-6b39a0fb5149)
+
+
 V1.1:
 Buvo pereita iš struktūros į klasę. Buvo palyginta abiejų programų - naudojančios struct iš ankstesnės vėrsijos, ir naudojančio class tipo Studentus iš dabartinės realizacijos - spartą su vektoriumi su pirma strategija(ji buvo greičiausia). Taip pat buvo atlikta analizė priklausomai nuo kompiliatoriaus optimizavimo lygio, nurodomo per flag'us: O1, O2, O3.
 
