@@ -157,10 +157,13 @@ V1.5:
 
 V1.1:
 Buvo pereita iš struktūros į klasę. Buvo palyginta abiejų programų - naudojančios struct iš ankstesnės vėrsijos, ir naudojančio class tipo Studentus iš dabartinės realizacijos - spartą su vektoriumi su pirma strategija(ji buvo greičiausia). Taip pat buvo atlikta analizė priklausomai nuo kompiliatoriaus optimizavimo lygio, nurodomo per flag'us: O1, O2, O3.
+
 V1.2:
 Šioje versijoje klasėje Studentas buvo realizuoti įvesties, išvesties operatoriai ir "Rule of three". Įvesties ir išvesties operatoriai buvo panaudoti programoje.
+
 V1.5:
 Šioje versijoje buvo sukurta bazinę (abstrakti) klasę skirtą bendrai aprašyti žmogų (Zmogus) ir tuomet iš jos padaryta išvestinę (derived) klasę - Studentas.
+
 V2.0:
 Buvo sukurta dokumentacija naudojant Doxygen programa. Taip pat buvo realizuoti keli Unit testai. Buvo paruoštas CMake failas.
 
