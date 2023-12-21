@@ -143,7 +143,6 @@ Išvados: Struct) flag'as O3 geriau optimizuoja failo skaitymą ir rušiavimą, 
 
 
 V1.2:
-Šioje versijoje klasėje Studentas buvo realizuoti įvesties, išvesties operatoriai ir "Rule of three". Įvesties ir išvesties operatoriai buvo panaudoti programoje.
 ![Screenshot_1](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/c5905da1-74d2-4cd7-aaf0-1af96696360f)
 ![Screenshot_2](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/1ecc539a-44d5-4413-8c4c-8083be0ff955)
 ![Screenshot_3](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/a89e23ff-e9d3-4dd9-9444-c175d39b3c5f)
@@ -153,6 +152,17 @@ V1.2:
 ![Screenshot_7](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/b0d7a8b7-cd1b-46ae-a3f2-3aa335f13756)
 
 V1.5:
-Šioje versijoje buvo sukurta bazinę (abstrakti) klasę skirtą bendrai aprašyti žmogų (Zmogus) ir tuomet iš jos padaryta išvestinę (derived) klasę - Studentas.
 ![Screenshot_1](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/1ce0ed4e-8c0b-4c7b-aeb8-a3d642e49648)
 ![Screenshot_2](https://github.com/ArturAndiukajev/MySecondProject/assets/144611797/7434603c-e92a-4a83-9cdd-e2fd32134313)
+
+V1.1:
+Buvo pereita iš struktūros į klasę. Buvo palyginta abiejų programų - naudojančios struct iš ankstesnės vėrsijos, ir naudojančio class tipo Studentus iš dabartinės realizacijos - spartą su vektoriumi su pirma strategija(ji buvo greičiausia). Taip pat buvo atlikta analizė priklausomai nuo kompiliatoriaus optimizavimo lygio, nurodomo per flag'us: O1, O2, O3.
+V1.2:
+Šioje versijoje klasėje Studentas buvo realizuoti įvesties, išvesties operatoriai ir "Rule of three". Įvesties ir išvesties operatoriai buvo panaudoti programoje.
+V1.5:
+Šioje versijoje buvo sukurta bazinę (abstrakti) klasę skirtą bendrai aprašyti žmogų (Zmogus) ir tuomet iš jos padaryta išvestinę (derived) klasę - Studentas.
+V2.0:
+Buvo sukurta dokumentacija naudojant Doxygen programa. Taip pat buvo realizuoti keli Unit testai. Buvo paruoštas CMake failas.
+
+Naudojimosi instrukcija: 1)Naudotojas turi įdiegti CMake programą. Versija turi būti neankstesnė negu 3.28. 2) Reikia atsiųsti aplankalą "klases".3) Naudotojas turi paleisti failą "RUNMEE.bat". Jame jau yra paruoštos komandos. (4 eilutėje yra kopijuojamas failas, todėl, naudotojas gali pakeisti failo pavadinimą į sau reikalingą failo pavadinimą).4)Aplankale "Debug" naudotojas galės rasti failą su plėtinių .exe. Jį reikia paleisti, tam, kad galima būtų naudotis programą.
+Programos galimybės : 1) Iš pradžių bus galimybė sugeneruoti savo failą , kuriam reikės nurodyti studentų skaičių, failo pavadinimą ir namų darbų kiekį. Studento vardas ir pavardė yra šabloniniai, namų darbų ir egzamino rezultatai generuojami atsitiktinai. 2) Toliau yra galimybė testuoti skaitymo, rušiavimo ir išvedimo laiką bet kuriai iš 3 strategijų. Yra galimybė pasirinkti kaip reikia rušiuoti studentus(pagal vardą, pavardę arba galutinio balo vidurkį). 3) Po šitų dviejų žingsnių yra galimybė įvesti duomenis arba nuskaityti iš failo. Yra galimybė pasirinkti kaip bus skaičiuojamas galutinis balas (su vidurkiu arba su mediana). 4) Tada naudotojas gali pasirinkti, kur jam patogiau gauti rezultatus - jie gali būti išvedami į ekraną arba į atskirą failą.
